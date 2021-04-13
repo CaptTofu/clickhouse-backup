@@ -11,4 +11,3 @@ Essentially you can follow the steps from https://cloud.google.com/storage/docs/
 5. Replace the aws access key id and aws secret access key with the corresponding parts of the HMAC key
 
 © 2021 Altinity Inc. All rights reserved.
-
