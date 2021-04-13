@@ -7,7 +7,7 @@ Here is a plan for ZK 3.4.9 \(no dynamic reconfiguration\):
    2. Configure the other two new ZK nodes as a cluster of 6 nodes \(3 old + 3 new\), start them.
 2. Make sure the 3 new ZK nodes connected to the old ZK cluster as followers \(run `echo stat | nc localhost 2181` on the 3 new ZK nodes\)
 3. Confirm that the leader has 5 synced followers \(run `echo mntr | nc localhost 2181` on the leader, look for `zk_synced_followers`\)
-4. Stop data loading in CH \(this is to minimize errors when CH loses ZK\).
+4. Stop data ingestion in CH \(this is to minimize errors when CH loses ZK\).
 5. Change the zookeeper section in the configs on the CH nodes \(remove the 3 old ZK servers, add the 3 new ZK servers\)
 6. Make sure that there are no connections from CH to the 3 old ZK nodes \(run `echo stat | nc localhost 2181` on the 3 old nodes, check their `Clients` section\). Restart all CH nodes if necessary \(In some cases CH can reconnect to different ZK servers without a restart\).
 7. Remove the 3 old ZK nodes from `zoo.cfg` on the 3 new ZK nodes.
