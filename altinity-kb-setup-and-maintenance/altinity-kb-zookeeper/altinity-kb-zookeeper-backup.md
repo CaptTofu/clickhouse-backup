@@ -28,3 +28,4 @@ _On scale, you can use_ [https://github.com/Altinity/clickhouse-zookeeper-recove
 
 _In future it will be even simpler_ [https://github.com/ClickHouse/ClickHouse/pull/13652](https://github.com/ClickHouse/ClickHouse/pull/13652)
 
+© 2021 Altinity Inc. All rights reserved.

@@ -66,4 +66,3 @@ Default database engine \(`Ordinary`, `Atomic`\) is also controlled by a setting
 {% embed url="https://github.com/ClickHouse/ClickHouse/issues/6787" %}
 
 © 2021 Altinity Inc. All rights reserved.
-

@@ -129,3 +129,4 @@ If the table has many partitions, it may require some shell script to make it ea
   
 [https://github.com/Altinity/clickhouse-zookeeper-recovery](https://github.com/Altinity/clickhouse-zookeeper-recovery)
 
+© 2021 Altinity Inc. All rights reserved.

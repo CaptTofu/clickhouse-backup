@@ -13,4 +13,3 @@ If this table has size 1TB it could take around 3 hours to complete.
 So we don't recommend running `optimize table xyz final` against tables with more than 10million rows.
 
 © 2021 Altinity Inc. All rights reserved.
-

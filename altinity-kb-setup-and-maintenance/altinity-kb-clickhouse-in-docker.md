@@ -55,3 +55,4 @@ docker exec -it some-clickhouse-server clickhouse-client
 docker exec -it some-clickhouse-server bash 
 ```
 
+© 2021 Altinity Inc. All rights reserved.

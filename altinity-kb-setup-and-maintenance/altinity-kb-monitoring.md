@@ -19,5 +19,4 @@ Prometheus alerts \(clickhouse-operator\) [https://github.com/Altinity/clickhous
 
 {% page-ref page="altinity-kb-zookeeper/zookeeper-monitoring.md" %}
 
-
-
+© 2021 Altinity Inc. All rights reserved.

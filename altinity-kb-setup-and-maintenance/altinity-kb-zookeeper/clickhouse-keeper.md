@@ -17,3 +17,4 @@ or event single instance with config like that: [https://github.com/ClickHouse/C
 
 Latest testing version is recommended. We will be thankful for any feedback.
 
+© 2021 Altinity Inc. All rights reserved.

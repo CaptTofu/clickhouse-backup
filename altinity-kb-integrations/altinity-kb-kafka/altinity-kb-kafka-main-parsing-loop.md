@@ -28,3 +28,4 @@ You may want to adjust those depending on your scenario:
 
 [https://github.com/ClickHouse/ClickHouse/pull/11388](https://github.com/ClickHouse/ClickHouse/pull/11388)
 
+© 2021 Altinity Inc. All rights reserved.

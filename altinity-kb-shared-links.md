@@ -14,3 +14,4 @@ Share and discuss contents from the web like articles and videos with your team.
 
 Create shared link
 
+© 2021 Altinity Inc. All rights reserved.

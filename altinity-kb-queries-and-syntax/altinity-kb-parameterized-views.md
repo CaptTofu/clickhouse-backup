@@ -54,4 +54,3 @@ SETTINGS my2_category = 'hot deals';
 ```
 
 © 2021 Altinity Inc. All rights reserved.
-

@@ -24,3 +24,4 @@ GROUP BY
 order by count_all desc
 ```
 
+© 2021 Altinity Inc. All rights reserved.

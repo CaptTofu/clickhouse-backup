@@ -13,4 +13,3 @@
 [**Open link**](https://blog.tinybird.co/2021/03/16/coming-soon-on-clickhouse-window-functions/)
 
 © 2021 Altinity Inc. All rights reserved.
-

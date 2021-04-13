@@ -41,3 +41,4 @@ More safer way:
 
 Потушить сервер.
 
+© 2021 Altinity Inc. All rights reserved.

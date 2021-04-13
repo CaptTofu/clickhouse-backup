@@ -18,3 +18,4 @@ By default it 90% of the physical RAM of the server.
 
 You can decrease that in some scenarios \(like you need to leave more free RAM for page cache or to some other software\).
 
+© 2021 Altinity Inc. All rights reserved.

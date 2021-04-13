@@ -15,4 +15,3 @@ So it can work in the following way:
 3. in that case using that FINAL with `do_not_merge_across_partitions_select_final` will be cheap.
 
 © 2021 Altinity Inc. All rights reserved.
-

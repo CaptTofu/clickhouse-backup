@@ -47,3 +47,4 @@ Default values:
 
 **max\_tasks\_in\_queue** = 1000 – How many tasks could be in the queue.
 
+© 2021 Altinity Inc. All rights reserved.

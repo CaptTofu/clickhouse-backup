@@ -21,5 +21,4 @@ Threads: 103
 116
 ```
 
-
-
+© 2021 Altinity Inc. All rights reserved.

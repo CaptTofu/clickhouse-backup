@@ -34,3 +34,4 @@ Q. Clickhouse is caching the Kafka pod's IP and trying to connect to the same ip
 
 `<disable_internal_dns_cache>1</disable_internal_dns_cache>` in config.xml
 
+© 2021 Altinity Inc. All rights reserved.

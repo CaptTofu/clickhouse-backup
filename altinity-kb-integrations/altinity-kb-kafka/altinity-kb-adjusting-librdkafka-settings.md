@@ -88,3 +88,4 @@ See [https://github.com/ClickHouse/ClickHouse/issues/12609](https://github.com/C
   </kafka>
 ```
 
+© 2021 Altinity Inc. All rights reserved.

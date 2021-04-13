@@ -11,4 +11,3 @@ If the total size of input parts are greater than the maximum part size then the
 _ReplacingMergeTree is suitable for clearing out duplicate data in the background in order to save space, but it doesn’t guarantee the absence of duplicates._
 
 © 2021 Altinity Inc. All rights reserved.
-
