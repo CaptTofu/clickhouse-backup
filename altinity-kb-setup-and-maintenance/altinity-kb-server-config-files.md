@@ -15,11 +15,11 @@ By default they are stored in the folder **/etc/clickhouse-server/** in two file
 
 We suggest never change vendor config files and place your changes into separate .xml files in sub-folders. This way is easier to maintain and ease Clickhouse upgrades.
 
- **/etc/clickhouse-server/users.d** – sub-folder for user settings.
+**/etc/clickhouse-server/users.d** – sub-folder for user settings.
 
- **/etc/clickhouse-server/config.d** – sub-folder for server settings.
+**/etc/clickhouse-server/config.d** – sub-folder for server settings.
 
- **/etc/clickhouse-server/conf.d** – sub-folder for any \(both\) settings.
+**/etc/clickhouse-server/conf.d** – sub-folder for any \(both\) settings.
 
 File names of your xml files can be arbitrary but they applied in alphabetical order.
 
@@ -128,7 +128,7 @@ $ cat /etc/clickhouse-server/dict/country.xml
       <http>
       ...
   </dictionary>
-</dictionaries>      
+</dictionaries>
 ```
 
 and add to the configuration
@@ -196,7 +196,7 @@ $ cat /etc/clickhouse-server/dict/country.xml
     </source>        
       ...
   </dictionary>
-</dictionaries>         
+</dictionaries>
 ```
 
 ## Multiple Clickhouse instances at one host <a id="Serverconfigfiles-MultipleClickhouseinstancesatonehost"></a>
@@ -205,7 +205,7 @@ By default Clickhouse server configs are in **/etc/clickhouse-server/** because 
 
 **config-file** is defined in startup scripts:
 
-*  **/etc/init.d/clickhouse-server** – init-V
+* **/etc/init.d/clickhouse-server** – init-V
 * **/etc/systemd/system/clickhouse-server.service** – systemd
 
 Clickhouse uses the path from **config-file** parameter as base folder and seeks for other configs by relative path. All sub-folders **users.d / config.d** are relative.
@@ -247,8 +247,8 @@ By default ClickHouse uses **/var/lib/clickhouse/**. It can be overridden in pat
   <local_directory>
     <path>/data/clickhouse-ch1/access/</path>
   </local_directory>
-  
-<format_schema_path>/data/clickhouse-ch1/format_schemas/</format_schema_path>  
+
+<format_schema_path>/data/clickhouse-ch1/format_schemas/</format_schema_path>
 ```
 
 ## preprocessed\_configs <a id="Serverconfigfiles-preprocessed_configs"></a>
@@ -262,3 +262,4 @@ If something wrong with with your settings e.g. unclosed XML element or typo you
 If you see your changes in **preprocessed\_configs** it does not mean that changes are applied on running server, check [Settings & restart](altinity-kb-server-config-files.md#Settings-%26--restart)
 
 © 2021 Altinity Inc. All rights reserved.
+

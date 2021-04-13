@@ -68,8 +68,8 @@ Code: 36. DB::Exception: Received from localhost:9000. DB::Exception: Unknown el
 
 ### Solution
 
-You should do the following:  
-  
+You should do the following:
+
 Check which mutation is stuck and kill it:
 
 ```sql
@@ -95,7 +95,6 @@ Run fixed ALTER MODIFY COLUMN query.
 ALTER TABLE modify_column MODIFY COLUMN column_n Enum8('key_a'=1, 'key_b'=2, 'key_c'=3);
 ```
 
-  
 You can monitor progress of column type change with system.mutations or system.parts\_columns tables:
 
 ```sql
@@ -120,3 +119,4 @@ GROUP BY
 ```
 
 © 2021 Altinity Inc. All rights reserved.
+

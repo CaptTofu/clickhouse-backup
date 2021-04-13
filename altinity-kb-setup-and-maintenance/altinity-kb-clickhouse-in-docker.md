@@ -2,8 +2,9 @@
 
 > Do you have documentation on Docker deployments?
 
-Check [https://hub.docker.com/r/yandex/clickhouse-server/](https://hub.docker.com/r/yandex/clickhouse-server/) and [https://docs.altinity.com/clickhouseonkubernetes/](https://docs.altinity.com/clickhouseonkubernetes/) .  
-+ sources of entry point - [https://github.com/ClickHouse/ClickHouse/blob/master/docker/server/entrypoint.sh](https://github.com/ClickHouse/ClickHouse/blob/master/docker/server/entrypoint.sh)
+Check [https://hub.docker.com/r/yandex/clickhouse-server/](https://hub.docker.com/r/yandex/clickhouse-server/) and [https://docs.altinity.com/clickhouseonkubernetes/](https://docs.altinity.com/clickhouseonkubernetes/) .
+
+* sources of entry point - [https://github.com/ClickHouse/ClickHouse/blob/master/docker/server/entrypoint.sh](https://github.com/ClickHouse/ClickHouse/blob/master/docker/server/entrypoint.sh)
 
 Important things:
 
@@ -52,7 +53,8 @@ docker run -d \
 
 
 docker exec -it some-clickhouse-server clickhouse-client 
-docker exec -it some-clickhouse-server bash 
+docker exec -it some-clickhouse-server bash
 ```
 
 © 2021 Altinity Inc. All rights reserved.
+

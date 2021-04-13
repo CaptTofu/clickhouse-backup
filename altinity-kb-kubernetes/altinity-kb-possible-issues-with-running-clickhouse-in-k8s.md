@@ -1,7 +1,7 @@
-# Possible issues with running clickhouse in k8s
+# Possible issues with running ClickHouse in k8s
 
-The biggest problem with running ClickHouse in k8s, happens when clickhouse-server can't start for some reason and pod is falling in CrashloopBackOff, so you can't easily get in the pod and check/fix/restart ClickHouse.  
-  
+The biggest problem with running ClickHouse in k8s, happens when clickhouse-server can't start for some reason and pod is falling in CrashloopBackOff, so you can't easily get in the pod and check/fix/restart ClickHouse.
+
 There is multiple possible reasons for this, some of them can be fixed without manual intervention in pod:
 
 1. Wrong configuration files Fix: Check templates which are being used for config file generation and fix them.
@@ -35,3 +35,4 @@ Q. Clickhouse is caching the Kafka pod's IP and trying to connect to the same ip
 `<disable_internal_dns_cache>1</disable_internal_dns_cache>` in config.xml
 
 © 2021 Altinity Inc. All rights reserved.
+

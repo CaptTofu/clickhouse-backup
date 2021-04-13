@@ -26,7 +26,7 @@ nano /etc/clickhouse-client/conf.d/user.xml
     <multiline>true</multiline>
     <multiquery>true</multiquery>
 </config>
-See also https://github.com/ClickHouse/ClickHouse/blob/976dbe8077f9076387528e2f40b6174f6d8a8b90/programs/client/clickhouse-client.xml#L42  
+See also https://github.com/ClickHouse/ClickHouse/blob/976dbe8077f9076387528e2f40b6174f6d8a8b90/programs/client/clickhouse-client.xml#L42
 ```
 
 or for particular users - by adjusting one of.
@@ -43,3 +43,4 @@ References:
 * [https://clickhouse.tech/docs/en/interfaces/cli/](https://clickhouse.tech/docs/en/interfaces/cli/)
 
 © 2021 Altinity Inc. All rights reserved.
+

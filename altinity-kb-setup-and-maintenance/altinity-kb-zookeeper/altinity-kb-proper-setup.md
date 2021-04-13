@@ -2,20 +2,20 @@
 
 ### Main docs article
 
-{% embed url="https://docs.altinity.com/operationsguide/clickhouse-zookeeper/zookeeper-installation/" %}
+{% embed url="https://docs.altinity.com/operationsguide/clickhouse-zookeeper/zookeeper-installation/" caption="" %}
 
-### Hardware requirements: 
+### Hardware requirements:
 
 TLDR version:  
- 1\) USE DEDICATED FAST DISKS for the transaction log! \(crucial for performance due to write-ahead-log, NVMe is preferred for heavy load setup\)  
- 2\) use 3 nodes \(more nodes = slower quorum, less = no HA\).  
- 3\) low network latency between zookeeper nodes is very important \(latency, not bandwidth\).  
- 4\) have at least 4Gb of RAM, disable swap, tune JVM sizes, and garbage collector settings.  
- 5\) ensure that zookeeper will not be CPU-starved by some other processes  
- 6\) monitor zookeeper.
+1\) USE DEDICATED FAST DISKS for the transaction log! \(crucial for performance due to write-ahead-log, NVMe is preferred for heavy load setup\)  
+2\) use 3 nodes \(more nodes = slower quorum, less = no HA\).  
+3\) low network latency between zookeeper nodes is very important \(latency, not bandwidth\).  
+4\) have at least 4Gb of RAM, disable swap, tune JVM sizes, and garbage collector settings.  
+5\) ensure that zookeeper will not be CPU-starved by some other processes  
+6\) monitor zookeeper.
 
 Side note:  
- in many cases, the slowness of the zookeeper is actually a symptom of some issue with clickhouse schema/usage pattern \(the most typical issues: an enormous number of partitions/tables/databases with real-time inserts, tiny & frequent inserts\).
+in many cases, the slowness of the zookeeper is actually a symptom of some issue with clickhouse schema/usage pattern \(the most typical issues: an enormous number of partitions/tables/databases with real-time inserts, tiny & frequent inserts\).
 
 Some doc about that subject:
 
@@ -35,3 +35,4 @@ Here are some common problems you can avoid by configuring ZooKeeper correctly:
 * _Publicly accessible deployment_ : A ZooKeeper ensemble is expected to operate in a trusted computing environment. It is thus recommended to deploy ZooKeeper behind a firewall.
 
 © 2021 Altinity Inc. All rights reserved.
+

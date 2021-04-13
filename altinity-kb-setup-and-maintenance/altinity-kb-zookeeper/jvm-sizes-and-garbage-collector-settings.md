@@ -1,6 +1,6 @@
 # JVM sizes and garbage collector settings
 
-### **TLDR version**:
+## **TLDR version**:
 
 use fresh Java version \(11 or newer\), disable swap and set up \(for 4 Gb node\):
 
@@ -14,7 +14,7 @@ If you have a node with more RAM - change it accordingly, for example for 8Gb no
 JAVA_OPTS="-Xms7G -Xmx7G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50"
 ```
 
-### Details
+## Details
 
 1\) ZooKeeper runs as in JVM. Depending on version different garbage collectors are avaliable.
 
@@ -34,7 +34,7 @@ Set the Java heap size smaller than available RAM size on the node. This is very
 
 5\) \(optional\) enable GC logs: `-Xloggc:/path_to/gc.log`
 
-### Zookeeper configurarion used by Yandex Metrika \(from 2017\) 
+## Zookeeper configurarion used by Yandex Metrika \(from 2017\)
 
 The configuration used by Yandex \( [https://clickhouse.tech/docs/en/operations/tips/\#zookeeper](https://clickhouse.tech/docs/en/operations/tips/#zookeeper) \) - they use older JVM version \(with `UseParNewGC` garbage collector\), and tune GC logs heavily:
 
@@ -58,9 +58,7 @@ JAVA_OPTS="-Xms{{ cluster.get('xms','128M') }} \
     -XX:+CMSParallelRemarkEnabled"
 ```
 
-### 
-
-### See also
+## See also
 
 * [https://wikitech.wikimedia.org/wiki/JVM\_Tuning\#G1\_for\_full\_gcs](https://wikitech.wikimedia.org/wiki/JVM_Tuning#G1_for_full_gcs)
 * [https://sematext.com/blog/java-garbage-collection-tuning/](https://sematext.com/blog/java-garbage-collection-tuning/)
@@ -74,3 +72,4 @@ JAVA_OPTS="-Xms{{ cluster.get('xms','128M') }} \
 * [https://github.com/chewiebug/GCViewer](https://github.com/chewiebug/GCViewer)
 
 © 2021 Altinity Inc. All rights reserved.
+

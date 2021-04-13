@@ -1,7 +1,7 @@
 # Shutting down a node
 
-It’s possible to shutdown server on fly, but that would lead to failure of some queries.  
-  
+It’s possible to shutdown server on fly, but that would lead to failure of some queries.
+
 More safer way:
 
 * Remove server \(which is going to be disabled\) from remote\_server section of config.xml on all servers.
@@ -21,9 +21,9 @@ More safer way:
 
 * Shutdown server.
 
-  
-`SYSTEM SHUTDOWN` query doesn’t wait until query completion and tries to kill all queries immediately after receiving signal, even if there is setting `shutdown_wait_unfinished`.  
-  
+`SYSTEM SHUTDOWN` query doesn’t wait until query completion and tries to kill all queries immediately after receiving signal, even if there is setting `shutdown_wait_unfinished`.
+
 [https://github.com/ClickHouse/ClickHouse/blob/master/programs/server/Server.cpp\#L1353](https://github.com/ClickHouse/ClickHouse/blob/master/programs/server/Server.cpp#L1353)
 
 © 2021 Altinity Inc. All rights reserved.
+

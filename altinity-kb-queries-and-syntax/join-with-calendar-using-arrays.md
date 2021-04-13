@@ -1,6 +1,6 @@
 # Join with Calendar using Arrays
 
-### Sample data
+## Sample data
 
 ```sql
 create table test_metrics (counter_id Int64, timestamp DateTime, metric UInt64) 
@@ -29,7 +29,7 @@ order by counter_id, dt;
 └────────────┴────────────┴─────────────┘
 ```
 
-### Calendar
+## Calendar
 
 ```sql
 WITH arrayMap(i -> (toDate('2021-01-01') + i), range(4)) AS Calendar
@@ -43,7 +43,7 @@ SELECT arrayJoin(Calendar);
 └─────────────────────┘
 ```
 
-### Join with Calendar using arrayJoin
+## Join with Calendar using arrayJoin
 
 ```sql
 select counter_id, tuple.2 dt, sum(tuple.1) sum FROM
@@ -73,7 +73,7 @@ select counter_id, tuple.2 dt, sum(tuple.1) sum FROM
 └────────────┴────────────┴─────┘
 ```
 
-### With fill
+## With fill
 
 ```sql
 SELECT
@@ -87,7 +87,7 @@ GROUP BY
 ORDER BY
     counter_id ASC WITH FILL,
     dt ASC WITH FILL FROM toDate('2021-01-01') TO toDate('2021-01-05');
-    
+
 ┌─counter_id─┬─────────dt─┬─sum─┐
 │          0 │ 2021-01-01 │   7 │
 │          0 │ 2021-01-02 │   0 │
@@ -105,3 +105,4 @@ ORDER BY
 ```
 
 © 2021 Altinity Inc. All rights reserved.
+

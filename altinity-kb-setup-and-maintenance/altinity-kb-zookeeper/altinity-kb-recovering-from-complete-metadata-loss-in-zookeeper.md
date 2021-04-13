@@ -10,7 +10,7 @@ In order to restore ZooKeeper we have to solve two tasks. First, we need to rest
 CREATE TABLE table_name ... ENGINE=ReplicatedMergeTree('zookeeper_path','replica_name');
 ```
 
-The second and more difficult task is to populate zookeeper with information of clickhouse data parts. As mentioned above, ClickHouse stores the reference data about all parts of replicated tables in ZooKeeper, so we have to traverse all partitions and re-attach them to the recovered replicated table in order to fix that. 
+The second and more difficult task is to populate zookeeper with information of clickhouse data parts. As mentioned above, ClickHouse stores the reference data about all parts of replicated tables in ZooKeeper, so we have to traverse all partitions and re-attach them to the recovered replicated table in order to fix that.
 
 ## Test case <a id="Recoveringfromcompletemetadatalossinzookeeper-Testcase"></a>
 
@@ -26,7 +26,6 @@ PARTITION BY intDiv(number, 1000)
 ORDER BY number;
 ```
 
-  
 And populate it with some data
 
 ```text
@@ -57,7 +56,7 @@ INSERT INTO table_repl SELECT number AS number FROM numbers(1000,2000) WHERE num
 
 And now we have an exception that we lost all metadata in zookeeper. It is time to recover!
 
-## Current Solution  <a id="Recoveringfromcompletemetadatalossinzookeeper-CurrentSolution"></a>
+## Current Solution <a id="Recoveringfromcompletemetadatalossinzookeeper-CurrentSolution"></a>
 
 1. Detach replicated table.
 
@@ -65,7 +64,7 @@ And now we have an exception that we lost all metadata in zookeeper. It is time 
    DETACH TABLE table_repl;
    ```
 
-2. Save the table’s attach script and change engine of replicated table to non-replicated \*mergetree analogue. Table definition is located in the ‘metadata’ folder,  ‘`/var/lib/clickhouse/metadata/default/table_repl.sql`’ in our example. Please make a backup copy and modify the file as follows:
+2. Save the table’s attach script and change engine of replicated table to non-replicated \*mergetree analogue. Table definition is located in the ‘metadata’ folder, ‘`/var/lib/clickhouse/metadata/default/table_repl.sql`’ in our example. Please make a backup copy and modify the file as follows:
 
    ```text
    ATTACH TABLE table_repl
@@ -91,7 +90,7 @@ And now we have an exception that we lost all metadata in zookeeper. It is time 
    SETTINGS index_granularity = 8192
    ```
 
-3.  Attach non-replicated table.
+3. Attach non-replicated table.
 
    ```text
    ATTACH TABLE table_repl;
@@ -126,7 +125,7 @@ And now we have an exception that we lost all metadata in zookeeper. It is time 
 
 If the table has many partitions, it may require some shell script to make it easier.
 
-  
 [https://github.com/Altinity/clickhouse-zookeeper-recovery](https://github.com/Altinity/clickhouse-zookeeper-recovery)
 
 © 2021 Altinity Inc. All rights reserved.
+

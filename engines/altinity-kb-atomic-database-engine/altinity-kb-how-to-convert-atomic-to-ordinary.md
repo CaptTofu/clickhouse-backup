@@ -46,7 +46,7 @@ ENGINE = Ordinary │
 └────────────────────────────────────────────┘
 ```
 
-### Schemas with Materialized VIEW
+## Schemas with Materialized VIEW
 
 ```sql
 DROP DATABASE IF EXISTS atomic_db;
@@ -154,7 +154,8 @@ mv /var/lib/clickhouse/data/ordinary_db /var/lib/clickhouse/data/atomic_db
 
 ATTACH DATABASE atomic_db;
 
-/* STEP 5. restore MV using statements created on STEP 2 */ 
+/* STEP 5. restore MV using statements created on STEP 2 */
 ```
 
- © 2021 Altinity Inc. All rights reserved.
+© 2021 Altinity Inc. All rights reserved.
+

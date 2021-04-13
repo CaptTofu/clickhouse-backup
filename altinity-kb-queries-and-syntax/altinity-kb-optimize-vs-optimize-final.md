@@ -2,7 +2,7 @@
 
 `optimize table xyz` -- this initiates an unscheduled merge.
 
-### Example
+## Example
 
 You have 40 parts in 3 partitions. This unscheduled merge selects some partition \(i.e. February\) and selects 3 small parts to merge, then merge them into a single part. You get 38 parts in the result.
 
@@ -13,3 +13,4 @@ If this table has size 1TB it could take around 3 hours to complete.
 So we don't recommend running `optimize table xyz final` against tables with more than 10million rows.
 
 © 2021 Altinity Inc. All rights reserved.
+

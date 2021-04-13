@@ -123,3 +123,4 @@ SELECT * FROM system.storage_policies WHERE policy_name='move_from_default_to_di
 ```
 
 © 2021 Altinity Inc. All rights reserved.
+

@@ -9,3 +9,4 @@ CH merge scheduler balances between a big number of parts and a wasting resource
 Merges are CPU/DISK IO expensive. If CH will merge every new part then all resources will be spend on merges and will no resources remain on queries \(selects \).
 
 © 2021 Altinity Inc. All rights reserved.
+

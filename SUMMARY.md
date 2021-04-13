@@ -76,8 +76,8 @@
   * [Datasets](altinity-kb-useful-queries/altinity-kb-datasets.md)
   * [How to test different compression codecs.](altinity-kb-useful-queries/altinity-kb-how-to-test-different-compression-codecs..md)
   * [Number of active parts in a partition](altinity-kb-useful-queries/altinity-kb-number-of-active-parts-in-a-partition.md)
-* [Other sources](altinity-kb-other-sources/README.md)
-  * [A list of videos \(Russian\)](altinity-kb-other-sources/altinity-kb-a-list-of-videos-russian.md)
+* [Other sources](other-sources/README.md)
+  * [A list of videos \(Russian\)](other-sources/a-list-of-videos-russian.md)
 * [Schema design](altinity-kb-schema-design/README.md)
   * [Dictionaries vs LowCardinality](altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality.md)
 * [Kubernetes](altinity-kb-kubernetes/README.md)
@@ -87,4 +87,5 @@
   * [JSONAsString and Mat. View as JSON parser](altinity-kb-interfaces/altinity-kb-jsonasstring-and-mat.-view-as-json-parser.md)
 * [Dictionaries](altinity-kb-dictionaries/README.md)
   * [range\_hashed example - open intervals](altinity-kb-dictionaries/altinity-kb-range_hashed-example-open-intervals.md)
-* [Shared links](altinity-kb-shared-links.md)
+* [Shared links](shared-links.md)
+

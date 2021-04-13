@@ -96,7 +96,7 @@ $ cat /etc/clickhouse-server/config.d/query_log_ttl.xml
         <table>query_log</table>
         <ttl>event_date + INTERVAL 30 DAY DELETE</ttl>
     </query_log>
-</yandex>    
+</yandex>
 ```
 
 After that you need to restart ClickHouse and drop or rename the existing system.query\_log table, then CH creates a new table with this TTL setting.
@@ -122,3 +122,4 @@ cat /etc/clickhouse-server/users.d/log_queries.xml
 ```
 
 © 2021 Altinity Inc. All rights reserved.
+

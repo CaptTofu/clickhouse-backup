@@ -3,8 +3,8 @@
 Unfortunately not all queries can be killed.  
 `KILL QUERY` only sets a flag that must be checked by the query.  
 A query pipeline is checking this flag before a switching to next block. If the pipeline has stuck somewhere in the middle it cannot be killed.  
-If a query does not stop, the only way to get rid of it is to restart ClickHouse.  
-  
+If a query does not stop, the only way to get rid of it is to restart ClickHouse.
+
 See also
 
 [https://github.com/ClickHouse/ClickHouse/issues/3964](https://github.com/ClickHouse/ClickHouse/issues/3964)  
@@ -37,9 +37,10 @@ You can just use 2 commands:
 ```sql
 KILL QUERY WHERE query_id = ' ... ' ASYNC
 
-SELECT ... new query .... 
+SELECT ... new query ....
 ```
 
 in that case you don't need to care when the original query will be stopped.
 
 © 2021 Altinity Inc. All rights reserved.
+

@@ -2,8 +2,7 @@
 
 Zookeeper use watches to notify a client on znode changes. This article explains how to check watches set by ZooKeeper servers and how it is used.
 
-**Solution:**  
-
+**Solution:**
 
 Zookeeper uses the `'wchc'` command to list all watches set on the Zookeeper server.
 
@@ -22,3 +21,4 @@ By default those commands are disabled, they can be enabled via Java system prop
 on in zookeeper config: `4lw.commands.whitelist=*`\
 
 © 2021 Altinity Inc. All rights reserved.
+

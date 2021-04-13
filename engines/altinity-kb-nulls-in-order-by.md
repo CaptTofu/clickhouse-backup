@@ -1,7 +1,5 @@
 # Nulls in order by
 
-
-
 ```sql
 CREATE TABLE x
 (
@@ -24,3 +22,4 @@ SELECT * FROM x;
 ```
 
 © 2021 Altinity Inc. All rights reserved.
+

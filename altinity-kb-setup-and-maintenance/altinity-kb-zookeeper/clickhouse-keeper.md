@@ -8,13 +8,14 @@ To test that you need to run 3 instances of clickhouse-server \(which will mimic
 
 [https://github.com/ClickHouse/ClickHouse/blob/c8b1004ecb4bfc4aa581dbcbbbe3a4c72ce57123/tests/integration/test\_keeper\_multinode\_simple/configs/enable\_keeper1.xml](https://github.com/ClickHouse/ClickHouse/blob/c8b1004ecb4bfc4aa581dbcbbbe3a4c72ce57123/tests/integration/test_keeper_multinode_simple/configs/enable_keeper1.xml)
 
-https://github.com/ClickHouse/ClickHouse/blob/c8b1004ecb4bfc4aa581dbcbbbe3a4c72ce57123/tests/integration/test\_keeper\_snapshots/configs/enable\_keeper.xml
+[https://github.com/ClickHouse/ClickHouse/blob/c8b1004ecb4bfc4aa581dbcbbbe3a4c72ce57123/tests/integration/test\_keeper\_snapshots/configs/enable\_keeper.xml](https://github.com/ClickHouse/ClickHouse/blob/c8b1004ecb4bfc4aa581dbcbbbe3a4c72ce57123/tests/integration/test_keeper_snapshots/configs/enable_keeper.xml)
 
-or event single instance with config like that: [https://github.com/ClickHouse/ClickHouse/blob/master/tests/config/config.d/keeper\_port.xml](https://github.com/ClickHouse/ClickHouse/blob/master/tests/config/config.d/keeper_port.xml)   
+or event single instance with config like that: [https://github.com/ClickHouse/ClickHouse/blob/master/tests/config/config.d/keeper\_port.xml](https://github.com/ClickHouse/ClickHouse/blob/master/tests/config/config.d/keeper_port.xml)  
 [https://github.com/ClickHouse/ClickHouse/blob/master/tests/config/config.d/zookeeper.xml](https://github.com/ClickHouse/ClickHouse/blob/master/tests/config/config.d/zookeeper.xml)
 
- And point all the clickhouses \(zookeeper config secton\) to those nodes / ports.
+And point all the clickhouses \(zookeeper config secton\) to those nodes / ports.
 
 Latest testing version is recommended. We will be thankful for any feedback.
 
 © 2021 Altinity Inc. All rights reserved.
+

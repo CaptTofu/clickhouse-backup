@@ -2,7 +2,7 @@
 
 ## Question
 
-I expect the sequence here to only match once as a is only directly after a once - but it matches with gaps.  Why is that?
+I expect the sequence here to only match once as a is only directly after a once - but it matches with gaps. Why is that?
 
 ```sql
 SELECT sequenceCount('(?1)(?2)')(sequence, page ILIKE '%a%', page ILIKE '%a%') AS sequences
@@ -26,7 +26,7 @@ SELECT sequenceMatch('(?1)(?2)')(sequence,page='a',page='b', page NOT IN ('a','b
 0 # !
 
 SELECT sequenceMatch('(?1).(?2)')(sequence,page='a',page='b', page NOT IN ('a','b')) AS sequences　from values( 'page String, sequence UInt16' , ('a', 1), ('c',2), ('b', 3));
-1 # 
+1 #
 ```
 
 So for your example - just introduce one more 'nothing matched' condition:
@@ -39,3 +39,4 @@ FROM values('page String, sequence UInt16', ('a', 1), ('a', 2), ('b', 3), ('b', 
 ```
 
 © 2021 Altinity Inc. All rights reserved.
+

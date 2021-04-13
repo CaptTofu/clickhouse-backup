@@ -2,7 +2,7 @@
 
 GCS with the table function - seems to work correctly!
 
-Essentially you can follow the steps from the [Migrating from Amazon S3 to Cloud Storage](https://cloud.google.com/storage/docs/migrating\#migration-simple).
+Essentially you can follow the steps from the [Migrating from Amazon S3 to Cloud Storage](https://cloud.google.com/storage/docs/migrating#migration-simple).
 
 1. Set up a GCS bucket.
 2. This bucket must be set as part of the default project for the account. This configuration can be found in settings -&gt; interoperability.
@@ -11,3 +11,4 @@ Essentially you can follow the steps from the [Migrating from Amazon S3 to Cloud
 5. Replace the aws access key id and aws secret access key with the corresponding parts of the HMAC key.
 
 © 2021 Altinity Inc. All rights reserved.
+

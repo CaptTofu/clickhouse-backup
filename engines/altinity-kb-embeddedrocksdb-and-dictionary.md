@@ -98,7 +98,7 @@ Elapsed: 5.643 sec. Processed 1.00 million rows
 select count() from (
    select dictGet( 'default.test_mergeTreeDB', 'B', toUInt64(rand64()%100000000) )
    from numbers_mt(1000000))  
-Elapsed: 31.111 sec. Processed 1.00 million rows 
+Elapsed: 31.111 sec. Processed 1.00 million rows
 ```
 
 ## dictGet – 1million random rows from Hashed <a id="EmbeddedRocksDB&amp;dictionary-dictGet&#x2013;1millionrandomrowsfromHashed"></a>
@@ -141,8 +141,9 @@ LIFETIME(0);
 select count() from (
    select dictGet( 'default.test_mergeTreeDBSparseHashed', 'B', toUInt64(rand64()%100000000) )
    from numbers_mt(1000000))  
-   
+
 Elapsed: 0.065 sec. Processed 1.00 million rows
 ```
 
 © 2021 Altinity Inc. All rights reserved.
+

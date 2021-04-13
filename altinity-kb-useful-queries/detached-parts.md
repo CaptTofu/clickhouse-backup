@@ -23,3 +23,4 @@ WHERE a.min_block_number >= b.min_block_number
 ```
 
 © 2021 Altinity Inc. All rights reserved.
+

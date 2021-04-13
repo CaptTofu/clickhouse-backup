@@ -60,3 +60,4 @@ sample_key >= lower_limit AND sample_key < upper_limit
 [source code](https://github.com/ClickHouse/ClickHouse/blob/97e8a88b3074ccf4f226090479d8f159881800e7/src/Storages/MergeTree/MergeTreeDataSelectExecutor.cpp#L390)
 
 © 2021 Altinity Inc. All rights reserved.
+

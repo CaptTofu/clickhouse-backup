@@ -1,6 +1,6 @@
 # Lag / Lead
 
-### Sample data
+## Sample data
 
 ```sql
 CREATE TABLE llexample (
@@ -29,7 +29,7 @@ SELECT * FROM llexample ORDER BY g,a;
 └───┴────────────┘
 ```
 
-### Using arrays
+## Using arrays
 
 ```sql
 select g, (arrayJoin(tuple_ll) as ll).1 a, ll.2 prev, ll.3 next
@@ -56,7 +56,7 @@ order by g, a;
 └───┴────────────┴────────────┴────────────┘
 ```
 
-### Using window functions \(starting from Clickhouse 21.3\)
+## Using window functions \(starting from Clickhouse 21.3\)
 
 ```sql
 SET allow_experimental_window_functions = 1;
@@ -87,7 +87,7 @@ ORDER BY
 └───┴────────────┴────────────┴────────────┘
 ```
 
-### Using lagInFrame/leadInFrame \(starting from ClickHouse 21.4\)
+## Using lagInFrame/leadInFrame \(starting from ClickHouse 21.4\)
 
 ```sql
 SELECT
@@ -116,7 +116,7 @@ ORDER BY
 └───┴────────────┴────────────┴────────────┘
 ```
 
-### Using neighbor \(no grouping, incorrect result over blocks\)
+## Using neighbor \(no grouping, incorrect result over blocks\)
 
 ```sql
 SELECT
@@ -148,3 +148,4 @@ FROM
 ```
 
 © 2021 Altinity Inc. All rights reserved.
+

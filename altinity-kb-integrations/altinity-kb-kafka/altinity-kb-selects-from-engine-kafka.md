@@ -8,9 +8,10 @@ What will happen, if we would run SELECT query from working Kafka table with MV 
 
 1. Most likely SELECT query would show nothing.  
 2. If you lucky enough and something would show up, those rows **wouldn't appear** in MV destination table.  
-  
-So it's not recommended to run SELECT queries on working Kafka tables.  
-  
-In case of debug it's possible to use another Kafka table with different `consumer_group`, so it wouldn't affect your main pipeline.  
+
+So it's not recommended to run SELECT queries on working Kafka tables.
+
+In case of debug it's possible to use another Kafka table with different `consumer_group`, so it wouldn't affect your main pipeline.
 
 © 2021 Altinity Inc. All rights reserved.
+

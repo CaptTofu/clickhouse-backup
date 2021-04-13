@@ -93,3 +93,4 @@
 8. settings `default_database_engine` / `insert_distributed_sync` / `fsync_metadata` / `do_not_merge_across_partitions_select_final` / fsync
 
 © 2021 Altinity Inc. All rights reserved.
+
