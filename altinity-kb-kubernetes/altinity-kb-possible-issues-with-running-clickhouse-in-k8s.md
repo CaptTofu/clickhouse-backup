@@ -1,0 +1,36 @@
+# Possible issues with running clickhouse in k8s
+
+The biggest problem with running clickhouse in k8s, happens when clickhouse-server can't start for some reason and pod is falling in CrashloopBackOff, so you can't easily get in the pod and check/fix/restart clickhouse.  
+  
+There is multiple possible reasons for this, some of them can be fixed without manual intervention in pod:
+
+1. Wrong configuration files Fix: Check templates which are being used for config file generation and fix them.
+2. While upgrade some backward incompatible changes prevents clickhouse from start. Fix: Downgrade and check backward incompatible changes for all versions in between.
+
+Next reasons would require to have manual intervention in pod/volume.  
+There is two ways, how you can get access to data:
+
+1. Change entrypoint of clickhouse pod to something else, so pod wouldn’t be terminated due clickhouse error.
+2. Attach clickhouse data volume to some generic pod \(like Ubuntu\). 
+3. Unclear restart which produced broken files and/or state on disk is differs too much from state in zookeeper for replicated tables. Fix: Create `force_restore_data` flag.
+4. Wrong file permission for clickhouse files in pod. Fix: Use chown to set right ownership for files and directories.
+5. Errors in clickhouse table schema prevents clickhouse from start. Fix: Rename problematic `table.sql` scripts to `table.sql.bak`
+6. Occasional failure of distributed queries because of wrong user/password. Due nature of k8s with dynamic ip allocations, it's possible that clickhouse would cache wrong ip-&gt; hostname combination and disallow connections because of mismatched hostname. Fix: run `SYSTEM DROP DNS CACHE;` `<disable_internal_dns_cache>1</disable_internal_dns_cache>` in config.xml 
+
+Сaveats:
+
+1. Not all configuration/state folders are being covered by persistent volumes. \([geobases](https://clickhouse.tech/docs/en/sql-reference/functions/ym-dict-functions/#multiple-geobases)\)
+2. Page cache belongs to k8s node and pv are being mounted to pod, in case of fast shutdown there is possibility to loss some data\(needs to be clarified\)
+3. Some cloud providers \(GKE\) can have slow unlink command, which is important for clickhouse because it's needed for parts management. \(`max_part_removal_threads` setting\)
+
+Useful commands:
+
+```text
+kubectl logs chi-chcluster-2-1-0 -c clickhouse-pod -n chcluster --previous
+kubectl describe pod chi-chcluster-2-1-0 -n chcluster
+```
+
+Q. Clickhouse is caching the Kafka pod's IP and trying to connect to the same ip even when there is a new Kafka pod running and the old one is deprecated. Is there some setting where we could refresh the connection
+
+`<disable_internal_dns_cache>1</disable_internal_dns_cache>` in config.xml
+

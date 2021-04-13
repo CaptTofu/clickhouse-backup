@@ -1,0 +1,6 @@
+# Integrations
+
+* [CatBoost/MindsDB/Fast.ai](catboost-mindsdb-fast.ai.md)
+* [Google S3 \(GCS\)](altinity-kb-google-s3-gcs.md)
+* [Kafka](altinity-kb-kafka/)
+
