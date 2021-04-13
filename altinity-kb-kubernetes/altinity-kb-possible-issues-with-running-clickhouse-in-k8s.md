@@ -25,7 +25,7 @@ Caveats:
 
 Useful commands:
 
-```text
+```bash
 kubectl logs chi-chcluster-2-1-0 -c clickhouse-pod -n chcluster --previous
 kubectl describe pod chi-chcluster-2-1-0 -n chcluster
 ```
