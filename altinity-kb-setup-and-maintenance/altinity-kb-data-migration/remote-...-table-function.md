@@ -21,7 +21,7 @@ Default values:
 └─────────────────────────────┴───────────┘
 ```
 
-Depends on your table width \(average row size\) and amount of memory which are safe to occupy by INSERT SELECT query, you need to tune settings accordingly.
+Depends on your table width \(average row size\) and amount of memory which are safe to occupy by `INSERT SELECT` query, you need to tune settings accordingly.
 
 Possible issues:
 
