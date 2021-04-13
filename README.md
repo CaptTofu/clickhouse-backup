@@ -1,10 +1,8 @@
 # Altinity Knowledge Base
 
+## Welcome to the Altinity ClickHouse Knowledge Base \(KB\)
 
-
-#### **Welcome to the Altinity ClickHouse Knowledge Base \(KB\).**
-
-This knowledge base is supported by [Altinity](http://altinity.com/) engineers to provide quick answers to common questions and issues involving ClickHouse. 
+This knowledge base is supported by [Altinity](http://altinity.com/) engineers to provide quick answers to common questions and issues involving ClickHouse.
 
 For more detailed information about Altinity services support, see the following:
 
@@ -19,4 +17,3 @@ The following sites are also useful references regarding ClickHouse:
 * [Google groups \(Usenet\) yes we remember it](https://groups.google.com/g/clickhouse): The grandparent of all modern discussion boards.
 
 © 2021 Altinity Inc. All rights reserved.
-
