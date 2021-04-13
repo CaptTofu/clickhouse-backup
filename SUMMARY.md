@@ -77,6 +77,7 @@
   * [How to test different compression codecs.](altinity-kb-useful-queries/altinity-kb-how-to-test-different-compression-codecs..md)
   * [Number of active parts in a partition](altinity-kb-useful-queries/altinity-kb-number-of-active-parts-in-a-partition.md)
 * [Schema design](altinity-kb-schema-design/README.md)
+  * [ReplacingMergeTree](altinity-kb-schema-design/replacingmergetree.md)
   * [Dictionaries vs LowCardinality](altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality.md)
 * [Kubernetes](altinity-kb-kubernetes/README.md)
   * [Possible issues with running ClickHouse in k8s](altinity-kb-kubernetes/altinity-kb-possible-issues-with-running-clickhouse-in-k8s.md)
