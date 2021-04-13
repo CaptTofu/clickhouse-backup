@@ -1,6 +1,6 @@
 # sequenceMatch
 
-### Question
+## Question
 
 I expect the sequence here to only match once as a is only directly after a once - but it matches with gaps.  Why is that?
 
@@ -11,7 +11,7 @@ SELECT sequenceCount('(?1)(?2)')(sequence, page ILIKE '%a%', page ILIKE '%a%') A
 2 # ??
 ```
 
-### Answer
+## Answer
 
 `sequenceMatch` just ignores the events which don't match the condition. Check that:
 
