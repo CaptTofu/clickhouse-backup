@@ -22,23 +22,8 @@ More safer way:
 * Shutdown server.
 
   
-  
 `SYSTEM SHUTDOWN` query doesn’t wait until query completion and tries to kill all queries immediately after receiving signal, even if there is setting `shutdown_wait_unfinished`.  
   
-[https://github.com/ClickHouse/ClickHouse/blob/master/programs/server/Server.cpp\#L1353](https://github.com/ClickHouse/ClickHouse/blob/master/programs/server/Server.cpp#L1353)  
-  
-Можно просто потушить, но те запросы что сейчас выполняются на этой реплике умрут.
-
-Можно сделать так:
-
-Убрать данный сервер из remote\_server конфигов других серверов.
-
-Убрать его из лоад балансера.
-
-Подождать, пока на нем перестанут выполнятся запросы.
-
-Выполнить SYSTEM SYNC REPLICA db.table на его соседе по репликации.
-
-Потушить сервер.
+[https://github.com/ClickHouse/ClickHouse/blob/master/programs/server/Server.cpp\#L1353](https://github.com/ClickHouse/ClickHouse/blob/master/programs/server/Server.cpp#L1353)
 
 © 2021 Altinity Inc. All rights reserved.
