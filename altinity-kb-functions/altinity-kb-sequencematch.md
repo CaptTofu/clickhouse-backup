@@ -38,3 +38,5 @@ FROM values('page String, sequence UInt16', ('a', 1), ('a', 2), ('b', 3), ('b', 
 # 1
 ```
 
+© 2021 Altinity Inc. All rights reserved.
+
