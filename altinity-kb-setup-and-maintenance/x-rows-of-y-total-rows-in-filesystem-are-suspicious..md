@@ -10,7 +10,7 @@ And during the start ClickHouse compares that list of parts on a local disk is c
 
 In your case the table is very small and the difference &gt;50% \( 100.00 vs 150.00 \) is only a single part mismatch, which can be the result of hard restart.
 
-```sql
+```text
 SELECT * FROM system.merge_tree_settings WHERE name = 'replicated_max_ratio_of_wrong_parts'
 
 Query id: 44147e42-1415-4f49-bc47-566edde9a4fe

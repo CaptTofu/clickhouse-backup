@@ -24,7 +24,7 @@
   * [Lag / Lead](altinity-kb-queries-and-syntax/lag-lead.md)
   * [OPTIMIZE vs OPTIMIZE FINAL](altinity-kb-queries-and-syntax/altinity-kb-optimize-vs-optimize-final.md)
   * [Parameterized views](altinity-kb-queries-and-syntax/altinity-kb-parameterized-views.md)
-  * [PIVOT/UNPIVOT](altinity-kb-queries-and-syntax/pivot-unpivot.md)
+  * [PIVOT / UNPIVOT](altinity-kb-queries-and-syntax/pivot-unpivot.md)
   * [Possible deadlock avoided. Client should retry](altinity-kb-queries-and-syntax/altinity-kb-possible-deadlock-avoided.-client-should-retry.md)
   * [SAMPLE by](altinity-kb-queries-and-syntax/altinity-kb-sample-by.md)
 * [Functions](altinity-kb-functions/README.md)
