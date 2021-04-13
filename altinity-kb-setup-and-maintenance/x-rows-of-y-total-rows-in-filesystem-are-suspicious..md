@@ -13,8 +13,6 @@ In your case the table is very small and the difference &gt;50% \( 100.00 vs 150
 ```sql
 SELECT * FROM system.merge_tree_settings WHERE name = 'replicated_max_ratio_of_wrong_parts'
 
-Query id: 44147e42-1415-4f49-bc47-566edde9a4fe
-
 ┌─name────────────────────────────────┬─value─┬─changed─┬─description──────────────────────────────────────────────────────────────────────────┬─type──┐
 │ replicated_max_ratio_of_wrong_parts │ 0.5   │       0 │ If ratio of wrong parts to total number of parts is less than this - allow to start. │ Float │
 └─────────────────────────────────────┴───────┴─────────┴──────────────────────────────────────────────────────────────────────────────────────┴───────┘
