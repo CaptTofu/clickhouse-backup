@@ -76,8 +76,7 @@ See [https://github.com/ClickHouse/ClickHouse/issues/12609](https://github.com/C
 ### Kerberos <a id="Adjustinglibrdkafkasettings-Kerberos"></a>
 
 * [https://clickhouse.tech/docs/en/engines/table-engines/integrations/kafka/\#kafka-kerberos-support](https://clickhouse.tech/docs/en/engines/table-engines/integrations/kafka/#kafka-kerberos-support)
-* 
-[https://github.com/ClickHouse/ClickHouse/blob/master/tests/integration/test\_storage\_kerberized\_kafka/configs/kafka.xml](https://github.com/ClickHouse/ClickHouse/blob/master/tests/integration/test_storage_kerberized_kafka/configs/kafka.xml)
+* [https://github.com/ClickHouse/ClickHouse/blob/master/tests/integration/test\_storage\_kerberized\_kafka/configs/kafka.xml](https://github.com/ClickHouse/ClickHouse/blob/master/tests/integration/test_storage_kerberized_kafka/configs/kafka.xml)
 
 ```markup
   <!-- Kerberos-aware Kafka -->
