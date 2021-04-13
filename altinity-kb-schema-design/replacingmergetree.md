@@ -61,6 +61,10 @@ SELECT * FROM repl_tbl WHERE key IN (SELECT toUInt32(number)　FROM numbers(1000
 Peak memory usage (for query): 1.08 GiB.
 0 rows in set. Elapsed: 2.429 sec. Processed 5.04 million rows, 645.01 MB (2.07 million rows/s., 265.58 MB/s.)
 
+SELECT * FROM repl_tbl FINAL WHERE key IN (SELECT toUInt32(number)　FROM numbers(1000000)　WHERE number % 100) FORMAT Null;
+Peak memory usage (for query): 198.32 MiB.
+0 rows in set. Elapsed: 1.211 sec. Processed 5.04 million rows, 645.01 MB (4.16 million rows/s., 532.57 MB/s.)
+
 SELECT * FROM repl_tbl WHERE (key, ts) IN (SELECT key, max(ts) FROM repl_tbl WHERE key IN (SELECT toUInt32(number)　FROM numbers(1000000)　WHERE number % 100) GROUP BY key) FORMAT Null;
 Peak memory usage (for query): 432.57 MiB.
 0 rows in set. Elapsed: 0.939 sec. Processed 5.04 million rows, 160.33 MB (5.36 million rows/s., 170.69 MB/s.)
@@ -70,5 +74,55 @@ Peak memory usage (for query): 202.88 MiB.
 0 rows in set. Elapsed: 0.824 sec. Processed 5.04 million rows, 160.33 MB (6.11 million rows/s., 194.58 MB/s.)
 ```
 
+### FINAL
 
+Clickhouse merge parts only in scope of single partition, so if two rows with the same replacing key would land in different partitions, they would **never** be replaced. FINAL keyword works in other way, it replace all rows across all partitions.
+
+```sql
+CREATE TABLE repl_tbl_part
+(
+    `key` UInt32,
+    `value` UInt32,
+    `part_key` UInt32
+)
+ENGINE = ReplacingMergeTree
+PARTITION BY part_key
+ORDER BY key
+
+
+INSERT INTO repl_tbl_part SELECT
+    1 AS key,
+    number AS value,
+    number % 2 AS part_key
+FROM numbers(4)
+SETTINGS optimize_on_insert = 0
+
+SELECT * FROM repl_tbl_part;
+
+┌─key─┬─value─┬─part_key─┐
+│   1 │     1 │        1 │
+│   1 │     3 │        1 │
+└─────┴───────┴──────────┘
+┌─key─┬─value─┬─part_key─┐
+│   1 │     0 │        0 │
+│   1 │     2 │        0 │
+└─────┴───────┴──────────┘
+
+SELECT * FROM repl_tbl_part FINAL;
+
+┌─key─┬─value─┬─part_key─┐
+│   1 │     3 │        1 │
+└─────┴───────┴──────────┘
+
+OPTIMIZE TABLE repl_tbl_part FINAL;
+
+SELECT * FROM repl_tbl_part;
+
+┌─key─┬─value─┬─part_key─┐
+│   1 │     3 │        1 │
+└─────┴───────┴──────────┘
+┌─key─┬─value─┬─part_key─┐
+│   1 │     2 │        0 │
+└─────┴───────┴──────────┘
+```
 
