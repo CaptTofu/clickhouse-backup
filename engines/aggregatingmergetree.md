@@ -4,7 +4,7 @@ Q. What happens with columns which are nor the part of ORDER BY key, nor have th
 
 A. it picks the first value met, \(similar to `any`\)
 
-```text
+```sql
 CREATE TABLE agg_test
 (
     `a` String,
@@ -14,8 +14,8 @@ CREATE TABLE agg_test
 ENGINE = AggregatingMergeTree
 ORDER BY a;
 
-insert into agg_test values ('a', 1, 1);
-insert into agg_test values ('a', 2, 2);
+INSERT INTO agg_test VALUES ('a', 1, 1);
+INSERT INTO agg_test VALUES ('a', 2, 2);
 
 SELECT * FROM agg_test FINAL;
 
@@ -23,8 +23,10 @@ SELECT * FROM agg_test FINAL;
 │ a │ 1 │ 2 │
 └───┴───┴───┘
 
-insert into agg_test values ('a', 3, 3);
-select * from agg_test;
+INSERT INTO agg_test VALUES ('a', 3, 3);
+
+SELECT * FROM agg_test;
+
 ┌─a─┬─b─┬─c─┐
 │ a │ 1 │ 2 │
 └───┴───┴───┘
@@ -33,7 +35,9 @@ select * from agg_test;
 └───┴───┴───┘
 
 OPTIMIZE TABLE agg_test FINAL;
-select * from agg_test;
+
+SELECT * FROM agg_test;
+
 ┌─a─┬─b─┬─c─┐
 │ a │ 1 │ 3 │
 └───┴───┴───┘
