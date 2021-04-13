@@ -1,6 +1,6 @@
 # Moving table to another device.
 
-Suppose, we mount a new device at path `/mnt/disk_1` and want to move `table_4` to it.
+Suppose we mount a new device at path `/mnt/disk_1` and want to move `table_4` to it.
 
 1. Create directory on new device for ClickHouse data. /in shell `mkdir /mnt/disk_1/clickhouse` 
 2. Change ownership of created directory to ClickHouse user. /in shell `chown -R clickhouse:clickhouse /mnt/disk_1/clickhouse` 
