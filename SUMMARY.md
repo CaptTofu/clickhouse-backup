@@ -76,8 +76,6 @@
   * [Datasets](altinity-kb-useful-queries/altinity-kb-datasets.md)
   * [How to test different compression codecs.](altinity-kb-useful-queries/altinity-kb-how-to-test-different-compression-codecs..md)
   * [Number of active parts in a partition](altinity-kb-useful-queries/altinity-kb-number-of-active-parts-in-a-partition.md)
-* [Other sources](other-sources/README.md)
-  * [A list of videos \(Russian\)](other-sources/a-list-of-videos-russian.md)
 * [Schema design](altinity-kb-schema-design/README.md)
   * [Dictionaries vs LowCardinality](altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality.md)
 * [Kubernetes](altinity-kb-kubernetes/README.md)
