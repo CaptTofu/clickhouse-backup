@@ -2,7 +2,7 @@
 
 ## Question
 
-SimpleAggregateFunction is great feature to have. It allows us to reduce memory usage by a lot \(between 3 and 10 times\) and improve query performance, but it's impossible to use it with combinators, like `-If`. Is there a workaround for this use case:
+SimpleAggregateFunction is great feature to have. It allows us to reduce memory usage by a lot \(between 3 and 10 times\) and improve query performance, but it's impossible to use it with combinators, like `-If`. There a workaround for this use case:
 
 We can change order of combinators, so we would first filter by `-If` condition and take state after filtering.
 
