@@ -16,7 +16,7 @@ The second and more difficult task is to populate zookeeper with information of 
 
 Let's say we have replicated table `table_repl`.
 
-```text
+```sql
 CREATE TABLE table_repl 
 (
    `number` UInt32
@@ -28,7 +28,7 @@ ORDER BY number;
 
 And populate it with some data
 
-```text
+```sql
 SELECT * FROM system.zookeeper WHERE path='/clickhouse/cluster_1/tables/01/';
 
 INSERT INTO table_repl SELECT * FROM numbers(1000,2000);
@@ -38,19 +38,19 @@ SELECT partition, sum(rows) AS rows, count() FROM system.parts WHERE table='tabl
 
 Now let’s remove metadata in zookeeper using `ZkCli.sh` at ZooKeeper host:
 
-```text
+```bash
 deleteall  /clickhouse/cluster_1/tables/01/table_repl
 ```
 
 And try to resync clickhouse replica state with zookeeper:
 
-```text
+```sql
 SYSTEM RESTART REPLICA table_repl;
 ```
 
 If we try to insert some data in the table, error happens:
 
-```text
+```sql
 INSERT INTO table_repl SELECT number AS number FROM numbers(1000,2000) WHERE number % 2 = 0;
 ```
 
