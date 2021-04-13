@@ -2,7 +2,7 @@
 description: 'https://docs.snowflake.com/en/sql-reference/constructs/pivot.html'
 ---
 
-# PIVOT / UNPIVOT
+# PIVOT/UNPIVOT
 
 ## PIVOT
 
