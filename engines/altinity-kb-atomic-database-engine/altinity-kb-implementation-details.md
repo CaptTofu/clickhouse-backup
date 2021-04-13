@@ -25,7 +25,7 @@ Create `DatabaseAtomic` that is intended to replace `DatabaseOrdinary` as the de
   * ATTACH query will contain UUID clause;
   * ATTACH query will contain some placeholder instead of table name. Example: `ATTACH TABLE table`;
   * create a directory for table data at `/store/xxx/xxxyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/`;
-  * `store` is a new directory inside clickhouse path; `xxx` - is the first three letters of uuid.
+  * `store` is a new directory inside ClickHouse path; `xxx` - is the first three letters of uuid.
   * this directory does not contain table name neither database name;
   * create symlink `/data/database/table` that resembles the structure of DatabaseOrdinary;
   * set up refcount in memory that is hold by database object.

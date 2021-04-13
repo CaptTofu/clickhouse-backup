@@ -10,7 +10,7 @@ One of the threads from scheduled\_pool \(pre 20.9\) / `background_message_broke
 
 On any error, during that process, Kafka client is restarted \(leading to rebalancing - leave the group and get back in few seconds\).
 
-![](../../.gitbook/assets/128942286.png)
+![Kafka batching](../../.gitbook/assets/128942286.png)
 
 ## Important settings <a id="Kafkamainparsingloop-Importantsettings"></a>
 

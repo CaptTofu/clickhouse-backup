@@ -1,10 +1,10 @@
 # SELECTs from engine=Kafka
 
-### Question
+## Question
 
 What will happen, if we would run SELECT query from working Kafka table with MV attached? Would data showed in SELECT query appear later in MV destination table?
 
-### Answer
+## Answer
 
 1. Most likely SELECT query would show nothing.  
 2. If you lucky enough and something would show up, those rows **wouldn't appear** in MV destination table.  

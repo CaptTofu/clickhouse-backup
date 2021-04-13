@@ -24,7 +24,7 @@ SELECT getSetting('my2_category');
 │ hot deals                  │
 └────────────────────────────┘
 
--- you can query clickhouse settings as well
+-- you can query ClickHouse settings as well
 SELECT getSetting('max_threads')
 ┌─getSetting('max_threads')─┐
 │                         8 │

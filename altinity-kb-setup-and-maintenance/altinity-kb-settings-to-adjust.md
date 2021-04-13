@@ -29,7 +29,7 @@
        <metric_log remove="1" /> 
        <asynchronous_metric_log remove="1" />
        <!-- if you have a good monitoring outside you don't need to store metrics 
-       in clickhouse too -->
+       in ClickHouse too -->
    </yandex>
    ```
 

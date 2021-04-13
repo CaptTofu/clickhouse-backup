@@ -81,11 +81,10 @@
 * [Schema design](altinity-kb-schema-design/README.md)
   * [Dictionaries vs LowCardinality](altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality.md)
 * [Kubernetes](altinity-kb-kubernetes/README.md)
-  * [Possible issues with running clickhouse in k8s](altinity-kb-kubernetes/altinity-kb-possible-issues-with-running-clickhouse-in-k8s.md)
+  * [Possible issues with running ClickHouse in k8s](altinity-kb-kubernetes/altinity-kb-possible-issues-with-running-clickhouse-in-k8s.md)
 * [Interfaces](altinity-kb-interfaces/README.md)
   * [clickhouse-client](altinity-kb-interfaces/altinity-kb-clickhouse-client.md)
   * [JSONAsString and Mat. View as JSON parser](altinity-kb-interfaces/altinity-kb-jsonasstring-and-mat.-view-as-json-parser.md)
 * [Dictionaries](altinity-kb-dictionaries/README.md)
   * [range\_hashed example - open intervals](altinity-kb-dictionaries/altinity-kb-range_hashed-example-open-intervals.md)
 * [Shared links](altinity-kb-shared-links.md)
-

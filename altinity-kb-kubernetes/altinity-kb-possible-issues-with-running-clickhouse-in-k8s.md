@@ -1,23 +1,23 @@
 # Possible issues with running clickhouse in k8s
 
-The biggest problem with running clickhouse in k8s, happens when clickhouse-server can't start for some reason and pod is falling in CrashloopBackOff, so you can't easily get in the pod and check/fix/restart clickhouse.  
+The biggest problem with running ClickHouse in k8s, happens when clickhouse-server can't start for some reason and pod is falling in CrashloopBackOff, so you can't easily get in the pod and check/fix/restart ClickHouse.  
   
 There is multiple possible reasons for this, some of them can be fixed without manual intervention in pod:
 
 1. Wrong configuration files Fix: Check templates which are being used for config file generation and fix them.
-2. While upgrade some backward incompatible changes prevents clickhouse from start. Fix: Downgrade and check backward incompatible changes for all versions in between.
+2. While upgrade some backward incompatible changes prevents ClickHouse from start. Fix: Downgrade and check backward incompatible changes for all versions in between.
 
 Next reasons would require to have manual intervention in pod/volume.  
 There is two ways, how you can get access to data:
 
-1. Change entrypoint of clickhouse pod to something else, so pod wouldn’t be terminated due clickhouse error.
-2. Attach clickhouse data volume to some generic pod \(like Ubuntu\). 
+1. Change entry point of ClickHouse pod to something else, so pod wouldn’t be terminated due ClickHouse error.
+2. Attach ClickHouse data volume to some generic pod \(like Ubuntu\). 
 3. Unclear restart which produced broken files and/or state on disk is differs too much from state in zookeeper for replicated tables. Fix: Create `force_restore_data` flag.
-4. Wrong file permission for clickhouse files in pod. Fix: Use chown to set right ownership for files and directories.
-5. Errors in clickhouse table schema prevents clickhouse from start. Fix: Rename problematic `table.sql` scripts to `table.sql.bak`
-6. Occasional failure of distributed queries because of wrong user/password. Due nature of k8s with dynamic ip allocations, it's possible that clickhouse would cache wrong ip-&gt; hostname combination and disallow connections because of mismatched hostname. Fix: run `SYSTEM DROP DNS CACHE;` `<disable_internal_dns_cache>1</disable_internal_dns_cache>` in config.xml 
+4. Wrong file permission for ClickHouse files in pod. Fix: Use chown to set right ownership for files and directories.
+5. Errors in ClickHouse table schema prevents ClickHouse from start. Fix: Rename problematic `table.sql` scripts to `table.sql.bak`
+6. Occasional failure of distributed queries because of wrong user/password. Due nature of k8s with dynamic ip allocations, it's possible that ClickHouse would cache wrong ip-&gt; hostname combination and disallow connections because of mismatched hostname. Fix: run `SYSTEM DROP DNS CACHE;` `<disable_internal_dns_cache>1</disable_internal_dns_cache>` in config.xml.
 
-Сaveats:
+Caveats:
 
 1. Not all configuration/state folders are being covered by persistent volumes. \([geobases](https://clickhouse.tech/docs/en/sql-reference/functions/ym-dict-functions/#multiple-geobases)\)
 2. Page cache belongs to k8s node and pv are being mounted to pod, in case of fast shutdown there is possibility to loss some data\(needs to be clarified\)

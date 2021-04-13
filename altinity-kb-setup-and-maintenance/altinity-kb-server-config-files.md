@@ -226,7 +226,7 @@ For example:
   /etc/clickhouse-server-node2/users.d/....
 ```
 
-If you need to run multiple servers for CI purposes you can combine all settings in a single fat XML file and start clickhouse without config folders/sub-folders.
+If you need to run multiple servers for CI purposes you can combine all settings in a single fat XML file and start ClickHouse without config folders/sub-folders.
 
 ```text
 /usr/bin/clickhouse-server --config-file /tmp/ch1.xml
@@ -234,9 +234,9 @@ If you need to run multiple servers for CI purposes you can combine all settings
 /usr/bin/clickhouse-server --config-file /tmp/ch3.xml
 ```
 
-Each Clickhouse instance must work with own **data-folder** and **tmp-folder**.
+Each ClickHouse instance must work with own **data-folder** and **tmp-folder**.
 
-By default Clickhouse uses **/var/lib/clickhouse/**. It can be overridden in path settings
+By default ClickHouse uses **/var/lib/clickhouse/**. It can be overridden in path settings
 
 ```markup
 <path>/data/clickhouse-ch1/</path>

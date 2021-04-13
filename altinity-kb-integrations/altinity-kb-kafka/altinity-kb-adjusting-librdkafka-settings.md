@@ -40,7 +40,7 @@ Some random example:
 
 To connect to some Kafka cloud services you may need to use certificates.
 
-If needed they can be converted to pem format and inlined into ClickKouse config.
+If needed they can be converted to pem format and inlined into ClickHouse config.
 
 Example:
 
