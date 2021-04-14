@@ -41,7 +41,6 @@
     * [Rewind / fast-forward / replay](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-rewind-fast-forward-replay.md)
     * [SELECTs from engine=Kafka](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-selects-from-engine-kafka.md)
 * [Setup & maintenance](altinity-kb-setup-and-maintenance/README.md)
-  * [How to move data between servers / environments](altinity-kb-setup-and-maintenance/how-to-move-data-between-servers-environments.md)
   * [ClickHouse in Docker](altinity-kb-setup-and-maintenance/altinity-kb-clickhouse-in-docker.md)
   * [Converting MergeTree to Replicated](altinity-kb-setup-and-maintenance/altinity-kb-converting-mergetree-to-replicated.md)
   * [Data Migration](altinity-kb-setup-and-maintenance/altinity-kb-data-migration/README.md)
