@@ -116,7 +116,7 @@ Peak memory usage (for query): 838.75 MiB.
 
 ### FINAL
 
-Clickhouse merge parts only in scope of single partition, so if two rows with the same replacing key would land in different partitions, they would **never** be merged in single row. FINAL keyword works in other way, it merge all rows across all partitions. But it can be changed via`do_not_merge_across_partitions_select_final` setting.
+Clickhouse merge parts only in scope of single partition, so if two rows with the same replacing key would land in different partitions, they would **never** be merged in single row. FINAL keyword works in other way, it merge all rows across all partitions. But that behavior can be changed via`do_not_merge_across_partitions_select_final` setting.
 
 {% page-ref page="../../altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed.md" %}
 
