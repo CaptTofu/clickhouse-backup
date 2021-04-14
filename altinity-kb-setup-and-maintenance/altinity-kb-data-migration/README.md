@@ -127,3 +127,4 @@ Pros and cons:
 
 [https://habr.com/ru/company/avito/blog/500678/](https://habr.com/ru/company/avito/blog/500678/)
 
+© 2021 Altinity Inc. All rights reserved.

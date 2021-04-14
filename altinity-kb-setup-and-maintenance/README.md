@@ -18,3 +18,4 @@
 * [Who ate my memory](altinity-kb-who-ate-my-memory.md)
 * [Zookeeper](altinity-kb-zookeeper/)
 
+© 2021 Altinity Inc. All rights reserved.
