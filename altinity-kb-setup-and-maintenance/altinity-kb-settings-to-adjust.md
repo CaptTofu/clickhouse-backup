@@ -92,5 +92,11 @@
 7. merge\_tree settings: `max_bytes_to_merge_at_max_space_in_pool` \(may be reduced in some scenarios\), `fsync_*` , `inactive_parts_to_throw_insert` - can be enabled, `replicated_deduplication_window` - can be extended if single insert create lot of parts , `merge_with_ttl_timeout` - when you use ttl
 8. settings `default_database_engine` / `insert_distributed_sync` / `fsync_metadata` / `do_not_merge_across_partitions_select_final` / fsync
 
+See also:
+
+{% embed url="https://docs.altinity.com/operationsguide/security/clickhouse-hardening-guide/" %}
+
+
+
 © 2021 Altinity Inc. All rights reserved.
 
