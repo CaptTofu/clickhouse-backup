@@ -45,6 +45,7 @@
   * [ClickHouse in Docker](altinity-kb-setup-and-maintenance/altinity-kb-clickhouse-in-docker.md)
   * [Converting MergeTree to Replicated](altinity-kb-setup-and-maintenance/altinity-kb-converting-mergetree-to-replicated.md)
   * [Data Migration](altinity-kb-setup-and-maintenance/altinity-kb-data-migration/README.md)
+    * [rsync](altinity-kb-setup-and-maintenance/altinity-kb-data-migration/rsync.md)
     * [remote\(...\) table function](altinity-kb-setup-and-maintenance/altinity-kb-data-migration/remote-...-table-function.md)
     * [clickhouse-copier](altinity-kb-setup-and-maintenance/altinity-kb-data-migration/altinity-kb-clickhouse-copier/README.md)
       * [Altinity KB : clickhouse-copier 20.3 and earlier](altinity-kb-setup-and-maintenance/altinity-kb-data-migration/altinity-kb-clickhouse-copier/altinity-kb-clickhouse-copier-20.3-and-earlier.md)

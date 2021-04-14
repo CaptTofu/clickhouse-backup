@@ -59,22 +59,13 @@ Pros and cons:
 ![\(minus\)](../../.gitbook/assets/forbidden.png) Table schema should be the same.  
 ![\(minus\)](../../.gitbook/assets/forbidden.png) A lot of manual operations/scripting.
 
-Short instruction:  
-1\) do FREEZE on needed tables / partitions  
-2\) rsync /var/lib/clickhouse/shadow folder to the target system  
-3\) put the parts from /var/lib/clickhouse/shadow/N/db/table to /var/lib/clickhouse/data/db/table/detached  
-4\) run attach command on target
-
-Notes:  
+{% hint style="info" %}
 With some additional care and scripting, it’s possible to do cheap re-sharding on parts level.
+{% endhint %}
 
-### How to register parts in zookeeper:
+More details:
 
-* Move them to `clickhouse/data/database/replicated_mt_table/detached` directory and run `ALTER TABLE replicated_mt_table ATTACH PARTITION ID ''` query for each partition.
-* Move them to regular MergeTree table with same schema and run `ALTER TABLE replicated_mt_table ATTACH PARTITION ID '' FROM regular_mt_table` query for each partition.
-
-Automation of that approach:  
-[https://github.com/Altinity/clickhouse-zookeeper-recovery](https://github.com/Altinity/clickhouse-zookeeper-recovery)
+{% page-ref page="rsync.md" %}
 
 ## clickhouse-backup
 
