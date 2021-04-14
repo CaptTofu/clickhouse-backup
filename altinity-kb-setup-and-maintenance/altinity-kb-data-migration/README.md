@@ -48,7 +48,7 @@ Internally it works like smart `INSERT INTO cluster(…) SELECT * FROM ...` with
 Run clickhouse copier on the same nodes as receiver clickhouse, to avoid doubling the network load.
 {% endhint %}
 
-More details:
+See details in:
 
 {% page-ref page="altinity-kb-clickhouse-copier/" %}
 
@@ -63,7 +63,7 @@ Pros and cons:
 With some additional care and scripting, it’s possible to do cheap re-sharding on parts level.
 {% endhint %}
 
-More details:
+See details in:
 
 {% page-ref page="rsync.md" %}
 
