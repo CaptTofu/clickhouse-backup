@@ -3,75 +3,73 @@
 ## Export & Import into common data formats. <a id="DataMigration-Export&amp;Importintocommondataformats."></a>
 
 Pros and cons:  
-![\(plus\)](../../.gitbook/assets/add.png) Data can be inserted in some other than ClickHouse DBMS.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) Needs additional sync for data consistency.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) High CPU and network usage.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) Decoding&Encoding in common data formats slower than ClickHouse native formats.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) Some of common data formats have incomplete support.
+![\(plus\)](../../.gitbook/assets/add.png) Data can be inserted into any DBMS.  
+![\(minus\)](../../.gitbook/assets/forbidden.png) Decoding & encoding of common data formats may be slower / require more CPU  
+![\(minus\)](../../.gitbook/assets/forbidden.png) The data size is usually bigger than ClickHouse formats.  
+![\(minus\)](../../.gitbook/assets/forbidden.png) Some of the common data formats have limitations.
+
+{% hint style="info" %}
+The best approach to do that is using clickhouse-client, in that case, encoding/decoding of format happens client-side, while client and server speak clickhouse Native format \(columnar & compressed\). 
+
+In contrast: when you use HTTP protocol, the server do encoding/decoding and more data is passed between client and server.
+{% endhint %}
 
 ## remote/remoteSecure or cluster/Distributed table <a id="DataMigration-remote/remoteSecureorcluster/Distributedtable"></a>
 
 Pros and cons:  
 ![\(plus\)](../../.gitbook/assets/add.png) Simple to run.  
-![\(plus\)](../../.gitbook/assets/add.png) It’s possible to change schema and distribution of data between shards.  
+![\(plus\)](../../.gitbook/assets/add.png) It’s possible to change the schema and distribution of data between shards.  
+![\(plus\)](../../.gitbook/assets/add.png) It’s possible to copy only some subset of data  
 ![\(plus\)](../../.gitbook/assets/add.png) Needs only access to ClickHouse TCP port.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) Needs additional sync for data consistency.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) High CPU and network usage.
+![\(minus\)](../../.gitbook/assets/forbidden.png) Uses CPU / RAM \(mostly on the receiver side\)
 
-Related settings:
+See details in:
 
-```text
-connect_timeout_with_failover_ms
-connect_timeout_with_failover_secure_ms
-
-max_insert_threads
-min_insert_block_size_rows
-min_insert_block_size_bytes
-```
-
-Suitable:
-
-* Small amount of data. \(with some scripting would work even for big clusters\).
-* Re-sharding and schema changing.
+{% page-ref page="remote-...-table-function.md" %}
 
 ## clickhouse-copier <a id="DataMigration-clickhouse-copier"></a>
 
 Pros and cons:
 
-![\(plus\)](../../.gitbook/assets/add.png) Possible to change schema.  
+![\(plus\)](../../.gitbook/assets/add.png) Possible to do **some** changes schema.  
 ![\(plus\)](../../.gitbook/assets/add.png) Needs only access to ClickHouse TCP port.  
-![\(plus\)](../../.gitbook/assets/add.png) It’s possible to change schema and distribution of data between shards.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) Doesn’t work well if data being ingested in source cluster.  
+![\(plus\)](../../.gitbook/assets/add.png) It’s possible to change the distribution of data between shards.  
+![\(plus\)](../../.gitbook/assets/add.png) suitable for large clusters: many clickhouse-copier can execute the same task together.  
+![\(minus\)](../../.gitbook/assets/forbidden.png) May create an inconsistent result if source cluster data is changing during the process  
 ![\(minus\)](../../.gitbook/assets/forbidden.png) Hard to setup.  
 ![\(minus\)](../../.gitbook/assets/forbidden.png) Requires zookeeper.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) High CPU and network usage.
+![\(minus\)](../../.gitbook/assets/forbidden.png) Uses CPU / RAM \(mostly on the clickhouse-copier and reciever side\)
 
-Notes:  
-Internally it works like smart `INSERT INTO cluster(…) SELECT * FROM ...`  with some consistency checks.  
-[clickhouse-copier](altinity-kb-clickhouse-copier/)
+{% hint style="info" %}
+Internally it works like smart `INSERT INTO cluster(…) SELECT * FROM ...`  with some consistency checks.
+{% endhint %}
 
-## rsync/manual parts moving <a id="DataMigration-rsync/manualpartsmoving"></a>
+{% hint style="info" %}
+Run clickhouse copier on the same nodes as receiver clickhouse, to avoid doubling the network load.
+{% endhint %}
+
+More details:
+
+{% page-ref page="altinity-kb-clickhouse-copier/" %}
+
+## manual parts moving: freeze / rsync / attac  <a id="DataMigration-rsync/manualpartsmoving"></a>
 
 Pros and cons:  
-![\(plus\)](../../.gitbook/assets/add.png) Low CPU and network usage.  
+![\(plus\)](../../.gitbook/assets/add.png) Low CPU / RAM usage.  
 ![\(minus\)](../../.gitbook/assets/forbidden.png) Table schema should be the same.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) Parts need’s to be properly registered in zookeeper.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) Needs additional sync for data consistency.  
+![\(minus\)](../../.gitbook/assets/forbidden.png) A lot of manual operations/scripting.  
+
+
+Short instruction:  
+1\) do FREEZE on needed tables / partitions   
+2\) rsync /var/lib/clickhouse/shadow folder to the target system  
+3\) put the parts from /var/lib/clickhouse/shadow/N/db/table to /var/lib/clickhouse/data/db/table/detached  
+4\) run attach command on target  
   
 Notes:  
-With some additional care and scripting it’s possible to do cheap re-sharding on parts level.
+With some additional care and scripting, it’s possible to do cheap re-sharding on parts level.
 
-## Replication protocol <a id="DataMigration-Replicationprotocol"></a>
-
-Pros and cons:  
-![\(plus\)](../../.gitbook/assets/add.png) Simple to setup  
-![\(plus\)](../../.gitbook/assets/add.png) No need for additional sync for data consistency.  
-![\(plus\)](../../.gitbook/assets/add.png) Low CPU and network usage.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) Needs to reach both zookeeper client \(2181\) and ClickHouse replication ports: \(`interserver_http_port` or `interserver_https_port`\)  
-![\(minus\)](../../.gitbook/assets/forbidden.png) In case of cluster migration, zookeeper need’s to be migrated too.  
-[Zookeeper cluster migration](../altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration.md)
-
-## How to register parts in zookeeper: <a id="DataMigration-Howtoregisterpartsinzookeeper:"></a>
+### How to register parts in zookeeper:
 
 * Move them to `clickhouse/data/database/replicated_mt_table/detached` directory and run `ALTER TABLE replicated_mt_table ATTACH PARTITION ID ''` query for each partition.
 * Move them to regular MergeTree table with same schema and run `ALTER TABLE replicated_mt_table ATTACH PARTITION ID '' FROM regular_mt_table` query for each partition.
@@ -79,13 +77,51 @@ Pros and cons:
 Automation of that approach:  
 [https://github.com/Altinity/clickhouse-zookeeper-recovery](https://github.com/Altinity/clickhouse-zookeeper-recovery)
 
-## Github issues: <a id="DataMigration-Githubissues:"></a>
+## clickhouse-backup
+
+Pros and cons:  
+![\(plus\)](../../.gitbook/assets/add.png) Low CPU / RAM usage.  
+![\(plus\)](../../.gitbook/assets/add.png) Suitable to recover both schema & data for all tables at once.  
+![\(minus\)](../../.gitbook/assets/forbidden.png) Table schema should be the same.
+
+Just create the backup on server 1, upload it to server 2, and restore the backup.
+
+See [https://github.com/AlexAkulov/clickhouse-backup](https://github.com/AlexAkulov/clickhouse-backup) 
+
+## Fetch from zookeeper path
+
+Pros and cons:  
+![\(plus\)](../../.gitbook/assets/add.png) Low CPU / RAM usage  
+![\(minus\)](../../.gitbook/assets/forbidden.png) Table schema should be the same.  
+![\(minus\)](../../.gitbook/assets/forbidden.png) Works only when the source and the destination clickhouse servers share the same zookeeper \(without chroot\)  
+![\(minus\)](../../.gitbook/assets/forbidden.png) Needs to access zookeeper and ClickHouse replication ports: \(`interserver_http_port` or `interserver_https_port`\)
+
+```text
+ALTER TABLE table_name FETCH PARTITION partition_expr FROM 'path-in-zookeeper'
+```
+
+## Replication protocol <a id="DataMigration-Replicationprotocol"></a>
+
+Just make one more replica in another place.
+
+Pros and cons:  
+![\(plus\)](../../.gitbook/assets/add.png) Simple to setup  
+![\(plus\)](../../.gitbook/assets/add.png) Data is consistent all the time automatically.  
+![\(plus\)](../../.gitbook/assets/add.png) Low CPU and network usage.  
+![\(minus\)](../../.gitbook/assets/forbidden.png) Needs to reach both zookeeper client \(2181\) and ClickHouse replication ports: \(`interserver_http_port` or `interserver_https_port`\)  
+![\(minus\)](../../.gitbook/assets/forbidden.png) In case of cluster migration, zookeeper need’s to be migrated too.  
+![\(minus\)](../../.gitbook/assets/forbidden.png) Replication works both ways.  
+[Zookeeper cluster migration](../altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration.md)
+
+## See also <a id="DataMigration-Githubissues:"></a>
+
+### Github issues:
 
 [https://github.com/ClickHouse/ClickHouse/issues/10943](https://github.com/ClickHouse/ClickHouse/issues/10943)  
 [https://github.com/ClickHouse/ClickHouse/issues/20219](https://github.com/ClickHouse/ClickHouse/issues/20219)  
 [https://github.com/ClickHouse/ClickHouse/pull/17871](https://github.com/ClickHouse/ClickHouse/pull/17871)
 
-## Other links: <a id="DataMigration-Otherlinks:"></a>
+### Other links:
 
 [https://habr.com/ru/company/avito/blog/500678/](https://habr.com/ru/company/avito/blog/500678/)
 
