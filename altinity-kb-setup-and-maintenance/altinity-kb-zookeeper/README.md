@@ -2,19 +2,19 @@
 
 Article on docs site:
 
-{% embed url="https://docs.altinity.com/operationsguide/clickhouse-zookeeper/" %}
+{% embed url="https://docs.altinity.com/operationsguide/clickhouse-zookeeper/" caption="" %}
 
 Check number of followers:
 
 ```text
 echo mntr | nc zookeeper 2187 | grep foll
-zk_synced_followers	2
-zk_synced_non_voting_followers	0
-zk_avg_follower_sync_time	0.0
-zk_min_follower_sync_time	0
-zk_max_follower_sync_time	0
-zk_cnt_follower_sync_time	0
-zk_sum_follower_sync_time	0
+zk_synced_followers    2
+zk_synced_non_voting_followers    0
+zk_avg_follower_sync_time    0.0
+zk_min_follower_sync_time    0
+zk_max_follower_sync_time    0
+zk_cnt_follower_sync_time    0
+zk_sum_follower_sync_time    0
 ```
 
 ## Tools <a id="Zookeeper-Tools"></a>
@@ -34,3 +34,4 @@ zk_sum_follower_sync_time	0
 * [https://github.com/vran-dev/PrettyZoo](https://github.com/vran-dev/PrettyZoo)
 
 © 2021 Altinity Inc. All rights reserved.
+

@@ -16,14 +16,13 @@ If the node in ZooKeeper already exists and you want to change it, you need to a
 
 `clickhouse-copier --daemon --base-dir=/opt/clickhouse-copier --config /opt/clickhouse-copier/zookeeper.xml --task-path /clickhouse/copier/task1 --task-file /opt/clickhouse-copier/task1.xml --task-upload-force 1`
 
-  
 If you want to run another instance of clickhouse-copier for the same task, you need to copy the config file \(zookeeper.xml\) to another server, and run this command:
 
 `clickhouse-copier --daemon --base-dir=/opt/clickhouse-copier --config /opt/clickhouse-copier/zookeeper.xml --task-path /clickhouse/copier/task1`
 
 The number of simultaneously running instances is controlled be the `max_workers` parameter in your task configuration file. If you run more workers superfluous workers will sleep and log messages like this:
 
-`<Debug> ClusterCopier: Too many workers (1, maximum 1). Postpone processing`  
+`<Debug> ClusterCopier: Too many workers (1, maximum 1). Postpone processing`
 
 © 2021 Altinity Inc. All rights reserved.
 

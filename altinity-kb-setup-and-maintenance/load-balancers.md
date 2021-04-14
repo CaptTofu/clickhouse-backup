@@ -1,14 +1,14 @@
 # Load balancers
 
-In general - one of the simplest option to do load balancing is to implement it on the client side. 
+In general - one of the simplest option to do load balancing is to implement it on the client side.
 
-I.e. list serveral endpoints for clickhouse connections and add some logic to pick one of the nodes. 
+I.e. list serveral endpoints for clickhouse connections and add some logic to pick one of the nodes.
 
-Many client libraries support that. 
+Many client libraries support that.
 
-### ClickHouse native protocol \(port 9000\)
+## ClickHouse native protocol \(port 9000\)
 
-Currently there are no protocol-aware proxies for clickhouse protocol, so the proxy / load balancer can work only on TCP level. 
+Currently there are no protocol-aware proxies for clickhouse protocol, so the proxy / load balancer can work only on TCP level.
 
 One of the best option for TCP load balancer is haproxy, also nginx can work in that mode.
 
@@ -22,9 +22,10 @@ So for native protocol, there are only 3 possibilities:
 2\) close connection after each query server-side \(currently there is only one setting for that - idle\_connection\_timeout=0, which is not exact what you need, but similar\).  
 3\) use a clickhouse server with Distributed table as a proxy.
 
-### HTTP protocol \(port 8123\)
+## HTTP protocol \(port 8123\)
 
 There are many more options and you can use haproxy / nginx / chproxy, etc.  
 chproxy give some extra clickhouse-specific features, you can find a list of them at [https://github.com/Vertamedia/chproxy](https://github.com/Vertamedia/chproxy)
 
 © 2021 Altinity Inc. All rights reserved.
+

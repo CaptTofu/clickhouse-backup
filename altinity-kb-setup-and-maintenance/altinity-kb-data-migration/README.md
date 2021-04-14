@@ -9,7 +9,7 @@ Pros and cons:
 ![\(minus\)](../../.gitbook/assets/forbidden.png) Some of the common data formats have limitations.
 
 {% hint style="info" %}
-The best approach to do that is using clickhouse-client, in that case, encoding/decoding of format happens client-side, while client and server speak clickhouse Native format \(columnar & compressed\). 
+The best approach to do that is using clickhouse-client, in that case, encoding/decoding of format happens client-side, while client and server speak clickhouse Native format \(columnar & compressed\).
 
 In contrast: when you use HTTP protocol, the server do encoding/decoding and more data is passed between client and server.
 {% endhint %}
@@ -34,14 +34,14 @@ Pros and cons:
 ![\(plus\)](../../.gitbook/assets/add.png) Possible to do **some** changes schema.  
 ![\(plus\)](../../.gitbook/assets/add.png) Needs only access to ClickHouse TCP port.  
 ![\(plus\)](../../.gitbook/assets/add.png) It’s possible to change the distribution of data between shards.  
-![\(plus\)](../../.gitbook/assets/add.png) suitable for large clusters: many clickhouse-copier can execute the same task together.  
+![\(plus\)](../../.gitbook/assets/add.png) Suitable for large clusters: many clickhouse-copier can execute the same task together.  
 ![\(minus\)](../../.gitbook/assets/forbidden.png) May create an inconsistent result if source cluster data is changing during the process  
 ![\(minus\)](../../.gitbook/assets/forbidden.png) Hard to setup.  
 ![\(minus\)](../../.gitbook/assets/forbidden.png) Requires zookeeper.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) Uses CPU / RAM \(mostly on the clickhouse-copier and reciever side\)
+![\(minus\)](../../.gitbook/assets/forbidden.png) Uses CPU / RAM \(mostly on the clickhouse-copier and receiver side\)
 
 {% hint style="info" %}
-Internally it works like smart `INSERT INTO cluster(…) SELECT * FROM ...`  with some consistency checks.
+Internally it works like smart `INSERT INTO cluster(…) SELECT * FROM ...` with some consistency checks.
 {% endhint %}
 
 {% hint style="info" %}
@@ -52,20 +52,19 @@ More details:
 
 {% page-ref page="altinity-kb-clickhouse-copier/" %}
 
-## manual parts moving: freeze / rsync / attac  <a id="DataMigration-rsync/manualpartsmoving"></a>
+## manual parts moving: freeze / rsync / attac <a id="DataMigration-rsync/manualpartsmoving"></a>
 
 Pros and cons:  
 ![\(plus\)](../../.gitbook/assets/add.png) Low CPU / RAM usage.  
 ![\(minus\)](../../.gitbook/assets/forbidden.png) Table schema should be the same.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) A lot of manual operations/scripting.  
-
+![\(minus\)](../../.gitbook/assets/forbidden.png) A lot of manual operations/scripting.
 
 Short instruction:  
-1\) do FREEZE on needed tables / partitions   
+1\) do FREEZE on needed tables / partitions  
 2\) rsync /var/lib/clickhouse/shadow folder to the target system  
 3\) put the parts from /var/lib/clickhouse/shadow/N/db/table to /var/lib/clickhouse/data/db/table/detached  
-4\) run attach command on target  
-  
+4\) run attach command on target
+
 Notes:  
 With some additional care and scripting, it’s possible to do cheap re-sharding on parts level.
 
@@ -86,9 +85,9 @@ Pros and cons:
 
 Just create the backup on server 1, upload it to server 2, and restore the backup.
 
-See [https://github.com/AlexAkulov/clickhouse-backup](https://github.com/AlexAkulov/clickhouse-backup) 
+See [https://github.com/AlexAkulov/clickhouse-backup](https://github.com/AlexAkulov/clickhouse-backup)
 
-{% embed url="https://altinity.com/blog/introduction-to-clickhouse-backups-and-clickhouse-backup" %}
+{% embed url="https://altinity.com/blog/introduction-to-clickhouse-backups-and-clickhouse-backup" caption="" %}
 
 ## Fetch from zookeeper path
 
@@ -128,3 +127,4 @@ Pros and cons:
 [https://habr.com/ru/company/avito/blog/500678/](https://habr.com/ru/company/avito/blog/500678/)
 
 © 2021 Altinity Inc. All rights reserved.
+
