@@ -65,6 +65,8 @@ SELECT count() FROM repl_tbl FINAL WHERE NOT ignore(*)
 
 /* more that 2 time slower, and will get worse once you will have more data */
 
+set do_not_merge_across_partitions_select_final=1; 
+ 
 SELECT count() FROM repl_tbl FINAL WHERE NOT ignore(*)
 
 ┌──count()─┐
