@@ -52,7 +52,7 @@ More details:
 
 {% page-ref page="altinity-kb-clickhouse-copier/" %}
 
-## manual parts moving: freeze / rsync / attac <a id="DataMigration-rsync/manualpartsmoving"></a>
+## Manual parts moving: freeze / rsync / attach <a id="DataMigration-rsync/manualpartsmoving"></a>
 
 Pros and cons:  
 ![\(plus\)](../../.gitbook/assets/add.png) Low CPU / RAM usage.  
@@ -111,8 +111,9 @@ Pros and cons:
 ![\(plus\)](../../.gitbook/assets/add.png) Low CPU and network usage.  
 ![\(minus\)](../../.gitbook/assets/forbidden.png) Needs to reach both zookeeper client \(2181\) and ClickHouse replication ports: \(`interserver_http_port` or `interserver_https_port`\)  
 ![\(minus\)](../../.gitbook/assets/forbidden.png) In case of cluster migration, zookeeper need’s to be migrated too.  
-![\(minus\)](../../.gitbook/assets/forbidden.png) Replication works both ways.  
-[Zookeeper cluster migration](../altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration.md)
+![\(minus\)](../../.gitbook/assets/forbidden.png) Replication works both ways.
+
+{% page-ref page="../altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration.md" %}
 
 ## See also <a id="DataMigration-Githubissues:"></a>
 
