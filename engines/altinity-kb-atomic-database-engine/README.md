@@ -9,9 +9,9 @@ Supports
 * rename dictionary / rename database
 * unique automatic UUID paths in FS and ZK for Replicated
 
-### FAQ <a id="FAQ"></a>
+## FAQ
 
-**Q. Data is not removed immediately**
+### **Q. Data is not removed immediately**
 
 A. Use`DROP TABLE t SYNC;`
 
@@ -30,7 +30,7 @@ cat /etc/clickhouse-server/config.d/database_atomic_delay_before_drop_table.xml
 </yandex>
 ```
 
-**Q. I cannot reuse zookeeper path after dropping the table.**
+### **Q. I cannot reuse zookeeper path after dropping the table.**
 
 A. This happens because real table deletion occurs with a controlled delay. See the previous question to remove the table immediately.
 
@@ -137,7 +137,7 @@ But some external tools - backup tools, things involving other kinds of direct m
   </tbody>
 </table>
 
-### Using Ordinary by default instead of Atomic <a id="Using-Ordinary-by-default-instead-of-Atomic-[hardBreak]"></a>
+## Using Ordinary by default instead of Atomic
 
 ```bash
 # cat /etc/clickhouse-server/users.d/disable_atomic_database.xml 
@@ -151,9 +151,9 @@ But some external tools - backup tools, things involving other kinds of direct m
 </yandex>
 ```
 
-### Presentation <a id="Presentation"></a>
+## Other sources
 
-[https://youtu.be/1LVJ\_WcLgF8?t=2744](https://youtu.be/1LVJ_WcLgF8?t=2744)
+Presentation [https://youtu.be/1LVJ\_WcLgF8?t=2744](https://youtu.be/1LVJ_WcLgF8?t=2744)
 
 {% embed url="https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup46/database\_engines.pdf" %}
 
