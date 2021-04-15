@@ -54,6 +54,89 @@ set show_table_uuid_in_table_create_qquery_if_not_nil=1　;
 SHOW CREATE TABLE xxx; /* or SELECT create_table_query FROM system.tables WHERE ... */
 ```
 
+### Q. Should I use Atomic or Ordinary for new setups? <a id="Using-Ordinary-by-default-instead-of-Atomic-[hardBreak]"></a>
+
+All things inside clickhouse itself should work smoothly with `Atomic`.
+
+But some external tools - backup tools, things involving other kinds of direct manipulations with clickhouse files & folders may have issues with `Atomic`.
+
+`Ordinary` layout on the filesystem is simpler. And the issues which address Atomic \(lock-free renames, drops, atomic exchange of table\) are not so critical in most cases.
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left"></th>
+      <th style="text-align:left">Ordinary</th>
+      <th style="text-align:left">Atomic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">filesystem layout</td>
+      <td style="text-align:left">very simple</td>
+      <td style="text-align:left">more complicated</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">external tool support
+        <br />(like clickhouse-backup)</td>
+      <td style="text-align:left">good / mature</td>
+      <td style="text-align:left">limited / beta</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>some DDL queries (DROP / RENAME) may</p>
+        <p>hang for a long time (waiting for some other things)</p>
+      </td>
+      <td style="text-align:left">yes &#x1F44E;</td>
+      <td style="text-align:left">no &#x1F44D;</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Possibility to swap 2 tables</td>
+      <td style="text-align:left">
+        <p>rename
+          <br />a to a_old,
+          <br />b to a,</p>
+        <p>a_old to b;</p>
+        <p>Operation is not atomic, and
+          <br />can brake in the middle (while chances are low).</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>EXCHANGE TABLES t1 AND t2</p>
+        <p>Atomic, have no intermediate states.</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">uuid in zookeeper path</td>
+      <td style="text-align:left">
+        <p>Not possible to use.</p>
+        <p>The typical pattern is to add version suffix to zookeeper path when you
+          need to create
+          <br />the new version of the same table.</p>
+      </td>
+      <td style="text-align:left">
+        <p>You can use uuid in zookeeper paths.
+          <br />That requires some extra care when you expand the cluster, and makes zookeeper
+          paths harder to map to real table.</p>
+        <p>But allows to to do any kind of manipulations on tables (rename, recreate
+          with same name etc).</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Materialized view without TO syntax</td>
+      <td style="text-align:left">
+        <p>.inner.mv_name</p>
+        <p>The name is predictable, easy to match with MV.</p>
+      </td>
+      <td style="text-align:left">
+        <p>.inner_id.{uuid}</p>
+        <p>The name is unpredictable, hard to match with MV (maybe problematic for
+          MV chains, and similar scenarios)</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ### Using Ordinary by default instead of Atomic <a id="Using-Ordinary-by-default-instead-of-Atomic-[hardBreak]"></a>
 
 ```bash
