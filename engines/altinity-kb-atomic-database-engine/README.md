@@ -123,7 +123,10 @@ But some external tools - backup tools, things involving other kinds of direct m
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">Materialized view without TO syntax</td>
+      <td style="text-align:left">
+        <p>Materialized view without TO syntax</p>
+        <p>(!we recommend using TO syntax always!)</p>
+      </td>
       <td style="text-align:left">
         <p>.inner.mv_name</p>
         <p>The name is predictable, easy to match with MV.</p>
