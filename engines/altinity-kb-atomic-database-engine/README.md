@@ -6,7 +6,7 @@ Since version 20.10 it is a default database engine \(before engine=Ordinary was
 
 Those 2 database engine differs in a way how they store data on a filesystem, and engine Atomic allows to resolve some of the issues existed in engine=Ordinary.  
 
-Supports
+engine=Atomic supports
 
 * non-blocking drop table / rename table
 * tables delete \(&detach\) async \(wait for selects finish but invisible for new selects\)
