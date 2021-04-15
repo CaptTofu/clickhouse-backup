@@ -1,5 +1,11 @@
 # Atomic Database Engine
 
+In version 20.5 ClickHouse first introduced database engine=Atomic.
+
+Since version 20.10 it is a default database engine \(before engine=Ordinary was used\).
+
+Those 2 database engine differs in a way how they store data on a filesystem, and engine Atomic allows to resolve some of the issues existed in engine=Ordinary.  
+
 Supports
 
 * non-blocking drop table / rename table
