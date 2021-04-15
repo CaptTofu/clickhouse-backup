@@ -41,6 +41,7 @@
     * [Rewind / fast-forward / replay](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-rewind-fast-forward-replay.md)
     * [SELECTs from engine=Kafka](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-selects-from-engine-kafka.md)
 * [Setup & maintenance](altinity-kb-setup-and-maintenance/README.md)
+  * [There are N unfinished hosts \(0 of them are currently active\).](altinity-kb-setup-and-maintenance/there-are-n-unfinished-hosts-0-of-them-are-currently-active-..md)
   * [Load balancers](altinity-kb-setup-and-maintenance/load-balancers.md)
   * [ClickHouse in Docker](altinity-kb-setup-and-maintenance/altinity-kb-clickhouse-in-docker.md)
   * [Converting MergeTree to Replicated](altinity-kb-setup-and-maintenance/altinity-kb-converting-mergetree-to-replicated.md)
