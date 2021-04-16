@@ -1,18 +1,155 @@
-# -SimpleStateIf or -IfState for simple aggregate functions
+# Simple aggregate functions & combinators
 
-## Question
+### Q. What is SimpleAggregateFunction? Are there advantages to use it instead of  AggregateFunction in AggregatingMergeTree?
 
-SimpleAggregateFunction is great feature to have. It allows us to reduce memory usage by a lot \(between 3 and 10 times\) and improve query performance, but it's impossible to use it with combinators, like `-If`. Is there a workaround for this use case:
+SimpleAggregateFunction can be used for those aggretation when function state is exactly the same as resulting function value. Typical example is `max` function: it only require to store single value which is already maximum, and no extra steps needed to get the final value, me. In contract `avg` need to store two numbers - sum & count, which should be divided to get the final value of aggregation \(done my -Merge step at the very end\). 
 
-We can change order of combinators, so we would first filter by `-If` condition and take state after filtering.
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left"></th>
+      <th style="text-align:left">SimpleAggregateFunction</th>
+      <th style="text-align:left">AggregateFunction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">inserting</td>
+      <td style="text-align:left">
+        <p>accepts value of underlying type OR</p>
+        <p>a value of corresponding SimpleAggragateFunction type
+          <br />
+          <br /><code>CREATE TABLE saf_test<br />(  x SimpleAggregateFunction(max, UInt64) )<br />ENGINE=AggregatingMergeTree<br />ORDER BY tuple();<br /><br />INSERT INTO saf_test VALUES (1);<br />INSERT INTO saf_test SELECT max(number) FROM numbers(10);<br />INSERT INTO saf_test SELECT maxSimpleState(number) FROM numbers(20);</code>
+          <br
+          />
+        </p>
+      </td>
+      <td style="text-align:left">accepts ONLY state of aggregate function calculated using -State combinator</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">storing</td>
+      <td style="text-align:left">Internally store just a value of underlying type</td>
+      <td style="text-align:left">function-specific state</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">storage usage</td>
+      <td style="text-align:left">typically is much better due to better compression / codecs</td>
+      <td style="text-align:left">in very rare case can be more optimal than raw values, adaptive granularity
+        don&apos;t work for large states</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">reading raw value per row</td>
+      <td style="text-align:left">you can access it directly</td>
+      <td style="text-align:left">you need to use finalizeAgggregation function</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">using aggregated value</td>
+      <td style="text-align:left">
+        <p>just</p>
+        <p>select max(x) from test;</p>
+      </td>
+      <td style="text-align:left">
+        <p>you need to use -Merge combinator
+          <br />select maxMerge(x) from test;</p>
+        <p></p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">memory usage</td>
+      <td style="text-align:left">typically less memory needed (in some corner cases even 10 times)</td>
+      <td
+      style="text-align:left">typically uses more memory, as every state can be quite complex</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">performance</td>
+      <td style="text-align:left">typically better, due to lower overhead</td>
+      <td style="text-align:left">worse</td>
+    </tr>
+  </tbody>
+</table>
+
+See also   
+[https://github.com/ClickHouse/ClickHouse/pull/4629](https://github.com/ClickHouse/ClickHouse/pull/4629)  
+[https://github.com/ClickHouse/ClickHouse/issues/3852](https://github.com/ClickHouse/ClickHouse/issues/3852)  
+
+
+### Q. OK. When how maxSimpleState combinator result differs from plain max?
+
+They produce the same result, but type differ. Both can be pushed to SimpleAggregateFunction or to underlying type. So they are interchangeable. 
 
 {% hint style="info" %}
-`-If` and `-SimpleStateIf` produce the exact same result, but second have `SimpleAggregateFunction` datatype, which is useful for implicit Materialized View.
+`-SimpleState` is useful for implicit Materialized View creation, like  
+`CREATE MATERIALIZED VIEW mv  
+ENGINE = AggregatingMergeTree  
+ORDER BY date AS  
+SELECT  
+    date,  
+    sumSimpleState(1) AS cnt,  
+    sumSimpleState(revenue) AS rev  
+FROM table  
+GROUP BY date`
 {% endhint %}
+
+ `-If` and `-` produce the exact same result, but second have `SimpleAggregateFunction` datatype, 
 
 {% hint style="warning" %}
 `-SimpleState` supported since 21.1. See [https://github.com/ClickHouse/ClickHouse/pull/16853/](https://github.com/ClickHouse/ClickHouse/pull/16853/commits/5b1e5679b4a292e33ee5e60c0ba9cefa1e8388bd)
 {% endhint %}
+
+### Q. Can i use -If combinator with SimpleAggregateFunction?
+
+Something like `SimpleAggregateFunction(maxIf, UInt64, UInt8)` is NOT possible. But is 100% to push `maxIf` \(or `maxSimpleStateIf`\)  into `SimpleAggregateFunction(max, UInt64)`
+
+There is one problem with that approach:  
+`-SimpleStateIf` Would produce 0 as result in case of no-match, and it can mess up some aggregate functions state. ``It wouldn't affect functions like `max/argMax/sum`, but could affect functions like `min/argMin/any/anyLast`
+
+```sql
+SELECT
+    minIfMerge(state_1),
+    min(state_2)
+FROM
+(
+    SELECT
+        minIfState(number, number > 5) AS state_1,
+        minSimpleStateIf(number, number > 5) AS state_2
+    FROM numbers(5)
+    UNION ALL
+    SELECT
+        minIfState(toUInt64(2), 2),
+        minIf(2, 2)
+)
+
+┌─minIfMerge(state_1)─┬─min(state_2)─┐
+│                   2 │            0 │
+└─────────────────────┴──────────────┘
+```
+
+You can easily workaroud that:  
+1. Using Nullable datatype.  
+2. Set result to some big number in case of no-match, which would be bigger than any possible value, so it would be safe to use. But it would work only for `min/argMin`
+
+```sql
+SELECT
+    min(state_1),
+    min(state_2)
+FROM
+(
+    SELECT
+        minSimpleState(if(number > 5, number, 1000)) AS state_1,
+        minSimpleStateIf(toNullable(number), number > 5) AS state_2
+    FROM numbers(5)
+    UNION ALL
+    SELECT
+        minIf(2, 2),
+        minIf(2, 2)
+)
+
+┌─min(state_1)─┬─min(state_2)─┐
+│            2 │            2 │
+└──────────────┴──────────────┘
+```
+
+### Extra example
 
 ```sql
 WITH
@@ -50,57 +187,7 @@ byteSize(state_1):   10
 byteSize(state_2):   1
 ```
 
-There is one problem with that approach:  
-`-SimpleStateIf` Would produce 0 as result in case of no-match, and it can mess up some aggregate functions state.  
-It wouldn't affect functions like `max/argMax/sum`, but could affect functions like `min/argMin/any/anyLast`
 
-```sql
-SELECT
-    minIfMerge(state_1),
-    min(state_2)
-FROM
-(
-    SELECT
-        minIfState(number, number > 5) AS state_1,
-        minSimpleStateIf(number, number > 5) AS state_2
-    FROM numbers(5)
-    UNION ALL
-    SELECT
-        minIfState(toUInt64(2), 2),
-        minIf(2, 2)
-)
-
-┌─minIfMerge(state_1)─┬─min(state_2)─┐
-│                   2 │            0 │
-└─────────────────────┴──────────────┘
-```
-
-## Answer
-
-There is 2 workarounds for that:  
-1. Using Nullable datatype.  
-2. Set result to some big number in case of no-match, which would be bigger than any possible value, so it would be safe to use. But it would work only for `min/argMin`
-
-```sql
-SELECT
-    min(state_1),
-    min(state_2)
-FROM
-(
-    SELECT
-        minSimpleState(if(number > 5, number, 1000)) AS state_1,
-        minSimpleStateIf(toNullable(number), number > 5) AS state_2
-    FROM numbers(5)
-    UNION ALL
-    SELECT
-        minIf(2, 2),
-        minIf(2, 2)
-)
-
-┌─min(state_1)─┬─min(state_2)─┐
-│            2 │            2 │
-└──────────────┴──────────────┘
-```
 
 © 2021 Altinity Inc. All rights reserved.
 

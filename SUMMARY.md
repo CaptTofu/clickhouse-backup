@@ -12,7 +12,7 @@
     * [ReplacingMergeTree does not collapse duplicates](engines/replacingmergetree/altinity-kb-replacingmergetree-does-not-collapse-duplicates.md)
 * [Queries & Syntax](altinity-kb-queries-and-syntax/README.md)
   * [-State & -Merge combinators](altinity-kb-queries-and-syntax/state-and-merge-combinators.md)
-  * [-SimpleStateIf or -IfState for simple aggregate functions](altinity-kb-queries-and-syntax/simplestateif-or-ifstate-for-simple-aggregate-functions.md)
+  * [Simple aggregate functions & combinators](altinity-kb-queries-and-syntax/simplestateif-or-ifstate-for-simple-aggregate-functions.md)
   * [ALTER MODIFY COLUMN is stuck, the column is inaccessible.](altinity-kb-queries-and-syntax/altinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible..md)
   * [ANSI SQL mode](altinity-kb-queries-and-syntax/ansi-sql-mode.md)
   * [Coming soon on ClickHouse: Window functions](altinity-kb-queries-and-syntax/altinity-kb-coming-soon-on-clickhouse-window-functions.md)
