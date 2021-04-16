@@ -1,22 +1,6 @@
 # Setup & maintenance
 
-* [ClickHouse in Docker](altinity-kb-clickhouse-in-docker.md)
-* [Converting MergeTree to Replicated](altinity-kb-converting-mergetree-to-replicated.md)
-* [Data Migration](altinity-kb-data-migration/)
-* [DDLWorker](altinity-kb-ddlworker.md)
-* [I use ClickHouse version X. What version should I upgrade to? How do I upgrade?](altinity-kb-i-use-clickhouse-version-x.-to-what-version-should-i-upgrade-how-to-upgrade.md)
-* [memory configuration settings](altinity-kb-memory-configuration-settings.md)
-* [Monitoring](altinity-kb-monitoring.md)
-* [Moving table to another device](altinity-kb-moving-table-to-another-device..md)
-* [Object consistency in a cluster](altinity-kb-object-consistency-in-a-cluster.md)
-* [Replication queue](altinity-kb-replication-queue.md)
-* [Server config files](altinity-kb-server-config-files.md)
-* [Settings to adjust](altinity-kb-settings-to-adjust.md)
-* [Shutting down a node](altinity-kb-shutting-down-a-node.md)
-* [System tables eat my disk](altinity-kb-system-tables-eat-my-disk.md)
-* [Threads](altinity-kb-threads.md)
-* [Who ate my memory](altinity-kb-who-ate-my-memory.md)
-* [Zookeeper](altinity-kb-zookeeper/)
+
 
 © 2021 Altinity Inc. All rights reserved.
 

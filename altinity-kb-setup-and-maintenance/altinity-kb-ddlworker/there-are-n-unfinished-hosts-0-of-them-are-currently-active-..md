@@ -10,7 +10,7 @@ Sometimes your Distributed DDL queries are being stuck, and not executing on all
 SELECT * FROM system.clusters; -- check is_local column, it should have 1 for itself
 ```
 
-{% page-ref page="altinity-kb-ddlworker.md" %}
+{% page-ref page="./" %}
 
 
 
