@@ -97,7 +97,7 @@ See [https://github.com/ClickHouse/ClickHouse/pull/16853/](https://github.com/Cl
 
 ### Q. Can i use -If combinator with SimpleAggregateFunction?
 
-Something like `SimpleAggregateFunction(maxIf, UInt64, UInt8)` is NOT possible. But is 100% to push `maxIf` \(or `maxSimpleStateIf`\)  into `SimpleAggregateFunction(max, UInt64)`
+Something like `SimpleAggregateFunction(maxIf, UInt64, UInt8)` is NOT possible. But is 100% ok to push `maxIf` \(or `maxSimpleStateIf`\)  into `SimpleAggregateFunction(max, UInt64)`
 
 There is one problem with that approach:  
 `-SimpleStateIf` Would produce 0 as result in case of no-match, and it can mess up some aggregate functions state. ``It wouldn't affect functions like `max/argMax/sum`, but could affect functions like `min/argMin/any/anyLast`
