@@ -83,6 +83,7 @@
   * [How to test different compression codecs.](altinity-kb-useful-queries/altinity-kb-how-to-test-different-compression-codecs..md)
   * [Number of active parts in a partition](altinity-kb-useful-queries/altinity-kb-number-of-active-parts-in-a-partition.md)
 * [Schema design](altinity-kb-schema-design/README.md)
+  * [Best schema for storing many metrics registered from the single source](altinity-kb-schema-design/best-schema-for-storing-many-metrics-registered-from-the-single-source.md)
   * [MATERIALIZED VIEWS](altinity-kb-schema-design/materialized-views.md)
   * [Dictionaries vs LowCardinality](altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality.md)
 * [Kubernetes](altinity-kb-kubernetes/README.md)
