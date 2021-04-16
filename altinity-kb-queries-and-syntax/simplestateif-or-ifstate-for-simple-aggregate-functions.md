@@ -16,7 +16,7 @@ SimpleAggregateFunction can be used for those aggregations when the function sta
     <tr>
       <td style="text-align:left">inserting</td>
       <td style="text-align:left">
-        <p>accepts value of underlying type OR</p>
+        <p>accepts the value of underlying type OR</p>
         <p>a value of corresponding SimpleAggregateFunction type
           <br />
           <br /><code>CREATE TABLE saf_test<br />(  x SimpleAggregateFunction(max, UInt64) )<br />ENGINE=AggregatingMergeTree<br />ORDER BY tuple();<br /><br />INSERT INTO saf_test VALUES (1);<br />INSERT INTO saf_test SELECT max(number) FROM numbers(10);<br />INSERT INTO saf_test SELECT maxSimpleState(number) FROM numbers(20);</code>
@@ -34,24 +34,28 @@ SimpleAggregateFunction can be used for those aggregations when the function sta
     </tr>
     <tr>
       <td style="text-align:left">storage usage</td>
-      <td style="text-align:left">typically is much better due to better compression / codecs</td>
-      <td style="text-align:left">in very rare case can be more optimal than raw values, adaptive granularity
-        don&apos;t work for large states</td>
+      <td style="text-align:left">typically is much better due to better compression/codecs</td>
+      <td style="text-align:left">
+        <p>in very rare cases it can be more optimal than raw values</p>
+        <p>adaptive granularity doesn&apos;t work for large states</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">reading raw value per row</td>
       <td style="text-align:left">you can access it directly</td>
-      <td style="text-align:left">you need to use finalizeAgggregation function</td>
+      <td style="text-align:left">you need to use <code>finalizeAgggregation</code> function</td>
     </tr>
     <tr>
       <td style="text-align:left">using aggregated value</td>
       <td style="text-align:left">
         <p>just</p>
-        <p>select max(x) from test;</p>
+        <p><code>select max(x) from test;</code>
+        </p>
       </td>
       <td style="text-align:left">
-        <p>you need to use -Merge combinator
-          <br />select maxMerge(x) from test;</p>
+        <p>you need to use <code>-Merge</code> combinator
+          <br /><code>select maxMerge(x) from test;</code>
+        </p>
         <p></p>
       </td>
     </tr>
@@ -76,7 +80,7 @@ See also
 
 ### Q. How maxSimpleState combinator result differs from plain max?
 
-They produce the same result, but type differ \(the first have `SimpleAggregateFunction` datatype\). Both can be pushed to SimpleAggregateFunction or to underlying type. So they are interchangeable. 
+They produce the same result, but types differ \(the first have `SimpleAggregateFunction` datatype\). Both can be pushed to SimpleAggregateFunction or to the underlying type. So they are interchangeable. 
 
 {% hint style="info" %}
 `-SimpleState` is useful for implicit Materialized View creation, like  
@@ -96,7 +100,7 @@ GROUP BY date`
 See [https://github.com/ClickHouse/ClickHouse/pull/16853/](https://github.com/ClickHouse/ClickHouse/pull/16853/commits/5b1e5679b4a292e33ee5e60c0ba9cefa1e8388bd)
 {% endhint %}
 
-### Q. Can i use -If combinator with SimpleAggregateFunction?
+### Q. Can I use -If combinator with SimpleAggregateFunction?
 
 Something like `SimpleAggregateFunction(maxIf, UInt64, UInt8)` is NOT possible. But is 100% ok to push `maxIf` \(or `maxSimpleStateIf`\)  into `SimpleAggregateFunction(max, UInt64)`
 
