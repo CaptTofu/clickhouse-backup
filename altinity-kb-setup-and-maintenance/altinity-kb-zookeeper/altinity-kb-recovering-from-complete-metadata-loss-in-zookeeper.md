@@ -127,7 +127,7 @@ If the table has many partitions, it may require some shell script to make it ea
 
 ### Automated approach
 
-For a large number of tables you can use script  [https://github.com/Altinity/clickhouse-zookeeper-recovery](https://github.com/Altinity/clickhouse-zookeeper-recovery) which partially automates the above approach.
+For a large number of tables, you can use script  [https://github.com/Altinity/clickhouse-zookeeper-recovery](https://github.com/Altinity/clickhouse-zookeeper-recovery) which partially automates the above approach.
 
 
 
