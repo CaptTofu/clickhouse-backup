@@ -93,4 +93,5 @@
   * [JSONAsString and Mat. View as JSON parser](altinity-kb-interfaces/altinity-kb-jsonasstring-and-mat.-view-as-json-parser.md)
 * [Dictionaries](altinity-kb-dictionaries/README.md)
   * [range\_hashed example - open intervals](altinity-kb-dictionaries/altinity-kb-range_hashed-example-open-intervals.md)
+* [Report an Issue](report-an-issue.md)
 
