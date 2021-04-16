@@ -17,7 +17,7 @@ SimpleAggregateFunction can be used for those aggregations when the function sta
       <td style="text-align:left">inserting</td>
       <td style="text-align:left">
         <p>accepts value of underlying type OR</p>
-        <p>a value of corresponding SimpleAggregateFunction type
+        <p>a value of corresponding SimpleAggragateFunction type
           <br />
           <br /><code>CREATE TABLE saf_test<br />(  x SimpleAggregateFunction(max, UInt64) )<br />ENGINE=AggregatingMergeTree<br />ORDER BY tuple();<br /><br />INSERT INTO saf_test VALUES (1);<br />INSERT INTO saf_test SELECT max(number) FROM numbers(10);<br />INSERT INTO saf_test SELECT maxSimpleState(number) FROM numbers(20);</code>
           <br
@@ -76,7 +76,7 @@ See also
 
 ### Q. How maxSimpleState combinator result differs from plain max?
 
-They produce the same result, but type differ \(the first have `SimpleAggregateFunction` datatype\). Both can be pushed to SimpleAggregateFunction or to underlying type. So they are interchangeable. 
+They produce the same result, but type differ \(the first have `impleAggregateFunction` datatype\). Both can be pushed to SimpleAggregateFunction or to underlying type. So they are interchangeable. 
 
 {% hint style="info" %}
 `-SimpleState` is useful for implicit Materialized View creation, like  
@@ -101,7 +101,7 @@ See [https://github.com/ClickHouse/ClickHouse/pull/16853/](https://github.com/Cl
 Something like `SimpleAggregateFunction(maxIf, UInt64, UInt8)` is NOT possible. But is 100% ok to push `maxIf` \(or `maxSimpleStateIf`\)  into `SimpleAggregateFunction(max, UInt64)`
 
 There is one problem with that approach:  
-`-SimpleStateIf` Would produce 0 as result in case of no-match, and it can mess up some aggregate functions state. It wouldn't affect functions like `max/argMax/sum`, but could affect functions like `min/argMin/any/anyLast`
+`-SimpleStateIf` Would produce 0 as result in case of no-match, and it can mess up some aggregate functions state. ``It wouldn't affect functions like `max/argMax/sum`, but could affect functions like `min/argMin/any/anyLast`
 
 ```sql
 SELECT
@@ -124,7 +124,7 @@ FROM
 └─────────────────────┴──────────────┘
 ```
 
-You can easily workaround that:  
+You can easily workaroud that:  
 1. Using Nullable datatype.  
 2. Set result to some big number in case of no-match, which would be bigger than any possible value, so it would be safe to use. But it would work only for `min/argMin`
 
