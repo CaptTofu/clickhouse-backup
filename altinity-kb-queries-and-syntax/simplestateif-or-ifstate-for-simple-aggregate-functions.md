@@ -2,7 +2,7 @@
 
 ### Q. What is SimpleAggregateFunction? Are there advantages to use it instead of  AggregateFunction in AggregatingMergeTree?
 
-SimpleAggregateFunction can be used for those aggretation when function state is exactly the same as resulting function value. Typical example is `max` function: it only require to store single value which is already maximum, and no extra steps needed to get the final value, me. In contract `avg` need to store two numbers - sum & count, which should be divided to get the final value of aggregation \(done my -Merge step at the very end\). 
+SimpleAggregateFunction can be used for those aggregations when the function state is exactly the same as the resulting function value. Typical example is `max` function: it only requires storing the single value which is already maximum, and no extra steps needed to get the final value. In contrast `avg` need to store two numbers - sum & count, which should be divided to get the final value of aggregation \(done by the `-Merge` step at the very end\). 
 
 <table>
   <thead>
