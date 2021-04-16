@@ -73,9 +73,9 @@ See also
 [https://github.com/ClickHouse/ClickHouse/issues/3852](https://github.com/ClickHouse/ClickHouse/issues/3852)  
 
 
-### Q. OK. When how maxSimpleState combinator result differs from plain max?
+### Q. How maxSimpleState combinator result differs from plain max?
 
-They produce the same result, but type differ. Both can be pushed to SimpleAggregateFunction or to underlying type. So they are interchangeable. 
+They produce the same result, but type differ \(the first have `impleAggregateFunction` datatype\). Both can be pushed to SimpleAggregateFunction or to underlying type. So they are interchangeable. 
 
 {% hint style="info" %}
 `-SimpleState` is useful for implicit Materialized View creation, like  
@@ -90,10 +90,9 @@ FROM table
 GROUP BY date`
 {% endhint %}
 
- `-If` and `-` produce the exact same result, but second have `SimpleAggregateFunction` datatype, 
-
 {% hint style="warning" %}
-`-SimpleState` supported since 21.1. See [https://github.com/ClickHouse/ClickHouse/pull/16853/](https://github.com/ClickHouse/ClickHouse/pull/16853/commits/5b1e5679b4a292e33ee5e60c0ba9cefa1e8388bd)
+`-SimpleState` supported since 21.1.  
+See [https://github.com/ClickHouse/ClickHouse/pull/16853/](https://github.com/ClickHouse/ClickHouse/pull/16853/commits/5b1e5679b4a292e33ee5e60c0ba9cefa1e8388bd)
 {% endhint %}
 
 ### Q. Can i use -If combinator with SimpleAggregateFunction?
