@@ -125,7 +125,11 @@ And now we have an exception that we lost all metadata in zookeeper. It is time 
 
 If the table has many partitions, it may require some shell script to make it easier.
 
-[https://github.com/Altinity/clickhouse-zookeeper-recovery](https://github.com/Altinity/clickhouse-zookeeper-recovery)
+### Automated approach
+
+For a large number of tables you can use script  [https://github.com/Altinity/clickhouse-zookeeper-recovery](https://github.com/Altinity/clickhouse-zookeeper-recovery) which partially automates the above approach.
+
+
 
 © 2021 Altinity Inc. All rights reserved.
 
