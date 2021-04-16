@@ -41,7 +41,7 @@
     * [Rewind / fast-forward / replay](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-rewind-fast-forward-replay.md)
     * [SELECTs from engine=Kafka](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-selects-from-engine-kafka.md)
 * [Setup & maintenance](altinity-kb-setup-and-maintenance/README.md)
-  * [Schema migration tools](altinity-kb-setup-and-maintenance/schema-migration-tools/README.md)
+  * [Schema migration tools for ClickHouse](altinity-kb-setup-and-maintenance/schema-migration-tools/README.md)
     * [golang-migrate](altinity-kb-setup-and-maintenance/schema-migration-tools/golang-migrate.md)
   * [Load balancers](altinity-kb-setup-and-maintenance/load-balancers.md)
   * [ClickHouse in Docker](altinity-kb-setup-and-maintenance/altinity-kb-clickhouse-in-docker.md)
