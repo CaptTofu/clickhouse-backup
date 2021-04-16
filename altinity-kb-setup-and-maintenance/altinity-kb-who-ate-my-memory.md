@@ -24,6 +24,17 @@ ORDER BY peak_memory_usage DESC
 LIMIT 10;
 
 SELECT
+    metric,
+    formatReadableSize(value)
+FROM system.asynchronous_metrics
+WHERE metric IN ('UncompressedCacheBytes', 'MarkCacheBytes');
+
+SELECT
+    formatReadableSize(sum(primary_key_bytes_in_memory)) AS primary_key_bytes_in_memory,
+    formatReadableSize(sum(primary_key_bytes_in_memory_allocated)) AS primary_key_bytes_in_memory_allocated
+FROM system.parts;
+
+SELECT
     initial_query_id,
     formatReadableSize(memory_usage),
     query
