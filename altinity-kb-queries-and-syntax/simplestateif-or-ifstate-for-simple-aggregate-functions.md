@@ -24,7 +24,8 @@ SimpleAggregateFunction can be used for those aggregations when the function sta
           />
         </p>
       </td>
-      <td style="text-align:left">accepts ONLY state of aggregate function calculated using -State combinator</td>
+      <td style="text-align:left">ONLY accepts the state of same aggregate function calculated using -State
+        combinator</td>
     </tr>
     <tr>
       <td style="text-align:left">storing</td>
