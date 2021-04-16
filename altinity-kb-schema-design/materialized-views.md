@@ -4,7 +4,7 @@
 MATERIALIZED VIEWs in ClickHouse behave like BEFORE INSERT TRIGGER to the left-most table listed in its SELECT statement.
 {% endhint %}
 
-### **B**est practices
+## **B**est practices
 
 #### **1. Use MATERIALIZED VIEW with TO syntax \(explicit storage table\)**
 
@@ -39,19 +39,19 @@ INSERT INTO target AS SELECT ... FROM source WHERE cond < ...
 
 This way you have full control backfilling process \(you can backfill in smaller parts to avoid timeouts, do some cross-checks / integrity-checks, change some settings, etc.\)
 
-### FAQ
+## FAQ
 
-#### Q. Can I attach MATERIALIZED VIEW to the VIEW, or engine=Merge, or engine=MySQL, etc.?
+### Q. Can I attach MATERIALIZED VIEW to the VIEW, or engine=Merge, or engine=MySQL, etc.?
 
 Since MATERIALIZED VIEWs are updated on every INSERT to the underlying table and you can not insert anything to the usual VIEW, the materialized view update will never be triggered.
 
 Normally you should build MATERIALIZED VIEWs on the top of the table with MergeTree engine family. 
 
-#### Q. I've created materialized error with some error, and since it's it reading from Kafka I don't understand where the error is. 
+### Q. I've created materialized error with some error, and since it's it reading from Kafka I don't understand where the error is. 
 
 Server logs will help you. Also, see the next question.
 
-#### **Q. How to debug misbehaving MATERIALIZED VIEW?**
+### **Q. How to debug misbehaving MATERIALIZED VIEW?**
 
 You can also attach the same MV to some dummy table with engine=Log \(or even Null\) and do some manual inserts there to debug the behavior. Similar way \(as the Materialized view often can contain some pieces of the business logic of the application\) you can create tests for your schema.
 
@@ -66,7 +66,7 @@ Possible test  scenario:
 3. check if inserts to src\_copy work properly, and mv is properly filled.   `INSERT INTO src_copy SELECT * FROM src LIMIT 100`
 4. cleanup the temp stuff and recreate MV on real table.
 
-#### Q. Can I use subqueries / joins in MV?
+### Q. Can I use subqueries / joins in MV?
 
 It is possible but it is **a very bad idea** for most of the use cases**.**
 
@@ -75,7 +75,7 @@ So it will most probably work not as you expect and will hit insert performance 
 The MV will be attached \(as AFTER INSERT TRIGGER\) to the left-most table in the MV SELECT statement, and it will 'see' only freshly inserted rows there. It will 'see' the whole set of rows of other tables, and the query will be executed EVERY TIME you do the insert to the left-most table. That will impact the performance speed there significantly.   
 If you really need to update the MV with the left-most table, not impacting the performance so much you can consider using dictionary / engine=Join / engine=Set for right-hand table / subqueries \(that way it will be always in memory, ready to use\).
 
-### How to alter MV implicit storage \(w/o TO syntax\)
+### Q. How to alter MV implicit storage \(w/o TO syntax\)
 
 1\) take the existing MV definition
 
@@ -128,4 +128,9 @@ See also:
 
 * [https://github.com/ClickHouse/ClickHouse/issues/1226](https://github.com/ClickHouse/ClickHouse/issues/1226)
 * [https://github.com/ClickHouse/ClickHouse/pull/7533](https://github.com/ClickHouse/ClickHouse/pull/7533)
+
+## Presentation:
+
+* [https://youtu.be/ckChUkC3Pns?t=9353](https://youtu.be/ckChUkC3Pns?t=9353)
+* [https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup47/materialized\_views.pdf](https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup47/materialized_views.pdf)
 
