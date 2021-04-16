@@ -1,7 +1,7 @@
 # CatBoost / MindsDB /  Fast.ai
 
 {% hint style="info" %}
-Article is based on a feedback provided by one of Altinity clients.
+Article is based on feedback provided by one of Altinity clients.
 {% endhint %}
 
 CatBoost:
