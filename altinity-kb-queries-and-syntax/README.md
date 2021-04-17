@@ -5,7 +5,7 @@
 * [ANSI SQL mode](ansi-sql-mode.md)
 * [Coming soon on ClickHouse: Window functions](altinity-kb-coming-soon-on-clickhouse-window-functions.md)
 * [Data types on disk and in RAM](data-types-on-disk-and-in-ram.md)
-* [External dictionaries](altinity-kb-external-dictionaries/)
+* [External dictionaries]()
 * [FINAL clause speed](altinity-kb-final-clause-speed.md)
 * [Join with Calendar using Arrays](join-with-calendar-using-arrays.md)
 * [KILL QUERY](altinity-kb-kill-query.md)

@@ -17,8 +17,6 @@
   * [ANSI SQL mode](altinity-kb-queries-and-syntax/ansi-sql-mode.md)
   * [Coming soon on ClickHouse: Window functions](altinity-kb-queries-and-syntax/altinity-kb-coming-soon-on-clickhouse-window-functions.md)
   * [Data types on disk and in RAM](altinity-kb-queries-and-syntax/data-types-on-disk-and-in-ram.md)
-  * [External dictionaries](altinity-kb-queries-and-syntax/altinity-kb-external-dictionaries/README.md)
-    * [SPARSE\_HASHED VS HASHED](altinity-kb-queries-and-syntax/altinity-kb-external-dictionaries/altinity-kb-sparse_hashed-vs-hashed.md)
   * [FINAL clause speed](altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed.md)
   * [Join with Calendar using Arrays](altinity-kb-queries-and-syntax/join-with-calendar-using-arrays.md)
   * [KILL QUERY](altinity-kb-queries-and-syntax/altinity-kb-kill-query.md)
@@ -92,6 +90,8 @@
   * [clickhouse-client](altinity-kb-interfaces/altinity-kb-clickhouse-client.md)
   * [JSONAsString and Mat. View as JSON parser](altinity-kb-interfaces/altinity-kb-jsonasstring-and-mat.-view-as-json-parser.md)
 * [Dictionaries](altinity-kb-dictionaries/README.md)
+  * [Partial updates](altinity-kb-dictionaries/partial-updates.md)
   * [range\_hashed example - open intervals](altinity-kb-dictionaries/altinity-kb-range_hashed-example-open-intervals.md)
+  * [SPARSE\_HASHED VS HASHED](altinity-kb-dictionaries/altinity-kb-sparse_hashed-vs-hashed.md)
 * [Report an Issue](report-an-issue.md)
 
