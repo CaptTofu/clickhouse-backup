@@ -1,7 +1,5 @@
 # Codecs speed
 
-
-
 ```sql
 create table test_codec_speed engine=MergeTree
 ORDER BY tuple()
