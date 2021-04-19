@@ -65,8 +65,6 @@ See also
 
 [https://help.aiven.io/en/articles/489572-getting-started-with-aiven-kafka](https://help.aiven.io/en/articles/489572-getting-started-with-aiven-kafka)
 
-12:06
-
 [https://stackoverflow.com/questions/991758/how-to-get-pem-file-from-key-and-crt-files](https://stackoverflow.com/questions/991758/how-to-get-pem-file-from-key-and-crt-files)
 
 ### Azure Event Hub <a id="Adjustinglibrdkafkasettings-AzureEventHub"></a>
@@ -86,6 +84,10 @@ See [https://github.com/ClickHouse/ClickHouse/issues/12609](https://github.com/C
     <sasl_kerberos_principal>kafkauser/kafkahost@EXAMPLE.COM</sasl_kerberos_principal>
   </kafka>
 ```
+
+### confluent cloud
+
+[https://docs.confluent.io/cloud/current/client-apps/config-client.html](https://docs.confluent.io/cloud/current/client-apps/config-client.html)
 
 © 2021 Altinity Inc. All rights reserved.
 
