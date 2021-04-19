@@ -1,5 +1,12 @@
 # Codecs on array columns
 
+
+
+{% hint style="info" %}
+Supported since 20.10 \(PR [\#15089](https://github.com/ClickHouse/ClickHouse/pull/15089)\). On older versions you will get exception:  
+`DB::Exception: Codec Delta is not applicable for Array(UInt64) because the data type is not of fixed size.`
+{% endhint %}
+
 ```sql
 DROP TABLE IF EXISTS array_codec_test SYNC
 
@@ -67,6 +74,4 @@ is_in_sampling_key:      0
 compression_codec:       CODEC(Delta(8), LZ4)
 */
 ```
-
-Possible since 20.10. See [https://github.com/ClickHouse/ClickHouse/pull/15089](https://github.com/ClickHouse/ClickHouse/pull/15089) 
 
