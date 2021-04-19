@@ -1,7 +1,5 @@
 # Codecs on array columns
 
-
-
 ```sql
 DROP TABLE IF EXISTS array_codec_test SYNC
 
