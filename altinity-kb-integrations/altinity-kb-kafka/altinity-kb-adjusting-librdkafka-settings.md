@@ -100,14 +100,32 @@ See [https://github.com/ClickHouse/ClickHouse/issues/12609](https://github.com/C
         <sasl_mechanism>PLAIN</sasl_mechanism>
         <sasl_username>username</sasl_username>
         <sasl_password>password</sasl_password>
+        <ssl_ca_location>probe</ssl_ca_location>
+        <!-- 
+          <ssl_ca_location>/path/to/cert.pem</ssl_ca_location>         
+        --> 
         </kafka>
     </yandex>
 ```
 
 [https://docs.confluent.io/cloud/current/client-apps/config-client.html](https://docs.confluent.io/cloud/current/client-apps/config-client.html)
 
+## How to test connection settings
+
+Use kafkacat utility - it internally uses same library to access Kafla as clickhouse itself and allows easily to test different settings   
 
 
+```text
+kafkacat -b my_broker:9092 -C -o -10 -t my_topic \
+   -X security.protocol=SASL_SSL  \
+   -X sasl.mechanisms=PLAIN \
+   -X sasl.username=uerName \
+   -X sasl.password=Password 
+   
+```
+
+  
+  
 
 
 © 2021 Altinity Inc. All rights reserved.
