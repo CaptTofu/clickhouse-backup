@@ -12,6 +12,10 @@ Some random example:
     <heartbeat_interval_ms>10000</heartbeat_interval_ms>
     <reconnect_backoff_ms>5000</reconnect_backoff_ms>
     <reconnect_backoff_max_ms>60000</reconnect_backoff_max_ms>
+    <request_timeout_ms>20000</request_timeout_ms>
+    <retry_backoff_ms>500</retry_backoff_ms>
+    <message_max_bytes>20971520</message_max_bytes>
+    <debug>all</debug><!-- only to get the errors -->
     <security_protocol>SSL</security_protocol>
     <ssl_ca_location>/etc/clickhouse-server/ssl/kafka-ca-qa.crt</ssl_ca_location>
     <ssl_certificate_location>/etc/clickhouse-server/ssl/client_clickhouse_client.pem</ssl_certificate_location>
@@ -87,7 +91,24 @@ See [https://github.com/ClickHouse/ClickHouse/issues/12609](https://github.com/C
 
 ### confluent cloud
 
+```text
+    <yandex>
+        <kafka>
+        <auto_offset_reset>smallest</auto_offset_reset>
+        <security_protocol>SASL_SSL</security_protocol>
+        <ssl_endpoint_identification_algorithm>https</ssl_endpoint_identification_algorithm>
+        <sasl_mechanism>PLAIN</sasl_mechanism>
+        <sasl_username>username</sasl_username>
+        <sasl_password>password</sasl_password>
+        </kafka>
+    </yandex>
+```
+
 [https://docs.confluent.io/cloud/current/client-apps/config-client.html](https://docs.confluent.io/cloud/current/client-apps/config-client.html)
+
+
+
+
 
 © 2021 Altinity Inc. All rights reserved.
 
