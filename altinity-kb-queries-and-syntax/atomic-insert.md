@@ -7,5 +7,7 @@ Insert would be atomic only if those conditions met:
 * Table doesn't have MV \(there is no atomicity Table &lt;&gt; MV\)
 * For TSV, TKSV, CSV, and JSONEachRow formats, setting `input_format_parallel_parsing=0` is set.
 
-[https://github.com/ClickHouse/ClickHouse/issues/9195\#issuecomment-587500824](https://github.com/ClickHouse/ClickHouse/issues/9195#issuecomment-587500824)
+{% embed url="https://github.com/ClickHouse/ClickHouse/issues/9195\#issuecomment-587500824" %}
+
+© 2021 Altinity Inc. All rights reserved.
 
