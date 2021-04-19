@@ -15,6 +15,7 @@
   * [Simple aggregate functions & combinators](altinity-kb-queries-and-syntax/simplestateif-or-ifstate-for-simple-aggregate-functions.md)
   * [ALTER MODIFY COLUMN is stuck, the column is inaccessible.](altinity-kb-queries-and-syntax/altinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible..md)
   * [ANSI SQL mode](altinity-kb-queries-and-syntax/ansi-sql-mode.md)
+  * [Atomic insert](altinity-kb-queries-and-syntax/atomic-insert.md)
   * [Coming soon on ClickHouse: Window functions](altinity-kb-queries-and-syntax/altinity-kb-coming-soon-on-clickhouse-window-functions.md)
   * [Data types on disk and in RAM](altinity-kb-queries-and-syntax/data-types-on-disk-and-in-ram.md)
   * [FINAL clause speed](altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed.md)
