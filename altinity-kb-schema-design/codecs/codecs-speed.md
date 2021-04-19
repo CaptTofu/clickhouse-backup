@@ -2,7 +2,7 @@
 
 
 
-```text
+```sql
 create table test_codec_speed engine=MergeTree
 ORDER BY tuple()
 as select cast(now() + rand()%2000 + number, 'DateTime') as x from numbers(1000000000);
