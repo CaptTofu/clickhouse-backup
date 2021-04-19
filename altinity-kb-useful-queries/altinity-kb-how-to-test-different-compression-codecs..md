@@ -1,4 +1,4 @@
-# How to test different compression codecs
+# How to test different compression codecs.
 
 Create test\_table based on the source table.
 
