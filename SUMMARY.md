@@ -78,7 +78,7 @@
   * [Can detached parts be dropped?](altinity-kb-useful-queries/detached-parts.md)
   * [Database Size - Table - Column size](altinity-kb-useful-queries/altinity-kb-database-size-table-column-size.md)
   * [Datasets](altinity-kb-useful-queries/altinity-kb-datasets.md)
-  * [How to test different compression codecs.](altinity-kb-useful-queries/altinity-kb-how-to-test-different-compression-codecs..md)
+  * [How to test different compression codecs](altinity-kb-useful-queries/altinity-kb-how-to-test-different-compression-codecs..md)
   * [Number of active parts in a partition](altinity-kb-useful-queries/altinity-kb-number-of-active-parts-in-a-partition.md)
 * [Schema design](altinity-kb-schema-design/README.md)
   * [Codecs](altinity-kb-schema-design/codecs/README.md)
