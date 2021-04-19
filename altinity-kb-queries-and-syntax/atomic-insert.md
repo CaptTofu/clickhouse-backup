@@ -1,6 +1,6 @@
 # Atomic insert
 
-Insert would be atomic only if those conditions match:
+Insert would be atomic only if those conditions met:
 
 * Insert data only in single partition.
 * Numbers of rows is less than `max_insert_block_size`.
