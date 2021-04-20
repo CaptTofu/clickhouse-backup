@@ -40,9 +40,9 @@ P.S. Actually you can create replication without Zookeeper and ReplicatedMergeTr
 
 {% page-ref page="altinity-kb-embeddedrocksdb-and-dictionary.md" %}
 
-{% page-ref page="altinity-kb-nulls-in-order-by.md" %}
+{% page-ref page="mergetree-table-engine-family/altinity-kb-nulls-in-order-by.md" %}
 
-{% page-ref page="replacingmergetree/altinity-kb-replacingmergetree-does-not-collapse-duplicates.md" %}
+{% page-ref page="mergetree-table-engine-family/replacingmergetree/altinity-kb-replacingmergetree-does-not-collapse-duplicates.md" %}
 
 Based on my original answer on github: [https://github.com/ClickHouse/ClickHouse/issues/2161](https://github.com/ClickHouse/ClickHouse/issues/2161)
 
