@@ -2,7 +2,7 @@
 
 ### `migrate`
 
-`migrate` is a simple schema migration tool written in golang. No external dependencies are required \(like interpreter, jre\), only one platform-specific executable. P [golang-migrate/migrate](https://github.com/golang-migrate/migrate)
+`migrate` is a simple schema migration tool written in golang. No external dependencies are required \(like interpreter, jre\), only one platform-specific executable. [golang-migrate/migrate](https://github.com/golang-migrate/migrate)
 
 `migrate` supports several databases, including ClickHouse \(support was introduced by [@kshvakov](https://github.com/kshvakov)\).
 
@@ -54,6 +54,7 @@ echo 'DROP TABLE test;' > migrations/000001_my_database_init.down.sql
 | `password` | The user's password |
 | `host` | The host to connect to. |
 | `port` | The port to bind to. |
+| `secure` | to use a secure connection \(for self-signed also add `skip_verify=1`\) |
 
 #### Replicated / Distributed / Cluster environments.
 
