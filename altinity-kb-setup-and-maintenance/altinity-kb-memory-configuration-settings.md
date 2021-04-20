@@ -18,5 +18,9 @@ By default it 90% of the physical RAM of the server.
 
 You can decrease that in some scenarios \(like you need to leave more free RAM for page cache or to some other software\).
 
+### Mark cache 
+
+[https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup39/mark-cache.pdf](https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup39/mark-cache.pdf)
+
 © 2021 Altinity Inc. All rights reserved.
 
