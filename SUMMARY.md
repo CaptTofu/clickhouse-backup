@@ -13,6 +13,7 @@
     * [Implementation details](engines/altinity-kb-atomic-database-engine/altinity-kb-implementation-details.md)
   * [EmbeddedRocksDB & dictionary](engines/altinity-kb-embeddedrocksdb-and-dictionary.md)
 * [Queries & Syntax](altinity-kb-queries-and-syntax/README.md)
+  * [Machine learning in ClickHouse](altinity-kb-queries-and-syntax/machine-learning-in-clickhouse.md)
   * [-State & -Merge combinators](altinity-kb-queries-and-syntax/state-and-merge-combinators.md)
   * [Simple aggregate functions & combinators](altinity-kb-queries-and-syntax/simplestateif-or-ifstate-for-simple-aggregate-functions.md)
   * [ALTER MODIFY COLUMN is stuck, the column is inaccessible.](altinity-kb-queries-and-syntax/altinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible..md)

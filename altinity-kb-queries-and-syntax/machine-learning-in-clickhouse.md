@@ -1,0 +1,8 @@
+# Machine learning in ClickHouse
+
+{% embed url="https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup31/ml.pdf" %}
+
+{% page-ref page="../altinity-kb-integrations/catboost-mindsdb-fast.ai.md" %}
+
+
+
