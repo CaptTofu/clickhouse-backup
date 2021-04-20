@@ -76,3 +76,21 @@ If you need to use `migrate` in some multiserver environment \(replicated / clus
 migrate -database 'clickhouse://localhost:9000' -path ./migrations force 123456 # force version 123456
 ```
 
+
+
+#### Know issues:
+
+could not load time location: unknown time zone Europe/Moscow in line 0:  
+  
+It's happens due of missing tzdata package in migrate/migrate docker image of golang-migrate.  
+There is 2 possible solutions: 
+
+1. You can build your own golang-migrate image from official with tzdata package.
+2. If you using it as part of your CI you can add installing tzdata package as one of step in ci before using golang-migrate.
+
+Related GitHub issues:  
+[https://github.com/golang-migrate/migrate/issues/494](https://github.com/golang-migrate/migrate/issues/494)  
+[https://github.com/golang-migrate/migrate/issues/201](https://github.com/golang-migrate/migrate/issues/201)  
+  
+
+
