@@ -31,7 +31,7 @@ Pros and cons:
 + specialized and well adjusted datatypes for every metric.  
 + good for dense recording \(each time point can have almost 100% of all the possible metrics\)  
 -  adding new metric = changing the schema \(adding new column\). not suitable when set of metric changes dynamically  
--  not applicable when there are too many metrics \(when you have more that 100-200\)  
+-  not applicable when there are too many metrics \(when you have more than 100-200\)  
 -  when each timepoint have only small subset of metrics recorded - if will create a lot of sparse filled columns.  
 -  you need to store 'lack of value' somehow \(NULLs or default values\)  
 -  to read full row - you need to read a lot of column files.
