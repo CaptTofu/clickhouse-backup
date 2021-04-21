@@ -3,7 +3,7 @@
 ## Sample data
 
 ```sql
-CREATE TABLE test_metrics (counter_id Int64, timestamp DateTime, metric UInt64) 
+create table test_metrics (counter_id Int64, timestamp DateTime, metric UInt64) 
 Engine=Log;
 
 INSERT INTO test_metrics SELECT number % 3,
@@ -14,10 +14,10 @@ INSERT INTO test_metrics SELECT number % 3,
     toDateTime('2021-01-03 00:00:00'), 1
 FROM numbers(20);
 
-SELECT counter_id, toDate(timestamp) dt, sum(metric) 
-FROM test_metrics 
-GROUP BY counter_id, dt 
-ORDER BY counter_id, dt;
+select counter_id, toDate(timestamp) dt, sum(metric) 
+from test_metrics 
+group by counter_id, dt 
+order by counter_id, dt;
 
 ┌─counter_id─┬─────────dt─┬─sum(metric)─┐
 │          0 │ 2021-01-01 │           7 │
@@ -46,16 +46,16 @@ SELECT arrayJoin(Calendar);
 ## Join with Calendar using arrayJoin
 
 ```sql
-SELECT counter_id, tuple.2 dt, sum(tuple.1) sum FROM
+select counter_id, tuple.2 dt, sum(tuple.1) sum FROM
   (
   WITH arrayMap(i -> (0, toDate('2021-01-01') + i), range(4)) AS Calendar
-   SELECT counter_id, arrayJoin(arrayConcat(Calendar, [(sum, dt)])) tuple
-   FROM
-             (SELECT counter_id, toDate(timestamp) dt, sum(metric) sum 
-              FROM test_metrics 
-              GROUP BY counter_id, dt)
-  ) GROUP BY counter_id, dt
-    ORDER BY counter_id, dt;
+   select counter_id, arrayJoin(arrayConcat(Calendar, [(sum, dt)])) tuple
+   from
+             (select counter_id, toDate(timestamp) dt, sum(metric) sum 
+              from test_metrics 
+              group by counter_id, dt)
+  ) group by counter_id, dt
+    order by counter_id, dt;
 
 ┌─counter_id─┬─────────dt─┬─sum─┐
 │          0 │ 2021-01-01 │   7 │
