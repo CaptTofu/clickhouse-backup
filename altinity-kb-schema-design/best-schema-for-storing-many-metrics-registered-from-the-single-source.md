@@ -104,7 +104,3 @@ Related links:
 
 {% embed url="https://eng.uber.com/logging/" caption="Uber article about how they adapted combined approach" %}
 
-Slides from Percona Live:  
-  
-Uber article about how they adapted combined approach: 
-
