@@ -1,4 +1,4 @@
-# Zookeeper cluster migration
+# ZooKeeper cluster migration
 
 Here is a plan for ZK 3.4.9 \(no dynamic reconfiguration\):
 

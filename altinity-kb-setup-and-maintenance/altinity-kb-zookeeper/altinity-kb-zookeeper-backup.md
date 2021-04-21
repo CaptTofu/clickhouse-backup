@@ -1,4 +1,4 @@
-# Zookeeper backup
+# ZooKeeper backup
 
 You may have a question: “Do I need to backup Zookeeper Database, because it’s pretty important for ClickHouse?”
 

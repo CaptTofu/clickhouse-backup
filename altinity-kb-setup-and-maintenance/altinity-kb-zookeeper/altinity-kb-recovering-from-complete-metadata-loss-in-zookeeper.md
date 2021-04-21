@@ -1,4 +1,4 @@
-# Recovering from complete metadata loss in zookeeper
+# Recovering from complete metadata loss in ZooKeeper
 
 ## Problem <a id="Recoveringfromcompletemetadatalossinzookeeper-Problem"></a>
 

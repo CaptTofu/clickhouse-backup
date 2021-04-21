@@ -1,4 +1,4 @@
-# Zookeeper
+# ZooKeeper
 
 Article on docs site:
 
