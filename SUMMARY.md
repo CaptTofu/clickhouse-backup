@@ -3,6 +3,7 @@
 * [Altinity Knowledge Base](README.md)
 * [Engines](engines/README.md)
   * [MergeTree table engine family](engines/mergetree-table-engine-family/README.md)
+    * [Skip index](engines/mergetree-table-engine-family/skip-index.md)
     * [index & column files](engines/mergetree-table-engine-family/index-and-column-files.md)
     * [Nulls in order by](engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by.md)
     * [ReplacingMergeTree](engines/mergetree-table-engine-family/replacingmergetree/README.md)
