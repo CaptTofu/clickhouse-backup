@@ -10,6 +10,14 @@ Sometimes your Distributed DDL queries are being stuck, and not executing on all
 SELECT * FROM system.clusters; -- check is_local column, it should have 1 for itself
 ```
 
+```bash
+getent hosts clickhouse.local.net # or other name which should be local
+hostname --fqdn
+
+cat /etc/hosts
+cat /etc/hostname
+```
+
 {% page-ref page="./" %}
 
 
