@@ -134,3 +134,9 @@ See also:
 * [https://youtu.be/ckChUkC3Pns?t=9353](https://youtu.be/ckChUkC3Pns?t=9353)
 * [https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup47/materialized\_views.pdf](https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup47/materialized_views.pdf)
 
+Webinar:
+
+{% embed url="https://altinity.com/webinarspage/2019/6/26/clickhouse-and-the-magic-of-materialized-views" %}
+
+
+
