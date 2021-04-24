@@ -7,7 +7,7 @@ Grafana dashboard \(internal endpoint\) [https://grafana.com/grafana/dashboards/
 Grafana dashboard \(clickhouse-operator\) [https://github.com/Altinity/clickhouse-operator/tree/master/grafana-dashboard](https://github.com/Altinity/clickhouse-operator/tree/master/grafana-dashboard)  
 Prometheus alerts \(clickhouse-operator\) [https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml](https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml)
 
-## Clickhouse exporter <a id="Monitoring-Clickhouseexporter"></a>
+## ClickHouse exporter <a id="Monitoring-Clickhouseexporter"></a>
 
 [https://github.com/ClickHouse/clickhouse\_exporter](https://github.com/ClickHouse/clickhouse_exporter)
 
@@ -15,7 +15,7 @@ Prometheus alerts \(clickhouse-operator\) [https://github.com/Altinity/clickhous
 
 [https://github.com/Altinity/clickhouse-zabbix-template](https://github.com/Altinity/clickhouse-zabbix-template)
 
-### Zookeeper Monitoring
+### ZooKeeper Monitoring
 
 {% page-ref page="altinity-kb-zookeeper/zookeeper-monitoring.md" %}
 
