@@ -70,7 +70,7 @@ CREATE TABLE schema_migrations (
 
 That allows storing version of schema locally.
 
-If you need to use `migrate` in some multiserver environment \(replicated / cluster\) you should create `schema_migrations` manually with the same structure and with the appropriate Engine \(Replicated / Distributed\), otherwise, other servers will not know the version of the DB schema. As an alternative you can force the current version number on another server manually, like that:
+If you need to use `migrate` in some multi server environment \(replicated / cluster\) you should create `schema_migrations` manually with the same structure and with the appropriate Engine \(Replicated / Distributed\), otherwise, other servers will not know the version of the DB schema. As an alternative you can force the current version number on another server manually, like that:
 
 ```bash
 migrate -database 'clickhouse://localhost:9000' -path ./migrations force 123456 # force version 123456
@@ -80,7 +80,7 @@ migrate -database 'clickhouse://localhost:9000' -path ./migrations force 123456 
 
 #### Know issues:
 
-could not load time location: unknown time zone Europe/Moscow in line 0:  
+`could not load time location: unknown time zone Europe/Moscow in line 0:`  
   
 It's happens due of missing tzdata package in migrate/migrate docker image of golang-migrate.  
 There is 2 possible solutions: 
@@ -90,7 +90,10 @@ There is 2 possible solutions:
 
 Related GitHub issues:  
 [https://github.com/golang-migrate/migrate/issues/494](https://github.com/golang-migrate/migrate/issues/494)  
-[https://github.com/golang-migrate/migrate/issues/201](https://github.com/golang-migrate/migrate/issues/201)  
-  
+[https://github.com/golang-migrate/migrate/issues/201](https://github.com/golang-migrate/migrate/issues/201)
 
+Using database name in `x-migrations-table`  
+  
+1. Creates table with `database.table`  
+2. When running migrations migrate actually uses database from query settings and encapsulate `database.table` as table name: ``other_database.`database.table```
 
