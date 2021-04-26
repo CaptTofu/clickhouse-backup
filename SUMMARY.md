@@ -103,6 +103,7 @@
   * [clickhouse-client](altinity-kb-interfaces/altinity-kb-clickhouse-client.md)
   * [JSONAsString and Mat. View as JSON parser](altinity-kb-interfaces/altinity-kb-jsonasstring-and-mat.-view-as-json-parser.md)
 * [Dictionaries](altinity-kb-dictionaries/README.md)
+  * [MySQL8 source for dictionaries](altinity-kb-dictionaries/mysql8-source-for-dictionaries.md)
   * [Partial updates](altinity-kb-dictionaries/partial-updates.md)
   * [range\_hashed example - open intervals](altinity-kb-dictionaries/altinity-kb-range_hashed-example-open-intervals.md)
   * [SPARSE\_HASHED VS HASHED](altinity-kb-dictionaries/altinity-kb-sparse_hashed-vs-hashed.md)
