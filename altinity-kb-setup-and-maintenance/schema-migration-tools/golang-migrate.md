@@ -76,7 +76,7 @@ If you need to use `migrate` in some multi server environment \(replicated / clu
 migrate -database 'clickhouse://localhost:9000' -path ./migrations force 123456 # force version 123456
 ```
 
-#### Know issues:
+#### Known issues:
 
 `could not load time location: unknown time zone Europe/Moscow in line 0:`  
   
