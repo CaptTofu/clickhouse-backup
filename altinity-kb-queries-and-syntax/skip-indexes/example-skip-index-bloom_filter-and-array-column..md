@@ -151,3 +151,7 @@ Also no improvement :\(
 
 Outcome: I would use TYPE bloom\_filter GRANULARITY 3.
 
+
+
+ 2021 Altinity Inc. All rights reserved.
+
