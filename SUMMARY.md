@@ -34,6 +34,8 @@
   * [PIVOT / UNPIVOT](altinity-kb-queries-and-syntax/pivot-unpivot.md)
   * [Possible deadlock avoided. Client should retry](altinity-kb-queries-and-syntax/altinity-kb-possible-deadlock-avoided.-client-should-retry.md)
   * [SAMPLE by](altinity-kb-queries-and-syntax/altinity-kb-sample-by.md)
+  * [Skip indexes](altinity-kb-queries-and-syntax/skip-indexes/README.md)
+    * [Example: skip index bloom\_filter & array column.](altinity-kb-queries-and-syntax/skip-indexes/example-skip-index-bloom_filter-and-array-column..md)
 * [Functions](altinity-kb-functions/README.md)
   * [sequenceMatch](altinity-kb-functions/altinity-kb-sequencematch.md)
 * [Integrations](altinity-kb-integrations/README.md)

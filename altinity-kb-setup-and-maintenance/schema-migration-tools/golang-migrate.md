@@ -14,8 +14,7 @@ To store information about migrations state `migrate` creates one additional tab
 
 ```bash
 # on Linux:
-#wget https://github.com/golang-migrate/migrate/releases/download/v3.2.0/migrate.linux-amd64.tar.gz
-wget https://github.com/golang-migrate/migrate/releases/download/v4.14.1/migrate.linux-amd64.tar.gz
+wget https://github.com/golang-migrate/migrate/releases/download/v3.2.0/migrate.linux-amd64.tar.gz
 tar -xzf migrate.linux-amd64.tar.gz 
 mkdir -p ~/bin
 mv migrate.linux-amd64 ~/bin/migrate
@@ -77,7 +76,7 @@ If you need to use `migrate` in some multi server environment \(replicated / clu
 migrate -database 'clickhouse://localhost:9000' -path ./migrations force 123456 # force version 123456
 ```
 
-#### Known issues:
+#### Know issues:
 
 `could not load time location: unknown time zone Europe/Moscow in line 0:`  
   
