@@ -14,7 +14,8 @@ To store information about migrations state `migrate` creates one additional tab
 
 ```bash
 # on Linux:
-wget https://github.com/golang-migrate/migrate/releases/download/v3.2.0/migrate.linux-amd64.tar.gz
+#wget https://github.com/golang-migrate/migrate/releases/download/v3.2.0/migrate.linux-amd64.tar.gz
+wget https://github.com/golang-migrate/migrate/releases/download/v4.14.1/migrate.linux-amd64.tar.gz
 tar -xzf migrate.linux-amd64.tar.gz 
 mkdir -p ~/bin
 mv migrate.linux-amd64 ~/bin/migrate
