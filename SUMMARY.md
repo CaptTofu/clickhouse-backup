@@ -99,6 +99,7 @@
     * [Codecs on array columns](altinity-kb-schema-design/codecs/codecs-on-array-columns.md)
   * [Best schema for storing many metrics registered from the single source](altinity-kb-schema-design/best-schema-for-storing-many-metrics-registered-from-the-single-source.md)
   * [MATERIALIZED VIEWS](altinity-kb-schema-design/materialized-views.md)
+  * [How  to store IPs](altinity-kb-schema-design/how-to-store-ips.md)
   * [Dictionaries vs LowCardinality](altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality.md)
 * [Kubernetes](altinity-kb-kubernetes/README.md)
   * [Possible issues with running ClickHouse in k8s](altinity-kb-kubernetes/altinity-kb-possible-issues-with-running-clickhouse-in-k8s.md)

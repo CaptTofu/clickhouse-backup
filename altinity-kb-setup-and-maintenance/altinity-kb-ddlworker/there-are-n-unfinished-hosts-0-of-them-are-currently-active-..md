@@ -61,7 +61,7 @@ SELECT query FROM system.query_log WHERE query LIKE '%ddl_entry%' AND type = 2 O
 grep -C 40 "ddl\_entry" /var/log/clickhouse-server/clickhouse-server*.log
 ```
 
-#### Issues that can prevent the task execution:
+#### Issues which can prevent task from execution:
 
 Obsolete replicas left in zookeeper.
 
