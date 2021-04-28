@@ -104,3 +104,7 @@ Related links:
 
 {% embed url="https://eng.uber.com/logging/" caption="Uber article about how they adapted combined approach" %}
 
+{% embed url="https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup40/uber.pdf" caption="Slides for Uber log storage approach" %}
+
+
+
