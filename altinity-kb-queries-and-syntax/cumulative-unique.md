@@ -107,6 +107,7 @@ FROM
     GROUP BY ts
     ORDER BY ts ASC
 )
+ORDER BY ts ASC
 
 ┌──────────────────ts─┬─uniq─┐
 │ 2021-04-29 00:00:00 │    2 │
