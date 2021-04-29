@@ -14,11 +14,11 @@ What we can do to avoid this problem during an upgrade:
 
 1\) Drop empty partitions before upgrading to decrease the number of empty parts in the system.
 
-```text
-select concat('alter table ',database, '.', table, ' drop partition id ''', partition_id, ''';')
-from system.parts where active 
-group by database, table, partition_id
-having count() = countIf(rows=0)
+```sql
+SELECT concat('alter table ',database, '.', table, ' drop partition id ''', partition_id, ''';')
+FROM system.parts WHERE active 
+GROUP BY database, table, partition_id
+HAVING count() = countIf(rows=0)
 ```
 
 2\) Upgrade/restart one replica \(in a shard\) at a time.  
