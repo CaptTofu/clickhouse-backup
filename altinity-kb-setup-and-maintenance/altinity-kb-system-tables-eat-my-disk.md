@@ -57,7 +57,7 @@ $ cat /etc/clickhouse-server/config.d/query_log_ttl.xml
         <table>query_log</table>
         <engine>ENGINE = MergeTree PARTITION BY (event_date) 
                 ORDER BY (event_time) 
-                TTL event_date + INTERVAL 14 DAY DELETE
+                TTL  event_date + 14 day DELETE
                 SETTINGS ttl_only_drop_parts=1
         </engine>
         <flush_interval_milliseconds>7500</flush_interval_milliseconds>
