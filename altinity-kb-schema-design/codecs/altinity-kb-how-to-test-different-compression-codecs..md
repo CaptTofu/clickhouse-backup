@@ -1,5 +1,7 @@
 # How to test different compression codecs
 
+## Example
+
 Create test\_table based on the source table.
 
 ```sql
@@ -40,7 +42,7 @@ And it’s also possible to kill mutation if there are some problems with it.
 KILL MUTATION WHERE ...
 ```
 
-Useful queries:
+## Useful queries
 
 ```sql
 SELECT
