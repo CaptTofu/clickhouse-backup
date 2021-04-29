@@ -50,7 +50,6 @@ SELECT * FROM system.zookeeper WHERE path = '/clickhouse/task_queue/ddl/';
 SELECT * FROM system.zookeeper WHERE path = '/clickhouse/task_queue/ddl/query-0000001000/';
 SELECT * FROM system.zookeeper WHERE path = '/clickhouse/task_queue/ddl/' AND name = 'query-0000001000';
 
-
 -- How many nodes executed this task
 SELECT name, numChildren as success_nodes FROM system.zookeeper WHERE path = '/clickhouse/task_queue/ddl/query-0000001000/' AND name = 'finished';
 
