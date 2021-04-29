@@ -20,7 +20,11 @@ cat /etc/hostname
 
 {% page-ref page="./" %}
 
+#### Debian / Ubuntu
 
+There is an issue in Debian based images, when hostname being mapped to 127.0.1.1 address which doesn't literally match network interface and clickhouse fails to detect this address as local.
+
+{% embed url="https://github.com/ClickHouse/ClickHouse/issues/23504" %}
 
 #### Previous task is being executed and taking some time.
 
