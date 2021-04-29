@@ -19,24 +19,20 @@ FROM numbers(15);
 ## Using arrays
 
 ```sql
+WITH
+    groupArray(_ts) AS ts_arr,
+    groupArray(state) AS state_arr
 SELECT
-    ts,
+    arrayJoin(ts_arr) AS ts,
     arrayReduce('uniqExactMerge', arrayFilter((x, y) -> (y <= ts), state_arr, ts_arr)) AS uniq
 FROM
 (
     SELECT
-        groupArray(ts) AS ts_arr,
-        groupArray(state) AS state_arr
-    FROM
-    (
-        SELECT
-            toStartOfDay(ts) AS ts,
-            uniqExactState(user_id) AS state
-        FROM events
-        GROUP BY ts
-    )
+        toStartOfDay(ts) AS _ts,
+        uniqExactState(user_id) AS state
+    FROM events
+    GROUP BY _ts
 )
-ARRAY JOIN ts_arr AS ts
 ORDER BY ts ASC
 
 ┌──────────────────ts─┬─uniq─┐
