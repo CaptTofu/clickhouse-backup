@@ -91,9 +91,7 @@ For that particular case: usually you need only about 20% of metrics 80% of the 
 
 With that approach you can have as many metrics as you need and they can be very dynamic. At the same time the most used metrics are stored in special, fine-tuned columns.
 
-At any time you can decide to move one more metric to a separate column ALTER TABLE ... add column metricX Float64 MATERIALIZED metrics.value\[indexOf\(metrics.names,'metricX'\)\];  
-
-
+At any time you can decide to move one more metric to a separate column `ALTER TABLE ... ADD COLUMN metricX Float64 MATERIALIZED metrics.value[indexOf(metrics.names,'metricX')];`  
 
 
 Related links:
