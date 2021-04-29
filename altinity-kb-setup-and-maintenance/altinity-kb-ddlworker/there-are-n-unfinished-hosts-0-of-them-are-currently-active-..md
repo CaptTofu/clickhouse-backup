@@ -1,6 +1,6 @@
 # There are N unfinished hosts \(0 of them are currently active\).
 
-Sometimes your Distributed DDL queries are being stuck, and not executing on all or subset of nodes, there is a lot of possible reasons for that kind of behavior, so it's would take some time and effort to investigation.
+Sometimes your Distributed DDL queries are being stuck, and not executing on all or subset of nodes, there are a lot of possible reasons for that kind of behavior, so it would take some time and effort to investigate.
 
 #### Possible reasons:
 
