@@ -40,7 +40,7 @@ In that case, you can just wait completion of previous task.
 
 #### Previous task is stuck because of some error.
 
-In that case, the first step is understand which exact task is stuck and why. There is some queries which can help with that.
+In that case, the first step is to understand which exact task is stuck and why. There are some queries which can help with that.
 
 ```sql
 -- list of all distributed ddl queries, path can be different in your installation
