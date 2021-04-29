@@ -1,4 +1,4 @@
-# Cumulative unique
+# Cumulative Anything
 
 ## Sample data
 
