@@ -113,7 +113,7 @@ where value = 666 format Null;
      
 ```
 
-### Not Sampling-freandly table
+### Not sampling-freandly table
 
 ```sql
 CREATE TABLE table_one
