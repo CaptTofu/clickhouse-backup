@@ -35,7 +35,7 @@ from numbers(10000000000);
 
 I had to reduced the granularity of the `timestamp` column to one hour `toStartOfHour(toDateTime(timestamp))` otherwise sampling will not work.
 
-### Test that sampling is working
+#### Test that sampling is working:
 
 ```sql
 -- Q1. No where filters. 
@@ -140,7 +140,7 @@ from numbers(10000000000);
 
 All is the same BUT granularity of `timestamp` column is not reduced.
 
-#### Test that sampling is not working.
+#### Test that sampling is not working:
 
 ```sql
 -- Q1. No where filters. 
