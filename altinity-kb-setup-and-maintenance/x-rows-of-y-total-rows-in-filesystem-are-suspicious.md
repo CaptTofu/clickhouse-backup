@@ -1,4 +1,4 @@
-# X rows of Y total rows in filesystem are suspicious.
+# X rows of Y total rows in filesystem are suspicious
 
 {% hint style="danger" %}
 The local set of parts of table doesn't look like the set of parts in ZooKeeper. 100.00 rows of 150.00 total rows in filesystem are suspicious. There are 1 unexpected parts with 100 rows \(1 of them is not just-written with 100 rows\), 0 missing parts \(with 0 blocks\).: Cannot attach table.
