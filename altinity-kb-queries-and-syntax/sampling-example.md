@@ -6,7 +6,7 @@ description: Clickhouse table sampling example
 
 The most important idea about sampling that the primary index must have low cardinality -- in this case sampling will work.
 
-And sampling requires values which occupy all range of sampled column type. I cannot use `transaction_id` directly because I am not sure that min value of `transaction_id` = 0 and max value = MAX\_UINT64. So I used `cityHash64(transaction_id)`. Otherwise the results of sampled queries will be skewed. Because CH simply requests `where sample_col >= 0 and sample_col <= MAX_UINT64/2` in case of `sample 0.5`.
+And sampling requires `sample by expression` which occupies whole range of sampled column type. I cannot use `transaction_id` directly because I am not sure that min value of `transaction_id` = 0 and max value = MAX\_UINT64. So I used `cityHash64(transaction_id)`. Otherwise the results of sampled queries will be skewed. Because CH simply requests `where sample_col >= 0 and sample_col <= MAX_UINT64/2` in case of `sample 0.5`.
 
 ### Sampling-freandly table
 
