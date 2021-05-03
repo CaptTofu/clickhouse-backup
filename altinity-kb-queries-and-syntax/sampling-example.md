@@ -2,13 +2,15 @@
 description: Clickhouse table sampling example
 ---
 
-# Sampling example
+# Sampling Example
 
-The most important idea about sampling that the primary index must have low cardinality -- in this case sampling will work.
+The most important idea about sampling that the primary index must have **low cardinality**. The following example demonstrates how sampling can be setup correctly, and an example if it being set up incorrectly as a comparison.
 
-And sampling requires `sample by expression` which occupies whole range of sampled column type. I cannot use `transaction_id` directly because I am not sure that min value of `transaction_id` = 0 and max value = MAX\_UINT64. So I used `cityHash64(transaction_id)`. Otherwise the results of sampled queries will be skewed. Because CH simply requests `where sample_col >= 0 and sample_col <= MAX_UINT64/2` in case of `sample 0.5`.
+Sampling requires `sample by expression` which occupies whole range of sampled column types. In this example, I cannot use `transaction_id` because I am not sure that the min value of `transaction_id = 0` and `max value = MAX_UINT64`. Instead, I used `cityHash64(transaction_id)`. 
 
-### Sampling-freandly table
+If I used `transaction_id` without knowing that they matched the allowable ranges, the results of sampled queries would be skewed. For example, when using the case of `sample 0.5`,ClickHouse  requests `where sample_col >= 0 and sample_col <= MAX_UINT64/2`.
+
+### Sampling Friendly Table
 
 ```sql
 CREATE TABLE table_one
@@ -33,9 +35,11 @@ select 1602809234+intDiv(number,100000),
 from numbers(10000000000);
 ```
 
-I had to reduced the granularity of the `timestamp` column to one hour `toStartOfHour(toDateTime(timestamp))` otherwise sampling will not work.
+I reduced the granularity of the `timestamp` column to one hour with `toStartOfHour(toDateTime(timestamp))` , otherwise sampling will not work.
 
-#### Test that sampling is working:
+#### Verifying Sampling Works
+
+The following shows that sampling works with the table and parameters described above.  Notice the `Elapsed` time when invoking sampling:
 
 ```sql
 -- Q1. No where filters. 
@@ -113,7 +117,7 @@ where value = 666 format Null;
      
 ```
 
-### Not sampling-freandly table
+### Non-Sampling Friendly Table
 
 ```sql
 CREATE TABLE table_one
@@ -138,9 +142,11 @@ select 1602809234+intDiv(number,100000),
 from numbers(10000000000);
 ```
 
-All is the same BUT granularity of `timestamp` column is not reduced.
+This is the same as our other table, **BUT** granularity of `timestamp` column is not reduced.
 
-#### Test that sampling is not working:
+#### Verifying Sampling Does Not Work
+
+The following tests shows that sampling is **not** working because of the lack of `timestamp` granularity.  The `Elapsed` time is longer when sampling is used.
 
 ```sql
 -- Q1. No where filters. 
