@@ -1,6 +1,6 @@
 # assumeNotNull and friends
 
-assumeNotNull result is implementation specific:
+`assumeNotNull` result is implementation specific:
 
 ```sql
 WITH CAST(NULL, 'Nullable(UInt8)') AS column
@@ -23,8 +23,7 @@ SELECT
 └────────┴─────┘
 ```
 
-If it's possible to have Null values, it's better to use ifNull function instead.  
-
+If it's possible to have Null values, it's better to use `ifNull` function instead.
 
 ```sql
 SELECT count()
