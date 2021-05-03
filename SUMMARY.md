@@ -42,6 +42,7 @@
     * [Example: skip index bloom\_filter & array column.](altinity-kb-queries-and-syntax/skip-indexes/example-skip-index-bloom_filter-and-array-column..md)
   * [TTL GROUP BY Examples](altinity-kb-queries-and-syntax/ttl-group-by-examples.md)
 * [Functions](altinity-kb-functions/README.md)
+  * [assumeNotNull and friends](altinity-kb-functions/assumenotnull-and-friends.md)
   * [sequenceMatch](altinity-kb-functions/altinity-kb-sequencematch.md)
 * [Integrations](altinity-kb-integrations/README.md)
   * [CatBoost / MindsDB /  Fast.ai](altinity-kb-integrations/catboost-mindsdb-fast.ai.md)
