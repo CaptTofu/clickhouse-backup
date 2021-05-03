@@ -6,7 +6,16 @@ description: Clickhouse table sampling example
 
 The most important idea about sampling that the primary index must have **low cardinality**. The following example demonstrates how sampling can be setup correctly, and an example if it being set up incorrectly as a comparison.
 
-Sampling requires `sample by expression` .  This ensures a range of sampled column types fit within a specified range, which ensures the requirement of low cardinality. In this example, I cannot use `transaction_id` because I can not ensure that the min value of `transaction_id = 0` and `max value = MAX_UINT64`. Instead, I used `cityHash64(transaction_id)`to narrow the range within the minimum and maximum values.
+Sampling requires `sample by expression` .  This ensures a range of sampled column types fit within a specified range, which ensures the requirement of low cardinality. In this example, I cannot use `transaction_id` because I can not ensure that the min value of `transaction_id = 0` and `max value = MAX_UINT64`. Instead, I used `cityHash64(transaction_id)`to narrow the range within the minimum and maximum values.  
+
+For example if all values of `transaction_id` are from 0 to 10000 sampling will be inefficient.  But `cityHash64(transaction_id)` expands the range from 0 to 18446744073709551615:
+
+```sql
+SELECT cityHash64(10000)
+┌────cityHash64(10000)─┐
+│ 14845905981091347439 │
+└──────────────────────┘
+```
 
 If I used `transaction_id` without knowing that they matched the allowable ranges, the results of sampled queries would be skewed. For example, when using `sample 0.5`, ClickHouse  requests `where sample_col >= 0 and sample_col <= MAX_UINT64/2`.
 
