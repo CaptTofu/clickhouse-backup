@@ -2,7 +2,7 @@
 
 See  
 
-{% page-ref page="altinity-kb-how-to-test-different-compression-codecs..md" %}
+{% page-ref page="altinity-kb-how-to-test-different-compression-codecs.md" %}
 
 {% embed url="https://altinity.com/blog/2019/7/new-encodings-to-improve-clickhouse" %}
 
