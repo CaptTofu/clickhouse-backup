@@ -41,6 +41,7 @@
   * [Skip indexes](altinity-kb-queries-and-syntax/skip-indexes/README.md)
     * [Example: skip index bloom\_filter & array column.](altinity-kb-queries-and-syntax/skip-indexes/example-skip-index-bloom_filter-and-array-column..md)
   * [TTL GROUP BY Examples](altinity-kb-queries-and-syntax/ttl-group-by-examples.md)
+  * [TTL Recompress example](altinity-kb-queries-and-syntax/ttl-recompress-example.md)
 * [Functions](altinity-kb-functions/README.md)
   * [assumeNotNull and friends](altinity-kb-functions/assumenotnull-and-friends.md)
   * [sequenceMatch](altinity-kb-functions/altinity-kb-sequencematch.md)
