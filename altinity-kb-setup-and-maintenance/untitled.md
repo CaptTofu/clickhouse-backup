@@ -16,7 +16,7 @@ Example:
 
 ### What is Altinity Stable version?
 
-It is one of general / public version of ClickHouse which has passed some extra testings, the upgrade path and changelog was analyzed, known issues are documented, and at least few big companies use it on production. All those things take some time, so usually that means that Altinity Stable is always a  'behind' the main realeses.
+It is one of general / public version of ClickHouse which has passed some extra testings, the upgrade path and changelog was analyzed, known issues are documented, and at least few big companies use it on production. All those things take some time, so usually that means that Altinity Stable is always a  'behind' the main releses.
 
 Altinity version - is an option for conservative users, who prefer bit older but better known things.
 
@@ -24,17 +24,36 @@ Usually there is no reason to use version older than Altinity Stable. If you see
 
 Additionally for Altinity client we provide extra support for those version for a longer time \(and we also support newer versions\).
 
-### Which version to pick: best practices
+### Which version should I use?
 
 We recommend the following approach:
 
 1. When you start using ClickHouse and before you go on production - pick the latest stable version.
 2. If you already have ClickHouse running on production:
    1. Check all the new queries / schemas on the staging first, especially if some new ClickHouse features are used.
-   2. Check latest stable or test versions of ClickHouse on your staging environment regularly and pass the feedback to us or on the [official ClickHouse github](https://github.com/ClickHouse/ClickHouse).
-   3. Do minor \(bugfix\) upgrades regularly: monitor new maintenance releases of the feature release you use. 
-   4. When considering upgrade - if you go to Altinity Stable release - check [Altinity Stable release docs](https://docs.altinity.com/altinitystablerelease/), if you want to use newer release - or analyze changelog and known issues there. 
+   2. Do minor \(bugfix\) upgrades regularly: monitor new maintenance releases of the feature release you use. 
+   3. When considering upgrade - check [Altinity Stable release docs](https://docs.altinity.com/altinitystablerelease/), if you want to use newer release -  analyze changelog and known issues. 
+   4. Check latest stable or test versions of ClickHouse on your staging environment regularly and pass the feedback to us or on the [official ClickHouse github](https://github.com/ClickHouse/ClickHouse).
    5. Consider blue/green or canary upgrades. 
+
+## How do I upgrade?
+
+{% hint style="warning" %}
+Check upgrade / downgrade scenario on staging first.
+{% endhint %}
+
+1. check if you need to adjust some settings / to opt-out some new features you don't need \(maybe needed to to make the downgrade path possible, or to make it possible for 2 versions to work together\).
+2. [upgrade packages](https://docs.altinity.com/altinitystablerelease/stablequickstartguide/) on odd replicas
+3. \(if needed / depends on use case\) stop ingestion into odd replicas / remove them for load-balancer etc.
+4. restart clickhouse-server service on odd replicas.
+5. once odd replicas will go back online - repeat the same procedure on the even replicas.
+
+In some upgrade scenarios \(depending from which version to which you do upgrate\) when differerent replicas use different clickhouse versions you may see following issues:
+
+1. the replication don't work at all and delays grow.
+2. errors about 'checksum mismatch'  and traffic between replicase increase \(they need to resync merge results\).
+
+Both problems will go away once all replicas will be upgraded. 
 
 ## Bugs?.. 
 
