@@ -104,7 +104,7 @@ But some external tools - backup tools, things involving other kinds of direct m
           <br />b to a,</p>
         <p>a_old to b;</p>
         <p>Operation is not atomic, and
-          <br />can brake in the middle (while chances are low).</p>
+          <br />can break in the middle (while chances are low).</p>
       </td>
       <td style="text-align:left">
         <p></p>
