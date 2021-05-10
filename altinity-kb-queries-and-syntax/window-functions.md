@@ -1,4 +1,9 @@
-# Coming soon on ClickHouse: Window functions
+# Window functions
+
+
+
+  
+
 
 | Link | [blog.tinybird.co/2021/03/16/c…](https://blog.tinybird.co/2021/03/16/coming-soon-on-clickhouse-window-functions/) |
 | :--- | :--- |
@@ -11,6 +16,18 @@
 > An exploration on what's possible to do with the most recent experimental feature on ClickHouse - window functions, and an overview of other interesting feat...
 
 [**Open link**](https://blog.tinybird.co/2021/03/16/coming-soon-on-clickhouse-window-functions/)
+
+
+
+
+
+
+
+#### How Do I Simulate Window Functions Using Arrays on older versions of clickhouse? 
+
+1. Group with groupArray.
+2. Calculate the needed metrics.
+3. Ungroup back using arrayJoin.
 
 © 2021 Altinity Inc. All rights reserved.
 
