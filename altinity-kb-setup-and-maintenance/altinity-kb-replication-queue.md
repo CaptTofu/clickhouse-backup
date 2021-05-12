@@ -7,6 +7,7 @@ SELECT
     type,
     any(last_exception),
     any(postpone_reason),
+    min(create_time),
     max(last_attempt_time),
     max(last_postpone_time),
     max(num_postponed) AS max_postponed,
