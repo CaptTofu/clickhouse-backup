@@ -75,6 +75,7 @@
   * [memory configuration settings](altinity-kb-setup-and-maintenance/altinity-kb-memory-configuration-settings.md)
   * [Monitoring](altinity-kb-setup-and-maintenance/altinity-kb-monitoring.md)
   * [Moving table to another device.](altinity-kb-setup-and-maintenance/altinity-kb-moving-table-to-another-device..md)
+  * [SSL connection unexpectedly closed](altinity-kb-setup-and-maintenance/ssl-connection-unexpectedly-closed.md)
   * [Object consistency in a cluster](altinity-kb-setup-and-maintenance/altinity-kb-object-consistency-in-a-cluster.md)
   * [Replication queue](altinity-kb-setup-and-maintenance/altinity-kb-replication-queue.md)
   * [Settings to adjust](altinity-kb-setup-and-maintenance/altinity-kb-settings-to-adjust.md)
