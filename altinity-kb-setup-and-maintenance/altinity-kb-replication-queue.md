@@ -22,7 +22,7 @@ GROUP BY
     database,
     table,
     type
-order by count_all desc
+ORDER BY count_all DESC
 ```
 
 © 2021 Altinity Inc. All rights reserved.
