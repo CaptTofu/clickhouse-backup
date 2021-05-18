@@ -32,9 +32,9 @@ config.xml
 <yandex>
     <distributed_ddl>
         <path>/clickhouse/task_queue/ddl</path>
-        <max_tasks_in_queue>60</max_tasks_in_queue>
+        <max_tasks_in_queue>1000</max_tasks_in_queue>
         <task_max_lifetime>604800</task_max_lifetime>
-        <cleanup_delay_period>1000</cleanup_delay_period>
+        <cleanup_delay_period>60</cleanup_delay_period>
     </distributed_ddl>
 </yandex>
 ```
