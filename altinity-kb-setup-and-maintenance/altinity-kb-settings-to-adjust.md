@@ -42,7 +42,6 @@
            <database>system</database>
            <table>part_log</table>
            <flush_interval_milliseconds>7500</flush_interval_milliseconds>
-           <partition_by remove="1"/>
            <engine>
    ENGINE = MergeTree
    PARTITION BY toYYYYMM(event_date)
