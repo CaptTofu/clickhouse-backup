@@ -10,6 +10,8 @@ ClickHouse is currently at the design stage of creating some universal backup so
 3. rsync that directory to a backup location, then remove that subfolder from shadow.
    1. Cloud users are recommended to use [Rclone](https://rclone.org/).
 4. Always add the full contents of the metadata subfolder that contains the current DB schema and clickhouse configs to your backup.
-5. For a second replica, it’s enough to copy metadata and configuration. This implementation follows a similar approach by [clickhouse-backup](https://github.com/AlexAkulov/clickhouse-backup). We have not used this tool on production systems, and can make no recommendations for or against it. As of this time clickhouse-backup is not a complete backup solution, but it does simply some parts of the backup process.
-6. Don’t try to compress backups; the data is already compressed in ClickHouse.
+5. For a second replica, it’s enough to copy metadata and configuration.
+6. Data in clickhouse is already compressed with lz4, backup can be compressed bit better, but avoid using cpu-heavy compression algorythms like gzip, use something like zstd instead.
+
+The tool automating that process  [clickhouse-backup](https://github.com/AlexAkulov/clickhouse-backup).
 
