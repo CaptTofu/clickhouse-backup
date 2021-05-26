@@ -6,12 +6,12 @@
 
 The network used for your ClickHouse cluster should be a fast network, ideally 10 Gbit. ClickHouse nodes generate a lot of traffic along with the Zookeeper connections and inter-Zookeeper communications.
 
-Low latency is more important than bandwidth.
+For the zookeeper low latency is more important than bandwidth.
 
-Keep the replicas isolated on hardware level. This allows for cluster failover from possible outages.
+Keep the replicas isolated on the hardware level. This allows for cluster failover from possible outages.
 
-* For Physical Environments: Avoid placing 2 ClickHouse replicas to the same server rack. Ideally they should be on isolated network switches and an isolated power supply.
-* For Clouds Environments: Use different availability zones between the ClickHouse replicas when possible. \(but be aware of the interzone traffic costs\) 
+* For Physical Environments: Avoid placing 2 ClickHouse replicas on the same server rack. Ideally, they should be on isolated network switches and an isolated power supply.
+* For Clouds Environments: Use different availability zones between the ClickHouse replicas when possible \(but be aware of the interzone traffic costs\) 
 
 These considerations are the same as the Zookeeper nodes.
 

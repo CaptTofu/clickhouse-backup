@@ -1,5 +1,7 @@
 # Cluster Configuration Process
 
+So you set up 3 nodes with zookeeper \(zookeeper1, zookeeper2, zookeeper3 - [How to install zookeer?](https://docs.altinity.com/operationsguide/clickhouse-zookeeper/)\),  and  and 4 nodes with ClickHouse \(clickhouse-sh1r1,clickhouse-sh1r2,clickhouse-sh2r1,clickhouse-sh2r2 - [how to install ClickHouse?](https://docs.altinity.com/altinitystablerelease/stablequickstartguide/)\). Now we need to make them work together.
+
 Use ansible/puppet/salt or other systems to control the servers’ configurations.
 
 1. Configure ClickHouse access to Zookeeper by adding the file zookeeper.xml in /etc/clickhouse-server/config.d/ folder. This file must be placed on all ClickHouse servers.
@@ -25,117 +27,78 @@ Use ansible/puppet/salt or other systems to control the servers’ configuration
 
 1. On each server put the file macros.xml in `/etc/clickhouse-server/config.d/` folder.
 
-&lt;yandex&gt;
-
-    &lt;!--
-
+```markup
+<yandex>
+    <!--
         That macros are defined per server,
-
         and they can be used in DDL, to make the DB schema cluster/server neutral
+    -->
+    <macros>
+        <cluster>prod_cluster</cluster>
+        <shard>01</shard>
+        <replica>clickhouse-sh1r1</replica> <!-- better - use the same as hostname  -->
+    </macros>
+</yandex>
+```
 
-    --&gt;
+1. On each server place the file cluster.xml in /etc/clickhouse-server/config.d/ folder. Before 20.10  ClickHouse will use default user to connect to other nodes \(configurable, other users can be used\), since 20.10 we recommend to use passwordless intercluster authentication based on common secret \(HMAC auth\) 
 
-    &lt;macros&gt;
+```markup
+<yandex>
+    <remote_servers>
+        <prod_cluster> <!-- you need to give a some name for a cluster -->
 
-        &lt;cluster&gt;prod\_cluster&lt;/cluster&gt;
+            <!-- 
+                <secret>some_random_string, same on all cluster nodes, keep it safe</secret> 
+            -->
+            <shard>
+                <internal_replication>true</internal_replication>
+                <replica>
+                    <host>clickhouse-sh1r1</host>
+                    <port>9000</port>
+                </replica>
+                <replica>
+                    <host>clickhouse-sh1r2</host>
+                    <port>9000</port>
+                </replica>
+            </shard>
+            <shard>
+                <internal_replication>true</internal_replication>
+                <replica>
+                    <host>clickhouse-sh2r1</host>
+                    <port>9000</port>
+                </replica>
+                <replica>
+                    <host>clickhouse-sh2r2</host>
+                    <port>9000</port>
+                </replica>
+            </shard>
+        </prod_cluster>
+    </remote_servers>
+</yandex>
+```
 
-        &lt;shard&gt;01&lt;/shard&gt;
-
-        &lt;replica&gt;clickhouse-sh1r1&lt;/replica&gt; &lt;!-- better - use the same as hostname  --&gt;
-
-    &lt;/macros&gt;
-
-&lt;/yandex&gt;
-
-1. On each server place the file cluster.xml in /etc/clickhouse-server/config.d/ folder.
-
-&lt;yandex&gt;
-
-    &lt;remote\_servers&gt;
-
-        &lt;prod\_cluster&gt; &lt;!-- you need to give a some name for a cluster --&gt;
-
-            &lt;shard&gt;
-
-                &lt;internal\_replication&gt;true&lt;/internal\_replication&gt;
-
-                &lt;replica&gt;
-
-                    &lt;host&gt;clickhouse-sh1r1&lt;/host&gt;
-
-                    &lt;port&gt;9000&lt;/port&gt;
-
-                &lt;/replica&gt;
-
-                &lt;replica&gt;
-
-                    &lt;host&gt;clickhouse-sh1r2&lt;/host&gt;
-
-                    &lt;port&gt;9000&lt;/port&gt;
-
-                &lt;/replica&gt;
-
-            &lt;/shard&gt;
-
-            &lt;shard&gt;
-
-                &lt;internal\_replication&gt;true&lt;/internal\_replication&gt;
-
-                &lt;replica&gt;
-
-                    &lt;host&gt;clickhouse-sh2r1&lt;/host&gt;
-
-                    &lt;port&gt;9000&lt;/port&gt;
-
-                &lt;/replica&gt;
-
-                &lt;replica&gt;
-
-                    &lt;host&gt;clickhouse-sh2r2&lt;/host&gt;
-
-                    &lt;port&gt;9000&lt;/port&gt;
-
-                &lt;/replica&gt;
-
-            &lt;/shard&gt;
-
-            &lt;shard&gt;
-
-                &lt;internal\_replication&gt;true&lt;/internal\_replication&gt;
-
-                &lt;replica&gt;
-
-                    &lt;host&gt;clickhouse-sh3r1&lt;/host&gt;
-
-                    &lt;port&gt;9000&lt;/port&gt;
-
-                &lt;/replica&gt;
-
-                &lt;replica&gt;
-
-                    &lt;host&gt;clickhouse-sh3r2&lt;/host&gt;
-
-                    &lt;port&gt;9000&lt;/port&gt;
-
-                &lt;/replica&gt;
-
-            &lt;/shard&gt;
-
-        &lt;/prod\_cluster&gt;
-
-    &lt;/remote\_servers&gt;
-
-&lt;/yandex&gt;
-
-1. A good practice is to create 2 additional cluster configurations similar to prod\_cluster above with the following distinction: but listing all nodes nodes of single shard \(all are replicas\) and as nodes of 6 different shards \(no replicas\)
-   1. prod\_cluster\_replicated: All nodes are listed as replicas in a single shard.
-   2. prod\_cluster\_sharded: All nodes are listed as separate shards with no replicas.
+1. A good practice is to create 2 additional cluster configurations similar to prod\_cluster above with the following distinction: but listing all nodes of single shard \(all are replicas\) and as nodes of 6 different shards \(no replicas\)
+   1. all-replicated: All nodes are listed as replicas in a single shard.
+   2. all-sharded: All nodes are listed as separate shards with no replicas.
 
 Once this is complete, other queries that span nodes can be performed. For example:
 
-CREATE TABLE test\_table ON CLUSTER '{cluster}' \(id UInt8\)  Engine=ReplicatedMergeTree\('/clickhouse/tables/{database}/{shard}/{table}', '{replica}'\) ORDER BY \(id\);
+```sql
+CREATE TABLE test_table_local ON CLUSTER '{cluster}'
+(
+  id UInt8
+)
+Engine=ReplicatedMergeTree('/clickhouse/tables/{database}/{table}/{shard}', '{replica}')
+ORDER BY (id);
+```
 
 That will create a table on all servers in the cluster. You can insert data into this table and it will be replicated automatically to the other shards.To store the data or read the data from all shards at the same time, create a Distributed table that links to the replicatedMergeTree table.
+
+```sql
+CREATE TABLE test_table ON CLUSTER '{cluster}' 
+Engine=Distributed('{cluster}', 'default', '
+```
 
 #### **Hardening ClickHouse Security**
 
@@ -185,133 +148,67 @@ SELECT \* FROM system.zookeeper WHERE path='/ ...';
 The following are recommended Best Practices when it comes to setting up a ClickHouse Cluster with Zookeeper:
 
 1. Don’t edit/overwrite default configuration files. Sometimes a newer version of ClickHouse introduces some new settings or changes the defaults in config.xml and users.xml.
-   1. Set configurations via the extra files in conf.d directory. For example, to overwrite the interface save the file conf.d/listen.xml, with the following:
+   1. Set configurations via the extra files in conf.d directory. For example, to overwrite the interface save the file config.d/listen.xml, with the following:
 
-&lt;?xml version="1.0"?&gt;
-
-&lt;yandex&gt;
-
-    &lt;listen\_host replace="replace"&gt;::&lt;/listen\_host&gt;
-
-&lt;/yandex&gt;  
-
+```markup
+<?xml version="1.0"?>
+<yandex>
+    <listen_host replace="replace">::</listen_host>
+</yandex>
+```
 
 1. The same is true for users. For example, change the default profile by putting the file in users.d/profile\_default.xml:
 
-&lt;?xml version="1.0"?&gt;
+```markup
+<?xml version="1.0"?>
+<yandex>
+    <profiles>
+        <default replace="replace">
+            <max_memory_usage>15000000000</max_memory_usage>
+            <max_bytes_before_external_group_by>12000000000</max_bytes_before_external_group_by>
+            <max_bytes_before_external_sort>12000000000</max_bytes_before_external_sort>
+            <distributed_aggregation_memory_efficient>1</distributed_aggregation_memory_efficient>
+            <use_uncompressed_cache>0</use_uncompressed_cache>
+            <load_balancing>random</load_balancing>
+            <log_queries>1</log_queries>
+            <max_execution_time>600</max_execution_time>
+        </default>
+    </profiles>
+</yandex>
+```
 
-&lt;yandex&gt;
+1. Or you can create a user by putting a file users.d/user\_xxx.xml \(since 20.5 you can also use CREATE USER\)
 
-    &lt;profiles&gt;
-
-        &lt;default replace="replace"&gt;
-
-            &lt;max\_memory\_usage&gt;15000000000&lt;/max\_memory\_usage&gt;
-
-            &lt;max\_bytes\_before\_external\_group\_by&gt;12000000000&lt;/max\_bytes\_before\_external\_group\_by&gt;
-
-            &lt;max\_bytes\_before\_external\_sort&gt;12000000000&lt;/max\_bytes\_before\_external\_sort&gt;
-
-            &lt;distributed\_aggregation\_memory\_efficient&gt;1&lt;/distributed\_aggregation\_memory\_efficient&gt;
-
-            &lt;use\_uncompressed\_cache&gt;0&lt;/use\_uncompressed\_cache&gt;
-
-            &lt;load\_balancing&gt;random&lt;/load\_balancing&gt;
-
-            &lt;log\_queries&gt;1&lt;/log\_queries&gt;
-
-            &lt;max\_execution\_time&gt;600&lt;/max\_execution\_time&gt;
-
-        &lt;/default&gt;
-
-    &lt;/profiles&gt;
-
-&lt;/yandex&gt;
-
-1. Or you can create a user by putting a file users.d/user\_xxx.xml:
-
-&lt;?xml version="1.0"?&gt;
-
-&lt;yandex&gt;
-
-    &lt;users&gt;
-
-        &lt;xxx&gt;
-
-            &lt;!-- PASSWORD=$\(base64 &lt; /dev/urandom \| head -c8\); echo "$PASSWORD"; echo -n "$PASSWORD" \| sha256sum \| tr -d '-' --&gt;
-
-            &lt;password\_sha256\_hex&gt;...&lt;/password\_sha256\_hex&gt;
-
-            &lt;networks incl="networks" /&gt;
-
-            &lt;profile&gt;readonly&lt;/profile&gt;
-
-            &lt;quota&gt;default&lt;/quota&gt;
-
-            &lt;allow\_databases incl="allowed\_databases" /&gt;
-
-        &lt;/xxx&gt;
-
-    &lt;/users&gt;
-
-&lt;/yandex&gt;
+```markup
+<?xml version="1.0"?>
+<yandex>
+    <users>
+        <xxx>
+            <!-- PASSWORD=$(base64 < /dev/urandom | head -c8); echo "$PASSWORD"; echo -n "$PASSWORD" | sha256sum | tr -d '-' -->
+            <password_sha256_hex>...</password_sha256_hex>
+            <networks incl="networks" />
+            <profile>readonly</profile>
+            <quota>default</quota>
+            <allow_databases incl="allowed_databases" />
+        </xxx>
+    </users>
+</yandex>
+```
 
 1. Some parts of configuration will contain repeated elements \(like allowed ips for all the users\). To avoid repeating that - use substitutions file. By default its /etc/metrika.xml, but you can change it for example to /etc/clickhouse-server/substitutions.xml with the &lt;include\_from&gt; section of the main config. Put the repeated parts into substitutions file, like this:
 
-&lt;?xml version="1.0"?&gt;
+```markup
+<?xml version="1.0"?>
+<yandex>
+    <networks>
+        <ip>::1</ip>
+        <ip>127.0.0.1</ip>
+        <ip>10.42.0.0/16</ip>
+        <ip>192.168.0.0/24</ip>
+    </networks>
+</yandex>
 
-&lt;yandex&gt;
-
-    &lt;networks&gt;
-
-        &lt;ip&gt;::1&lt;/ip&gt;
-
-        &lt;ip&gt;127.0.0.1&lt;/ip&gt;
-
-        &lt;ip&gt;10.42.0.0/16&lt;/ip&gt;
-
-        &lt;ip&gt;192.168.0.0/24&lt;/ip&gt;
-
-    &lt;/networks&gt;
-
-&lt;clickhouse\_remote\_servers&gt;
-
-&lt;!-- cluster definition --&gt;
-
-    &lt;/clickhouse\_remote\_servers&gt;
-
-    &lt;zookeeper-servers&gt;
-
-        &lt;node&gt;
-
-            &lt;host&gt;zookeeper1&lt;/host&gt;
-
-            &lt;port&gt;2181&lt;/port&gt;
-
-        &lt;/node&gt;
-
-        &lt;node&gt;
-
-            &lt;host&gt;zookeeper2&lt;/host&gt;
-
-            &lt;port&gt;2181&lt;/port&gt;
-
-        &lt;/node&gt;
-
-        &lt;node&gt;
-
-            &lt;host&gt;zookeeper3&lt;/host&gt;
-
-            &lt;port&gt;2181&lt;/port&gt;
-
-        &lt;/node&gt;
-
-    &lt;/zookeeper-servers&gt;
-
-    &lt;clickhouse\_compression&gt;&lt;/clickhouse\_compression&gt;
-
-&lt;/yandex&gt;  
-
+```
 
 These files can be common for all the servers inside the cluster or can be individualized per server. If you choose to use one substitutions file per cluster, not per node, you will also need to generate the file with macros, if macros are used.
 
