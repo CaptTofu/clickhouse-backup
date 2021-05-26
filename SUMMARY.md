@@ -125,6 +125,7 @@
   * [clickhouse-client](altinity-kb-interfaces/altinity-kb-clickhouse-client.md)
   * [JSONAsString and Mat. View as JSON parser](altinity-kb-interfaces/altinity-kb-jsonasstring-and-mat.-view-as-json-parser.md)
 * [Dictionaries](altinity-kb-dictionaries/README.md)
+  * [Dictionary on the top of the several tables using VIEW](altinity-kb-dictionaries/untitled.md)
   * [Example of PostgreSQL dictionary](altinity-kb-dictionaries/example-of-postgresql-dictionary.md)
   * [MySQL8 source for dictionaries](altinity-kb-dictionaries/mysql8-source-for-dictionaries.md)
   * [Partial updates](altinity-kb-dictionaries/partial-updates.md)
