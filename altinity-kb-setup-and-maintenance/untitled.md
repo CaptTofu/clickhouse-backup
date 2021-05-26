@@ -36,6 +36,8 @@ We recommend the following approach:
    4. Check latest stable or test versions of ClickHouse on your staging environment regularly and pass the feedback to us or on the [official ClickHouse github](https://github.com/ClickHouse/ClickHouse).
    5. Consider blue/green or canary upgrades. 
 
+See also: [https://clickhouse.tech/docs/en/faq/operations/production/](https://clickhouse.tech/docs/en/faq/operations/production/) 
+
 ## How do I upgrade?
 
 {% hint style="warning" %}
