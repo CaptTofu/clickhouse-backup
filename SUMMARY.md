@@ -48,6 +48,7 @@
   * [sequenceMatch](altinity-kb-functions/altinity-kb-sequencematch.md)
 * [Integrations](altinity-kb-integrations/README.md)
   * [CatBoost / MindsDB /  Fast.ai](altinity-kb-integrations/catboost-mindsdb-fast.ai.md)
+  * [BI Tools](altinity-kb-integrations/bi-tools.md)
   * [Google S3 \(GCS\)](altinity-kb-integrations/altinity-kb-google-s3-gcs.md)
   * [Kafka](altinity-kb-integrations/altinity-kb-kafka/README.md)
     * [Adjusting librdkafka settings](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-adjusting-librdkafka-settings.md)
