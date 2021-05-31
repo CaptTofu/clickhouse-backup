@@ -12,6 +12,8 @@ This tar.gz contains a single binary of `clickhouse-backup` and an example of co
 
 Backblaze has s3 compatible API but requires empty acl parameter `acl: ""`.
 
+[https://www.backblaze.com/](https://www.backblaze.com/) has 15 days and free 10Gb S3 trial.
+
 ```bash
 $ mkdir clickhouse-backup
 $ cd clickhouse-backup
