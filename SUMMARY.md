@@ -96,6 +96,7 @@
   * [X rows of Y total rows in filesystem are suspicious](altinity-kb-setup-and-maintenance/x-rows-of-y-total-rows-in-filesystem-are-suspicious.md)
   * [Who ate my memory](altinity-kb-setup-and-maintenance/altinity-kb-who-ate-my-memory.md)
   * [ZooKeeper](altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/README.md)
+    * [clickhouse-backup](altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/clickhouse-backup.md)
     * [ZooKeeper schema](altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-schema.md)
     * [clickhouse-keeper](altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/clickhouse-keeper.md)
     * [JVM sizes and garbage collector settings](altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/jvm-sizes-and-garbage-collector-settings.md)
