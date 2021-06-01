@@ -26,6 +26,7 @@
   * [Atomic insert](altinity-kb-queries-and-syntax/atomic-insert.md)
   * [Window functions](altinity-kb-queries-and-syntax/window-functions.md)
   * [Data types on disk and in RAM](altinity-kb-queries-and-syntax/data-types-on-disk-and-in-ram.md)
+  * [JSONExtract to parse many attributes at a time](altinity-kb-queries-and-syntax/jsonextract-to-parse-many-attributes-at-a-time.md)
   * [FINAL clause speed](altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed.md)
   * [Join with Calendar using Arrays](altinity-kb-queries-and-syntax/join-with-calendar-using-arrays.md)
   * [KILL QUERY](altinity-kb-queries-and-syntax/altinity-kb-kill-query.md)
