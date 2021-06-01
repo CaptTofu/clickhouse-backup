@@ -5,11 +5,10 @@
    ```markup
    cat /etc/clickhouse-server/config.d/query_log.xml 
    <yandex>
-       <query_log>
+       <query_log replace="1">
            <database>system</database>
            <table>query_log</table>
            <flush_interval_milliseconds>7500</flush_interval_milliseconds>
-           <partition_by remove="1"/>
            <engine>
    ENGINE = MergeTree
    PARTITION BY event_date
@@ -38,7 +37,7 @@
    ```markup
    cat /etc/clickhouse-server/config.d/part_log.xml 
    <yandex>
-       <part_log>
+       <part_log replace="1">
            <database>system</database>
            <table>part_log</table>
            <flush_interval_milliseconds>7500</flush_interval_milliseconds>
