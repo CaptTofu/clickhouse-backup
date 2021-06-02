@@ -1,18 +1,18 @@
 # Who ate my memory
 
 ```sql
-select formatReadableSize(sum(bytes_allocated)) from system.dictionaries;
+SELECT formatReadableSize(sum(bytes_allocated)) FROM system.dictionaries;
 
 SELECT
     database,
     name,
     formatReadableSize(total_bytes)
 FROM system.tables
-WHERE engine in ('Memory','Set','Join');
+WHERE engine IN ('Memory','Set','Join');
 
-select formatReadableSize(sum(memory_usage)) from system.merges;
+SELECT formatReadableSize(sum(memory_usage)) FROM system.merges;
 
-select formatReadableSize(sum(memory_usage)) from system.processes;
+SELECT formatReadableSize(sum(memory_usage)) FROM system.processes;
 
 SELECT
     initial_query_id,
