@@ -50,6 +50,7 @@ Query id: 468f5d9c-f3e8-49b3-8cd4-69ef4fc68897
 │ system   │ query_log │ ProfileEvents.Names                 │ 7.80 MiB   │ 431.57 MiB   │
 │ system   │ query_log │ event_time_microseconds             │ 7.67 MiB   │ 14.69 MiB    │
 │ system   │ query_log │ query_start_time_microseconds       │ 6.60 MiB   │ 14.69 MiB    │
+└──────────┴───────────┴─────────────────────────────────────┴────────────┴──────────────┘
 ```
 
 © 2021 Altinity Inc. All rights reserved.
