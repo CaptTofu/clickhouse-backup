@@ -2,17 +2,17 @@
 
 Collect thread names & counts using ps & clickhouse-local
 
-```bash
+```text
 ps H -o 'tid comm' $(pidof -s clickhouse-server) |  tail -n +2 | awk '{ printf("%s\t%s\n", $1, $2) }' | clickhouse-local -S "threadid UInt16, name String" -q "SELECT name, count() FROM table GROUP BY name WITH TOTALS ORDER BY count() DESC FORMAT PrettyCompact"
 ```
 
 Check threads used by running queries:
 
-```sql
-SELECT query, length(thread_ids) AS threads_count FROM system.processes ORDER BY threads_count;
+```text
+select query, length(thread_ids) as threads_count from system.processes order by threads_count;
 ```
 
-```bash
+```text
 # cat /proc/$(pidof -s clickhouse-server)/status | grep Threads
 Threads: 103
 # ps hH $(pidof -s clickhouse-server) | wc -l
@@ -23,7 +23,7 @@ Threads: 103
 
 Pools
 
-```sql
+```text
 SELECT
     name,
     value
@@ -46,12 +46,14 @@ WHERE name LIKE '%pool%'
 └──────────────────────────────────────────────┴───────┘
 ```
 
-```sql
+```text
 SELECT
     metric,
     value
 FROM system.metrics
 WHERE metric LIKE 'Background%'
+
+Query id: e65544a0-0542-4bd1-bc28-007cdc29d2a3
 
 ┌─metric──────────────────────────────────┬─value─┐
 │ BackgroundPoolTask                      │     0 │
@@ -64,18 +66,11 @@ WHERE metric LIKE 'Background%'
 └─────────────────────────────────────────┴───────┘
 ```
 
-Stack traces 
+Stacktraces 
 
-```sql
-SET allow_introspection_functions = 1;
-
-WITH arrayMap(x -> demangle(addressToSymbol(x)), trace) AS all
-SELECT
-    thread_id,
-    query_id,
-    arrayStringConcat(all, '\n') AS res
-FROM system.stack_trace
-WHERE res ILIKE '%Pool%'
+```text
+ SET allow_introspection_functions = 1;
+ WITH arrayMap(x -> demangle(addressToSymbol(x)), trace) AS all SELECT thread_id, query_id, arrayStringConcat(all, '\n') AS res FROM system.stack_trace　WHERE res ILIKE '%Pool%';
 ```
 
 © 2021 Altinity Inc. All rights reserved.

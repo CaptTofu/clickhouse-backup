@@ -14,7 +14,7 @@ Backblaze has s3 compatible API but requires empty acl parameter `acl: ""`.
 
 [https://www.backblaze.com/](https://www.backblaze.com/) has 15 days and free 10Gb S3 trial.
 
-```yaml
+```bash
 $ mkdir clickhouse-backup
 $ cd clickhouse-backup
 $ wget https://github.com/AlexAkulov/clickhouse-backup/releases/download/1.0.0-beta2/clickhouse-backup.tar.gz
@@ -66,7 +66,6 @@ I have a database `test` with table `test`
 
 ```sql
 select count() from test.test;
-
 ┌─count()─┐
 │  400000 │
 └─────────┘
@@ -105,7 +104,7 @@ $ sudo ./clickhouse-backup delete local bkp01 -c config.yml
 ```
 
 ```sql
-DROP DATABASE test;
+drop database test;
 ```
 
 ### Restore
@@ -129,7 +128,7 @@ $ sudo ./clickhouse-backup restore bkp01 -c config.yml
 ```
 
 ```sql
-SELECT count() FROM test.test;
+select count() from test.test;
 ┌─count()─┐
 │  400000 │
 └─────────┘
