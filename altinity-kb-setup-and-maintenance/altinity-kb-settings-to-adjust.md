@@ -14,6 +14,7 @@
    PARTITION BY event_date
    ORDER BY (event_time)
    TTL event_date + interval 90 day
+   SETTINGS ttl_only_drop_parts=1
            </engine>
        </query_log>
    </yandex>
@@ -45,7 +46,8 @@
    ENGINE = MergeTree
    PARTITION BY toYYYYMM(event_date)
    ORDER BY (event_time)
-   TTL toStartOfMonth(event_date) + interval 3 MONTH
+   TTL toStartOfMonth(event_date) + INTERVAL 3 MONTH
+   SETTINGS ttl_only_drop_parts=1
            </engine>
        </part_log>
    </yandex>
