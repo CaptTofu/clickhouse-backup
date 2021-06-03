@@ -26,7 +26,7 @@ Because clickhouse uses MPP order of execution of a single query can vary on eac
 Usually, this deviation is small, but it can be significant when some kind of arithmetic operation is performed on very large and very small numbers at the same time.
 {% endhint %}
 
-### Some decimal number has no accurate float representation
+### Some decimal numbers has no accurate float representation
 
 ```text
 select sum(toFloat64(0.45)) from numbers(10000);
@@ -44,7 +44,9 @@ select toDecimal32(0.6,1)*6;
 # 3.6
 ```
 
-The same number can have several floating-point representations, and because of that direct comparisons may be impossible. 
+### Direct comparisons of floats may be impossible
+
+The same number can have several floating-point representations and because of that you should not compare Floats directly 
 
 ```text
 select toFloat32(0.1)*10 = toFloat32(0.01)*100;
@@ -63,9 +65,10 @@ b:      1.0000000000000007
 a_eq_b: 0
 ```
 
-[https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/](https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/)  
-[https://stackoverflow.com/questions/4915462/how-should-i-do-floating-point-comparison](https://stackoverflow.com/questions/4915462/how-should-i-do-floating-point-comparison)
+See also
 
+[https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/](https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/)  
+[https://stackoverflow.com/questions/4915462/how-should-i-do-floating-point-comparison](https://stackoverflow.com/questions/4915462/how-should-i-do-floating-point-comparison)  
 https://stackoverflow.com/questions/2100490/floating-point-inaccuracy-examples  
 [https://stackoverflow.com/questions/10371857/is-floating-point-addition-and-multiplication-associative](https://stackoverflow.com/questions/10371857/is-floating-point-addition-and-multiplication-associative)
 
