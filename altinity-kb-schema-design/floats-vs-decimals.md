@@ -72,7 +72,11 @@ See also
 https://stackoverflow.com/questions/2100490/floating-point-inaccuracy-examples  
 [https://stackoverflow.com/questions/10371857/is-floating-point-addition-and-multiplication-associative](https://stackoverflow.com/questions/10371857/is-floating-point-addition-and-multiplication-associative)
 
-### 
+But
+
+{% embed url="https://github.com/ClickHouse/ClickHouse/issues/24909" %}
+
+
 
 ### 
 
