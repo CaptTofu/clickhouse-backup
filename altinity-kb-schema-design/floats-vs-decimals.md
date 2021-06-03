@@ -20,6 +20,12 @@ select toDecimal64(100000000000000000.1,1) - toDecimal64(100000000000000000.1,1)
 # 7.5
 ```
 
+{% hint style="warning" %}
+Because clickhouse uses MPP order of execution of a single query can vary on each run, and you can get slightly different results from the float column every time you run the query. 
+
+Usually, this deviation is small, but it can be significant when some kind of arithmetic operation is performed on very large and very small numbers at the same time.
+{% endhint %}
+
 ### Some decimal number has no accurate float representation
 
 ```text
@@ -41,27 +47,27 @@ select toDecimal32(0.6,1)*6;
 The same number can have several floating-point representations, and because of that direct comparisons may be impossible. 
 
 ```text
-WITH toFloat32(3600) AS f3600
+select toFloat32(0.1)*10 = toFloat32(0.01)*100;
+# 0
+
 SELECT
-    f3600 / 1000 AS a,
-    toFloat32(3.6) AS b,
-    a = b AS a_equals_b,
-    a - b AS diff,
-    abs(diff) < 1e-7 AS is_diff_small
+    sumIf(0.1, number < 10) AS a,
+    sumIf(0.01, number < 100) AS b,
+    a = b AS a_eq_b
+FROM numbers(100)
 
 Row 1:
 ──────
-a:             3.6
-b:             3.6
-a_equals_b:    0
-diff:          9.536743172944284e-8
-is_diff_small: 1
+a:      0.9999999999999999
+b:      1.0000000000000007
+a_eq_b: 0
 ```
 
 [https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/](https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/)  
 [https://stackoverflow.com/questions/4915462/how-should-i-do-floating-point-comparison](https://stackoverflow.com/questions/4915462/how-should-i-do-floating-point-comparison)
 
-https://stackoverflow.com/questions/2100490/floating-point-inaccuracy-examples
+https://stackoverflow.com/questions/2100490/floating-point-inaccuracy-examples  
+[https://stackoverflow.com/questions/10371857/is-floating-point-addition-and-multiplication-associative](https://stackoverflow.com/questions/10371857/is-floating-point-addition-and-multiplication-associative)
 
 ### 
 
