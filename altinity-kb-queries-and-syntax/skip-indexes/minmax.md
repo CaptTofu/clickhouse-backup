@@ -1,4 +1,4 @@
-# minmax
+# Example: minmax
 
 ### Use cases
 

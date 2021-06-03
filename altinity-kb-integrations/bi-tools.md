@@ -6,12 +6,12 @@
 * Tableau: via odbc
 * Looker: [https://docs.looker.com/setup-and-management/database-config/clickhouse](https://docs.looker.com/setup-and-management/database-config/clickhouse) 
 * Apache Zeppelin
-* seektable
+* SeekTable
 * ReDash
-* Mondrian
-* grafana
+* Mondrian: [https://altinity.com/blog/accessing-clickhouse-from-excel-using-mondrian-rolap-engine](https://altinity.com/blog/accessing-clickhouse-from-excel-using-mondrian-rolap-engine)
+* Grafana
 
 
 
-* cumul.io
+* Cumul.io
 

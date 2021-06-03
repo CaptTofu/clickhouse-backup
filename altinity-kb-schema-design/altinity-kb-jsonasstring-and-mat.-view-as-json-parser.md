@@ -31,5 +31,9 @@ SELECT * FROM datastore;
 └──────┴────┴─────┘
 ```
 
+See also: [https://app.gitbook.com/@altinity/s/altinitykb/altinity-kb-queries-and-syntax/jsonextract-to-parse-many-attributes-at-a-time](https://app.gitbook.com/@altinity/s/altinitykb/altinity-kb-queries-and-syntax/jsonextract-to-parse-many-attributes-at-a-time)
+
+
+
 © 2021 Altinity Inc. All rights reserved.
 

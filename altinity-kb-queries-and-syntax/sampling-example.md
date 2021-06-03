@@ -19,7 +19,7 @@ SELECT cityHash64(10000)
 
 If I used `transaction_id` without knowing that they matched the allowable ranges, the results of sampled queries would be skewed. For example, when using `sample 0.5`, ClickHouse  requests `where sample_col >= 0 and sample_col <= MAX_UINT64/2`.
 
-Also you can include multiple columns into a hash function of the sampling expression to improve ramdoness of the distribution `cityHash64(transaction_id, banner_id)`.
+Also you can include multiple columns into a hash function of the sampling expression to improve randomness of the distribution `cityHash64(transaction_id, banner_id)`.
 
 ### Sampling Friendly Table
 
