@@ -30,6 +30,7 @@
   * [FINAL clause speed](altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed.md)
   * [Join with Calendar using Arrays](altinity-kb-queries-and-syntax/join-with-calendar-using-arrays.md)
   * [KILL QUERY](altinity-kb-queries-and-syntax/altinity-kb-kill-query.md)
+  * [UPDATE via Dictionary](altinity-kb-queries-and-syntax/update-via-dictionary.md)
   * [Cumulative Anything](altinity-kb-queries-and-syntax/cumulative-unique.md)
   * [Lag / Lead](altinity-kb-queries-and-syntax/lag-lead.md)
   * [Fill missing values at query time](altinity-kb-queries-and-syntax/fill-missing-values-at-query-time.md)
