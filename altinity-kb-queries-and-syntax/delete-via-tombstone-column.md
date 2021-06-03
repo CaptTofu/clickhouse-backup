@@ -56,11 +56,27 @@ ALTER TABLE test_delete
 
 Ok.
 
-0 rows in set. Elapsed: 1.101 sec.
+0 rows in set. Elapsed: 1.101 sec. -- 20 times slower!!!
 
 SELECT *
 FROM test_delete
 WHERE key = 400000;
+
+┌────key─┬─ts─┬─value_a──────────────────┬─value_b──────────────────────────┬─value_c─────┬─is_active─┐
+│ 400000 │  2 │ totally different string │ another totally different string │ last string │         1 │
+└────────┴────┴──────────────────────────┴──────────────────────────────────┴─────────────┴───────────┘
+
+-- For ReplacingMergeTree
+
+OPTIMIZE TABLE test_delete FINAL;
+
+Ok.
+
+0 rows in set. Elapsed: 2.230 sec. -- 40 times slower!!!
+
+SELECT *
+FROM test_delete
+WHERE key = 400000
 
 ┌────key─┬─ts─┬─value_a──────────────────┬─value_b──────────────────────────┬─value_c─────┬─is_active─┐
 │ 400000 │  2 │ totally different string │ another totally different string │ last string │         1 │
