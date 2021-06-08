@@ -1,4 +1,8 @@
-# Example: skip index bloom\_filter & array column.
+---
+description: 'Example: skip index bloom_filter & array column'
+---
+
+# skip index bloom\_filter for array column
 
 tested with 20.8.17.25
 
