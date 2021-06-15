@@ -108,6 +108,7 @@
     * [Recovering from complete metadata loss in ZooKeeper](altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-recovering-from-complete-metadata-loss-in-zookeeper.md)
     * [ZooKeeper backup](altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-backup.md)
     * [ZooKeeper cluster migration](altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration.md)
+  * [Altinity packaging compatibility &gt;21.x and earlier](altinity-kb-setup-and-maintenance/altinity-packaging-compatibility-greater-than-21.x-and-earlier.md)
   * [clickhouse-backup](altinity-kb-setup-and-maintenance/clickhouse-backup.md)
 * [Useful queries](altinity-kb-useful-queries/README.md)
   * [Can detached parts be dropped?](altinity-kb-useful-queries/detached-parts.md)
