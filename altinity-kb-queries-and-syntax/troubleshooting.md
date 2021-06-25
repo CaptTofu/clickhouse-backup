@@ -63,17 +63,17 @@ Query id: d3db767b-34e9-4252-9f90-348cf958f822
 ```sql
 WITH
     'Real' AS type,
-    '95578e1c-1e93-463c-916c-a1a8cdd08198' as query,
+    '95578e1c-1e93-463c-916c-a1a8cdd08198' AS query,
     min(min) AS start_value,
     max(max) AS end_value,
     groupUniqArrayArray(trace) AS uniq_frames,
-	arrayMap(x -> reverse(arrayMap(y -> toUInt32(indexOf(uniq_frames, y)-1) , x)), groupArray(trace)) AS samples,
-	groupArray(cnt) AS weights
+    arrayMap(x -> reverse(arrayMap(y -> toUInt32(indexOf(uniq_frames, y) - 1), x)), groupArray(trace)) AS samples,
+    groupArray(cnt) AS weights
 SELECT
-    'clickhouse-server@' || version()  as exporter,
-    'https://www.speedscope.app/file-format-schema.json' as `$schema`,
-    'Clickhouse query' as name,
-    CAST([tuple('sampled', type, 'none', start_value, end_value, samples,weights)], 'Array(Tuple(type String, name String, unit String, startValue UInt64, endValue UInt64, samples Array(Array(UInt32)), weights Array(UInt32)))') profiles,
+    concat('clickhouse-server@', version()) AS exporter,
+    'https://www.speedscope.app/file-format-schema.json' AS `$schema`,
+    'Clickhouse query' AS name,
+    CAST([('sampled', type, 'none', start_value, end_value, samples, weights)], 'Array(Tuple(type String, name String, unit String, startValue UInt64, endValue UInt64, samples Array(Array(UInt32)), weights Array(UInt32)))') AS profiles,
     CAST(tuple(arrayMap(x -> (demangle(addressToSymbol(x)), addressToLine(x)), uniq_frames)), 'Tuple(frames Array(Tuple(name String, line String)))') AS shared
 FROM
 (
@@ -86,7 +86,7 @@ FROM
     WHERE (trace_type = type) AND (query_id = query)
     GROUP BY trace
 )
-SETTINGS allow_introspection_functions = 1
+SETTINGS allow_introspection_functions = 1, output_format_json_named_tuples_as_objects = 1
 FORMAT JSONEachRow
 SETTINGS output_format_json_named_tuples_as_objects = 1
 ```
