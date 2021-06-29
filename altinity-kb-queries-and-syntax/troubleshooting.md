@@ -62,29 +62,40 @@ Query id: d3db767b-34e9-4252-9f90-348cf958f822
 
 ```sql
 WITH
-    'Real' AS type,
     '95578e1c-1e93-463c-916c-a1a8cdd08198' AS query,
     min(min) AS start_value,
     max(max) AS end_value,
-    groupUniqArrayArray(trace) AS uniq_frames,
-    arrayMap(x -> reverse(arrayMap(y -> toUInt32(indexOf(uniq_frames, y) - 1), x)), groupArray(trace)) AS samples,
-    groupArray(cnt) AS weights
+    groupUniqArrayArrayArray(trace_arr) AS uniq_frames,
+    arrayMap((x, a, b) -> ('sampled', b, 'none', start_value, end_value, arrayMap(s -> reverse(arrayMap(y -> toUInt32(indexOf(uniq_frames, y) - 1), s)), x), a), groupArray(trace_arr), groupArray(weights), groupArray(trace_type)) AS samples
 SELECT
     concat('clickhouse-server@', version()) AS exporter,
     'https://www.speedscope.app/file-format-schema.json' AS `$schema`,
-    'Clickhouse query' AS name,
-    CAST([('sampled', type, 'none', start_value, end_value, samples, weights)], 'Array(Tuple(type String, name String, unit String, startValue UInt64, endValue UInt64, samples Array(Array(UInt32)), weights Array(UInt32)))') AS profiles,
+    concat('Clickhouse query id: ', query) AS name,
+    CAST(samples, 'Array(Tuple(type String, name String, unit String, startValue UInt64, endValue UInt64, samples Array(Array(UInt32)), weights Array(UInt32)))') AS profiles,
     CAST(tuple(arrayMap(x -> (demangle(addressToSymbol(x)), addressToLine(x)), uniq_frames)), 'Tuple(frames Array(Tuple(name String, line String)))') AS shared
 FROM
 (
     SELECT
-        min(timestamp_ns) AS min,
-        max(timestamp_ns) AS max,
-        trace,
-        count() AS cnt
-    FROM system.trace_log
-    WHERE (trace_type = type) AND (query_id = query)
-    GROUP BY trace
+        min(min_ns) AS min,
+        trace_type,
+        max(max_ns) AS max,
+        groupArray(trace) AS trace_arr,
+        groupArray(cnt) AS weights
+    FROM
+    (
+        SELECT
+            min(timestamp_ns) AS min_ns,
+            max(timestamp_ns) AS max_ns,
+            trace,
+            trace_type,
+            count() AS cnt
+        FROM system.trace_log
+        WHERE query_id = query
+        GROUP BY
+            trace_type,
+            trace
+    )
+    GROUP BY trace_type
 )
 SETTINGS allow_introspection_functions = 1, output_format_json_named_tuples_as_objects = 1
 FORMAT JSONEachRow
