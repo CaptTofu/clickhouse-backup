@@ -69,21 +69,6 @@ FROM test_null;
 │   2 │ value 2              │
 │   3 │ value 3              │
 └─────┴──────────────────────┘
-
-
-WITH CAST(NULL, 'Nullable(Enum8(\'a\' = 1, \'b\' = 0))') AS test
-SELECT assumeNotNull(test)
-
-┌─assumeNotNull(test)─┐
-│ b                   │
-└─────────────────────┘
-
-WITH CAST(NULL, 'Nullable(Enum8(\'a\' = 1))') AS test
-SELECT assumeNotNull(test)
-
-Error on processing query 'with CAST(null, 'Nullable(Enum8(\'a\' = 1))') as test
-select assumeNotNull(test); ;':
-Code: 36, e.displayText() = DB::Exception: Unexpected value 0 in enum, Stack trace (when copying this message, always include the lines below):
 ```
 
 {% hint style="info" %}
