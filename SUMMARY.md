@@ -21,7 +21,7 @@
   * [Machine learning in ClickHouse](altinity-kb-queries-and-syntax/machine-learning-in-clickhouse.md)
   * [-State & -Merge combinators](altinity-kb-queries-and-syntax/state-and-merge-combinators.md)
   * [Simple aggregate functions & combinators](altinity-kb-queries-and-syntax/simplestateif-or-ifstate-for-simple-aggregate-functions.md)
-  * [ALTER MODIFY COLUMN is stuck, the column is inaccessible.](altinity-kb-queries-and-syntax/altinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible..md)
+  * [ALTER MODIFY COLUMN is stuck, the column is inaccessible.](altinity-kb-queries-and-syntax/altinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible.md)
   * [ANSI SQL mode](altinity-kb-queries-and-syntax/ansi-sql-mode.md)
   * [Atomic insert](altinity-kb-queries-and-syntax/atomic-insert.md)
   * [Window functions](altinity-kb-queries-and-syntax/window-functions.md)
