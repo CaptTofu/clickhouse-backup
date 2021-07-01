@@ -232,10 +232,9 @@ The following extra debug logs should be considered:
 
 ClickHouse configuration stores most of its information in two files:
 
-* config.xml: Stores [Server configuration parameters](https://clickhouse.yandex/docs/en/operations/server_settings/). They are server wide, some are hierarchical , and most of them can’t be changed in runtime. Only 3 sections will be applied w/o restart:
-  * macros
-  * remote\_servers
-  * logging level
+* config.xml: Stores [Server configuration parameters](https://clickhouse.yandex/docs/en/operations/server_settings/). They are server wide, some are hierarchical , and most of them can’t be changed in runtime. The list of settings to apply without a restart changes from version to version. Some settings can be verified using system tables, for example:
+  * macros \(system.macros\)
+  * remote\_servers \(system.clusters\)
 * users.xml: Configure users, and user level / session level [settings](https://clickhouse.yandex/docs/en/operations/settings/settings/).
   * Each user can change these during their session by:
     * Using parameter in http query
