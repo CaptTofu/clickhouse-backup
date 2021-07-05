@@ -1,16 +1,18 @@
 # clickhouse-copier
 
-The link to the doc [https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/](https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/)
-
-There is a description of the utility and its parameters, as well as examples of the config files that you need to create for the copier.
+The description of the utility and its parameters, as well as examples of the config files that you need to create for the copier are in the doc [https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/](https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/)
 
 The steps to run a task:
 
 1. Create a config file for clickhouse-copier \(zookeeper.xml\)
-2. Create a config file for the task \(task1.xml\)
-3. Create the task in ZooKeeper and start an instance of clickhouse-copier
 
-`clickhouse-copier --daemon --base-dir=/opt/clickhouse-copier --config /opt/clickhouse-copier/zookeeper.xml --task-path /clickhouse/copier/task1 --task-file /opt/clickhouse-copier/task1.xml`
+   [https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/\#format-of-zookeeper-xml](https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/#format-of-zookeeper-xml)
+
+2. Create a config file for the task \(task1.xml\)
+
+   [https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/\#configuration-of-copying-tasks](https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/#configuration-of-copying-tasks)
+
+3. Create the task in ZooKeeper and start an instance of clickhouse-copier`clickhouse-copier --daemon --base-dir=/opt/clickhouse-copier --config /opt/clickhouse-copier/zookeeper.xml --task-path /clickhouse/copier/task1 --task-file /opt/clickhouse-copier/task1.xml`
 
 If the node in ZooKeeper already exists and you want to change it, you need to add the `task-upload-force` parameter:
 
