@@ -4,7 +4,8 @@ In general, it is a NORMAL situation for clickhouse that while processing a huge
 
 The main directions to reduce the CPU usage **is to review the schema / queries t**o limit the amount of the data which need to be processed, and to plan the resources in a way when single running query will not impact the others. 
 
-Currently ClickHouse now has two main options for limiting the CPU:
+Any attempts to reduce the CPU usage will end up with slower queries!  
+If it is acceptable for you - please check the following options for limiting the CPU usage:
 
 1\) setting `max_threads`: reducing the number of threads that are allowed to use one request. Fewer threads = more free cores for other requests.  By default, it's allowed to take half of the available CPU cores, adjust only when needed. So if if you have 10 cores then `max_threads = 10` will work about twice faster than `max_threads=5`, but will take 100% or CPU. \(max\_threads=5 will use half of CPUs so 50%\).
 
