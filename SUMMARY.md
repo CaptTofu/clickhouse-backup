@@ -63,6 +63,7 @@
     * [Rewind / fast-forward / replay](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-rewind-fast-forward-replay.md)
     * [SELECTs from engine=Kafka](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-selects-from-engine-kafka.md)
 * [Setup & maintenance](altinity-kb-setup-and-maintenance/README.md)
+  * [High CPU usage](altinity-kb-setup-and-maintenance/high-cpu-usage.md)
   * [Production Cluster Configuration Guide](altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/README.md)
     * [Hardware Requirements](altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardware-requirements.md)
     * [Network Configuration](altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/network-configuration.md)
