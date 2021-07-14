@@ -1,7 +1,7 @@
 # Queries & Syntax
 
 * [-SimpleStateIf or -IfState for simple aggregate functions](simplestateif-or-ifstate-for-simple-aggregate-functions.md)
-* [ALTER MODIFY COLUMN is stuck, the column is inaccessible.](altinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible..md)
+* [ALTER MODIFY COLUMN is stuck, the column is inaccessible.](altinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible.md)
 * [ANSI SQL mode](ansi-sql-mode.md)
 * [Coming soon on ClickHouse: Window functions](window-functions.md)
 * [Data types on disk and in RAM](data-types-on-disk-and-in-ram.md)
