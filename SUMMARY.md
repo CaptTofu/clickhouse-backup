@@ -56,6 +56,7 @@
   * [BI Tools](altinity-kb-integrations/bi-tools.md)
   * [Google S3 \(GCS\)](altinity-kb-integrations/altinity-kb-google-s3-gcs.md)
   * [Kafka](altinity-kb-integrations/altinity-kb-kafka/README.md)
+    * [Error handling](altinity-kb-integrations/altinity-kb-kafka/error-handling.md)
     * [Adjusting librdkafka settings](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-adjusting-librdkafka-settings.md)
     * [Exactly once semantics](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-exactly-once-semantics.md)
     * [Kafka main parsing loop](altinity-kb-integrations/altinity-kb-kafka/altinity-kb-kafka-main-parsing-loop.md)
