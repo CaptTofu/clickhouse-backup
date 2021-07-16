@@ -76,3 +76,37 @@ Query id: 855453d7-eccd-44cb-9631-f63bb02a273c
 
 ```
 
+### When the conversion using different rules happen:
+
+```text
+SELECT timezone()
+
+┌─timezone()─┐
+│ UTC        │
+└────────────┘
+
+
+create table t_with_dt_utc ( ts DateTime64(3,'Europe/Moscow') ) engine=Log;
+
+create table x (ts String) engine=Null;
+
+create materialized view x_mv to t_with_dt_utc as select parseDateTime64BestEffort(ts) as ts from x;
+
+$ echo '2021-07-15T05:04:23.733' | clickhouse-client -q 'insert into t_with_dt_utc format CSV'
+-- here client checks the type of the columns, see that it's 'Europe/Moscow' and use conversion according to moscow rules
+
+$ echo '2021-07-15T05:04:23.733' | clickhouse-client -q 'insert into x format CSV'
+-- here client check tha type of the columns (it is string), and pass string value to the server.
+-- parseDateTime64BestEffort(ts) uses server default timezone (UTC in my case), and convert the value using UTC rules.
+-- and the result is 2 different timestamps (when i selecting from that is shows both in 'desired' timezone, forced by column type, i.e. Moscow):
+
+
+SELECT * FROM t_with_dt_utc
+┌──────────────────────ts─┐
+│ 2021-07-15 05:04:23.733 │
+│ 2021-07-15 08:04:23.733 │
+└─────────────────────────┘
+```
+
+Best practice here: use UTC timezone everywhere, OR use the same default timezone for clickhouse server as used by your data
+

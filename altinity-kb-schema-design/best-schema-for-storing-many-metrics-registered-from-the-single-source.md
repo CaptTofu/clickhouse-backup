@@ -44,7 +44,7 @@ Pros and cons:
 + easy to extend, you can have very dynamic / huge number of metrics.   
 + you can use Array\(LowCardinality\(String\)\) for storing metric names efficiently   
 + good for sparse recording \(each time point can have only 1% of all the possible metrics\)   
--  you need to extract all metrics for row to reach a single metric   
+-  you need to extract all metrics for row to rich single metric   
 -  not very handy / complicated non-standard syntax   
 -  different metrics values stored in single array \(bad compression\)   
 -  to use values of different datatype you need to cast everything to string or introduce few arrays for values of different types.
@@ -58,10 +58,10 @@ Pros and cons:
 + the only option to store hierarchical / complicated data structures, also with arrays etc. inside.   
 + good for sparse recording \(each time point can have only 1% of all the possible metrics\)   
 + ClickHouse has efficient API to work with JSON   
-+ nice if your data originally came in JSON \(don't need to reformat\)   
++ nice if you data originally came in JSON \(don't need to reformat\)   
 -  uses storage non efficiently   
 -  different metrics values stored in single array \(bad compression\)   
--  you need to extract whole JSON field to reach single metric   
+-  you need to extract whole JSON field to rich single metric   
 -  slower than arrays
 
 ### 2d Using querystring-format URLs
