@@ -14,6 +14,7 @@
     * [Implementation details](engines/altinity-kb-atomic-database-engine/altinity-kb-implementation-details.md)
   * [EmbeddedRocksDB & dictionary](engines/altinity-kb-embeddedrocksdb-and-dictionary.md)
 * [Queries & Syntax](altinity-kb-queries-and-syntax/README.md)
+  * [Time zones](altinity-kb-queries-and-syntax/time-zones.md)
   * [EXPLAIN query](altinity-kb-queries-and-syntax/explain-query.md)
   * [Troubleshooting](altinity-kb-queries-and-syntax/troubleshooting.md)
   * [JOINs](altinity-kb-queries-and-syntax/joins/README.md)
