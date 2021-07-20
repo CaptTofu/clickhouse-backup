@@ -1,5 +1,7 @@
 # Implementation details
 
+_From the_ [_comment_](https://github.com/ClickHouse/ClickHouse/blame/master/src/Databases/DatabaseAtomic.h#L10%20) _in ClickHouse source code \(Apache 2.0 licence\):_
+
 All tables in DatabaseAtomic have persistent UUID and store data in `/clickhouse_path/store/xxx/xxxyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy/`
 
 where `xxxyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy` is UUID of the table.  
