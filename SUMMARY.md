@@ -11,7 +11,6 @@
     * [AggregatingMergeTree](engines/mergetree-table-engine-family/aggregatingmergetree.md)
   * [Atomic Database Engine](engines/altinity-kb-atomic-database-engine/README.md)
     * [How to Convert Atomic to Ordinary](engines/altinity-kb-atomic-database-engine/altinity-kb-how-to-convert-atomic-to-ordinary.md)
-    * [Implementation details](engines/altinity-kb-atomic-database-engine/altinity-kb-implementation-details.md)
   * [EmbeddedRocksDB & dictionary](engines/altinity-kb-embeddedrocksdb-and-dictionary.md)
 * [Queries & Syntax](altinity-kb-queries-and-syntax/README.md)
   * [Time zones](altinity-kb-queries-and-syntax/time-zones.md)
