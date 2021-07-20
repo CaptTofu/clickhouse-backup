@@ -142,6 +142,7 @@
   * [Partial updates](altinity-kb-dictionaries/partial-updates.md)
   * [range\_hashed example - open intervals](altinity-kb-dictionaries/altinity-kb-range_hashed-example-open-intervals.md)
   * [SPARSE\_HASHED VS HASHED](altinity-kb-dictionaries/altinity-kb-sparse_hashed-vs-hashed.md)
+  * [Dictionaries & arrays](altinity-kb-dictionaries/dictionaries-and-arrays.md)
 * [Upgrade](upgrade/README.md)
   * [Removing empty parts](upgrade/removing-empty-parts.md)
 * [Report an Issue](report-an-issue.md)
