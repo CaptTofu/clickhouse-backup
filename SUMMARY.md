@@ -128,7 +128,7 @@
   * [Best schema for storing many metrics registered from the single source](altinity-kb-schema-design/best-schema-for-storing-many-metrics-registered-from-the-single-source.md)
   * [MATERIALIZED VIEWS](altinity-kb-schema-design/materialized-views/README.md)
     * [Backfill/populate MV in a controlled manner](altinity-kb-schema-design/materialized-views/backfill-populate-mv-in-a-controlled-manner.md)
-  * [How  to store IPs](altinity-kb-schema-design/how-to-store-ips.md)
+  * [IPs/masks](altinity-kb-schema-design/how-to-store-ips.md)
   * [JSONAsString and Mat. View as JSON parser](altinity-kb-schema-design/altinity-kb-jsonasstring-and-mat.-view-as-json-parser.md)
   * [Dictionaries vs LowCardinality](altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality.md)
 * [Kubernetes](altinity-kb-kubernetes/README.md)
