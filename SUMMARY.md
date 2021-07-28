@@ -145,6 +145,5 @@
   * [Dictionaries & arrays](altinity-kb-dictionaries/dictionaries-and-arrays.md)
 * [Upgrade](upgrade/README.md)
   * [Removing empty parts](upgrade/removing-empty-parts.md)
-  * [Testing file](upgrade/testing-file.md)
 * [Report an Issue](report-an-issue.md)
 
