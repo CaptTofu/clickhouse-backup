@@ -37,6 +37,7 @@
   * [Lag / Lead](altinity-kb-queries-and-syntax/lag-lead.md)
   * [Fill missing values at query time](altinity-kb-queries-and-syntax/fill-missing-values-at-query-time.md)
   * [OPTIMIZE vs OPTIMIZE FINAL](altinity-kb-queries-and-syntax/altinity-kb-optimize-vs-optimize-final.md)
+  * [Values mapping](altinity-kb-queries-and-syntax/values-mapping.md)
   * [Parameterized views](altinity-kb-queries-and-syntax/altinity-kb-parameterized-views.md)
   * [PIVOT / UNPIVOT](altinity-kb-queries-and-syntax/pivot-unpivot.md)
   * [Possible deadlock avoided. Client should retry](altinity-kb-queries-and-syntax/altinity-kb-possible-deadlock-avoided.-client-should-retry.md)
