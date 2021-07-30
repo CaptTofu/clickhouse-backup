@@ -12,6 +12,8 @@ ClickHouse will use all available hardware to maximize performance. So the more 
 
 For clouds: disk throughput is the more important factor compared to IOPS. Be aware of burst / baseline disk speed difference. 
 
+See also: [https://clickhouse.tech/benchmark/hardware/](https://clickhouse.tech/benchmark/hardware/)
+
 ### **Zookeeper**
 
 Zookeeper requires separate servers from those used for ClickHouse. Zookeeper has poor performance when installed on the same node as ClickHouse.
