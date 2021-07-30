@@ -192,6 +192,7 @@ The following health checks should be monitored:
 #### Monitoring References
 
 * [https://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-monitoring](https://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-monitoring)
+* [https://tech.marksblogg.com/clickhouse-prometheus-grafana.html](https://tech.marksblogg.com/clickhouse-prometheus-grafana.html)
 * [Key Metrics for Monitoring ClickHouse](https://sematext.com/blog/clickhouse-monitoring-key-metrics/)
 * [ClickHouse Monitoring Key Metrics to Monitor](https://dzone.com/articles/clickhouse-monitoring-key-metrics-to-monitor-semat)
 * [ClickHouse Monitoring Tools: Five Tools to Consider](https://dzone.com/articles/clickhouse-monitoring-tools-five-tools-to-consider)
