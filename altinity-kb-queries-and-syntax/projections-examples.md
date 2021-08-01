@@ -12,14 +12,19 @@ insert into z
      number%33, 1 
 from numbers(100000000);
 
-select sum(F), Browser from z group by Browser format Null;
+--Q1)
+select sum(F), Browser 
+from z 
+group by Browser format Null;
 Elapsed: 0.205 sec. Processed 100.00 million rows
 
+--Q2)
 select sum(F), Browser, Country 
 from z 
 group by Browser,Country format Null;
 Elapsed: 0.381 sec. Processed 100.00 million rows
 
+--Q3)
 select sum(F),count(), Browser, Country 
 from z 
 group by Browser,Country format Null;
@@ -33,16 +38,19 @@ alter table z materialize projection pp;
 ---- 0 = don't use proj, 1 = use projection
 set allow_experimental_projection_optimization=1;  
 
+--Q1)
 select sum(F), Browser 
 from z 
 group by Browser format Null;
 Elapsed: 0.003 sec. Processed 22.43 thousand rows
 
+--Q2)
 select sum(F), Browser, Country 
 from z 
 group by Browser,Country format Null;
 Elapsed: 0.004 sec. Processed 22.43 thousand rows
 
+--Q3)
 select sum(F),count(), Browser, Country 
 from z 
 group by Browser,Country format Null;
