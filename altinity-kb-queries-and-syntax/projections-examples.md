@@ -1,5 +1,7 @@
 # Projections examples
 
+## Aggregating projections.
+
 ```sql
 create table z(Browser String, Country UInt8, F Float64) 
 Engine=MergeTree 
