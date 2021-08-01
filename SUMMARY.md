@@ -46,6 +46,7 @@
   * [Skip indexes](altinity-kb-queries-and-syntax/skip-indexes/README.md)
     * [Example: minmax](altinity-kb-queries-and-syntax/skip-indexes/minmax.md)
     * [skip index bloom\_filter for array column](altinity-kb-queries-and-syntax/skip-indexes/skip-index-bloom_filter-for-array-column.md)
+  * [Projections examples](altinity-kb-queries-and-syntax/projections-examples.md)
   * [TTL](altinity-kb-queries-and-syntax/ttl/README.md)
     * [TTL GROUP BY Examples](altinity-kb-queries-and-syntax/ttl/ttl-group-by-examples.md)
     * [TTL Recompress example](altinity-kb-queries-and-syntax/ttl/ttl-recompress-example.md)
