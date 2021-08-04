@@ -127,7 +127,6 @@ FROM traffic_map
 GROUP BY key1
 FORMAT `Null`
 
-Peak memory usage (for query): 65.02 MiB.
 0 rows in set. Elapsed: 0.915 sec. Processed 10.00 million rows, 1.08 GB (10.93 million rows/s., 1.18 GB/s.)
 ```
 
