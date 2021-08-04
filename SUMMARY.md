@@ -8,6 +8,7 @@
     * [Nulls in order by](engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by.md)
     * [ReplacingMergeTree](engines/mergetree-table-engine-family/replacingmergetree/README.md)
       * [ReplacingMergeTree does not collapse duplicates](engines/mergetree-table-engine-family/replacingmergetree/altinity-kb-replacingmergetree-does-not-collapse-duplicates.md)
+    * [SummingMergeTree](engines/mergetree-table-engine-family/summingmergetree.md)
     * [AggregatingMergeTree](engines/mergetree-table-engine-family/aggregatingmergetree.md)
   * [Atomic Database Engine](engines/altinity-kb-atomic-database-engine/README.md)
     * [How to Convert Atomic to Ordinary](engines/altinity-kb-atomic-database-engine/altinity-kb-how-to-convert-atomic-to-ordinary.md)
