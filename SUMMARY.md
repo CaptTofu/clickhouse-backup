@@ -124,6 +124,7 @@
   * [Datasets](altinity-kb-useful-queries/altinity-kb-datasets.md)
   * [Number of active parts in a partition](altinity-kb-useful-queries/altinity-kb-number-of-active-parts-in-a-partition.md)
 * [Schema design](altinity-kb-schema-design/README.md)
+  * [Flattened table](altinity-kb-schema-design/flattened-table.md)
   * [Floats vs Decimals](altinity-kb-schema-design/floats-vs-decimals.md)
   * [LowCardinality](altinity-kb-schema-design/lowcardinality.md)
   * [Codecs](altinity-kb-schema-design/codecs/README.md)
