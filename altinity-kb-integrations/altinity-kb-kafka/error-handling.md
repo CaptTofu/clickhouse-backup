@@ -46,6 +46,8 @@ FROM default.kafka_engine
 WHERE length(_error) > 0
 ```
 
+![](../../.gitbook/assets/untitled-2021-08-05-1027.png)
+
 {% embed url="https://github.com/ClickHouse/ClickHouse/pull/20249\#issuecomment-779054737" %}
 
 {% embed url="https://github.com/ClickHouse/ClickHouse/pull/21850" %}
