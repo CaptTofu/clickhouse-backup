@@ -1,5 +1,7 @@
 ---
-description: Example how to create a dictionary in Clickhouse with an Array column
+description: >-
+  Example how to create a dictionary in Clickhouse with an Array column and with
+  Clickhouse / MySQL / PostgreSQL as a source.
 ---
 
 # Dictionaries & arrays
