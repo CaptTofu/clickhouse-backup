@@ -125,7 +125,7 @@ INSERT INTO arr_src VALUES
 -- supporting table to cast data
 CREATE TABLE arr_src
 (
-    `_key` UInt8,
+    `_key` UInt64,
     `_array_int` String,
     `array_int` Array(Int32) ALIAS cast(_array_int, 'Array(Int32)'),
     `_array_str` String,
