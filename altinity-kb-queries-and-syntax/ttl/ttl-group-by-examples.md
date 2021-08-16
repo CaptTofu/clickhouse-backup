@@ -182,3 +182,38 @@ GROUP BY m;
 
 During merges Clickhouse re-calculates **ts** columns as **min\(toStartOfDay\(ts\)\)**. It's possible **only for the last column** of `SummingMergeTree` `ORDER BY` section `ORDER BY (key1, key2, toStartOfDay(ts), ts)` otherwise it will **break** the order of rows in the table.
 
+### Multilevel TTL Group by
+
+```sql
+CREATE TABLE test_ttl_group_by
+(
+    `key` UInt32,
+    `ts` DateTime,
+    `value` UInt32,
+    `min_value` UInt32 DEFAULT value,
+    `max_value` UInt32 DEFAULT value
+)
+ENGINE = MergeTree
+PARTITION BY toYYYYMM(ts)
+ORDER BY (key, toStartOfWeek(ts), toStartOfDay(ts), toStartOfHour(ts))
+TTL 
+ts + interval 1 hour 
+GROUP BY key, toStartOfWeek(ts), toStartOfDay(ts), toStartOfHour(ts) 
+    SET value = sum(value), 
+    min_value = min(min_value), 
+    max_value = max(max_value), 
+    ts = min(toStartOfHour(ts)),
+ts + interval 1 day 
+GROUP BY key, toStartOfWeek(ts), toStartOfDay(ts) 
+    SET value = sum(value), 
+    min_value = min(min_value), 
+    max_value = max(max_value), 
+    ts = min(toStartOfDay(ts)),
+ts + interval 30 day 
+GROUP BY key, toStartOfWeek(ts) 
+    SET value = sum(value), 
+    min_value = min(min_value), 
+    max_value = max(max_value), 
+    ts = min(toStartOfDay(ts));
+```
+
