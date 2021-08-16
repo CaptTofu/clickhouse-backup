@@ -275,12 +275,87 @@ SELECT
     max(max_value)
 FROM test_ttl_group_by
 GROUP BY d
-ORDER BY d ASC
+ORDER BY d;
 
 ┌────────d─┬─count()─┬─sum(value)─┬─min(min_value)─┬─max(max_value)─┐
 │ 20210613 │       5 │        400 │              4 │              4 │
 │ 20210814 │       5 │        300 │              3 │              3 │
 │ 20210816 │     105 │        300 │              1 │              2 │
 └──────────┴─────────┴────────────┴────────────────┴────────────────┘
+```
+
+### TTL GROUP BY + DELETE
+
+```sql
+CREATE TABLE test_ttl_group_by
+(
+    `key` UInt32,
+    `ts` DateTime,
+    `value` UInt32,
+    `min_value` UInt32 DEFAULT value,
+    `max_value` UInt32 DEFAULT value
+)
+ENGINE = MergeTree
+PARTITION BY toYYYYMM(ts)
+ORDER BY (key, toStartOfDay(ts))
+TTL 
+ts + interval 180 day,
+ts + interval 30 day 
+    GROUP BY key, toStartOfDay(ts) 
+    SET value = sum(value), 
+    min_value = min(min_value), 
+    max_value = max(max_value), 
+    ts = min(toStartOfDay(ts));
+
+-- stop merges to demonstrate data before / after 
+-- a rolling up
+SYSTEM STOP TTL MERGES test_ttl_group_by;
+SYSTEM STOP MERGES test_ttl_group_by;
+
+INSERT INTO test_ttl_group_by (key, ts, value)
+SELECT
+    number % 5,
+    now() + number,
+    1
+FROM numbers(100);
+
+INSERT INTO test_ttl_group_by (key, ts, value)
+SELECT
+    number % 5,
+    now() - interval 60 day + number,
+    2
+FROM numbers(100);    
+
+INSERT INTO test_ttl_group_by (key, ts, value)
+SELECT
+    number % 5,
+    now() - interval 200 day + number,
+    3
+FROM numbers(100);  
+
+SELECT
+    toYYYYMM(ts) AS m,
+    count(),
+    sum(value),
+    min(min_value),
+    max(max_value)
+FROM test_ttl_group_by
+GROUP BY m;
+
+┌──────m─┬─count()─┬─sum(value)─┬─min(min_value)─┬─max(max_value)─┐
+│ 202101 │     100 │        300 │              3 │              3 │
+│ 202106 │     100 │        200 │              2 │              2 │
+│ 202108 │     100 │        100 │              1 │              1 │
+└────────┴─────────┴────────────┴────────────────┴────────────────┘
+
+SYSTEM START TTL MERGES test_ttl_group_by;
+SYSTEM START MERGES test_ttl_group_by;
+OPTIMIZE TABLE test_ttl_group_by FINAL;
+
+┌──────m─┬─count()─┬─sum(value)─┬─min(min_value)─┬─max(max_value)─┐
+│ 202106 │       5 │        200 │              2 │              2 │
+│ 202108 │     100 │        100 │              1 │              1 │
+└────────┴─────────┴────────────┴────────────────┴────────────────┘
+
 ```
 
