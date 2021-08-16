@@ -215,5 +215,72 @@ GROUP BY key, toStartOfWeek(ts)
     min_value = min(min_value), 
     max_value = max(max_value), 
     ts = min(toStartOfWeek(ts));
+    
+SYSTEM STOP TTL MERGES test_ttl_group_by;
+SYSTEM STOP MERGES test_ttl_group_by;
+
+INSERT INTO test_ttl_group_by (key, ts, value)
+SELECT
+    number % 5,
+    now() + number,
+    1
+FROM numbers(100);
+
+INSERT INTO test_ttl_group_by (key, ts, value)
+SELECT
+    number % 5,
+    now() - interval 2 hour + number,
+    2
+FROM numbers(100);    
+
+INSERT INTO test_ttl_group_by (key, ts, value)
+SELECT
+    number % 5,
+    now() - interval 2 day + number,
+    3
+FROM numbers(100);    
+
+INSERT INTO test_ttl_group_by (key, ts, value)
+SELECT
+    number % 5,
+    now() - interval 2 month + number,
+    4
+FROM numbers(100); 
+
+SELECT
+    toYYYYMMDD(ts) AS d,
+    count(),
+    sum(value),
+    min(min_value),
+    max(max_value)
+FROM test_ttl_group_by
+GROUP BY d
+ORDER BY d;
+
+┌────────d─┬─count()─┬─sum(value)─┬─min(min_value)─┬─max(max_value)─┐
+│ 20210616 │     100 │        400 │              4 │              4 │
+│ 20210814 │     100 │        300 │              3 │              3 │
+│ 20210816 │     200 │        300 │              1 │              2 │
+└──────────┴─────────┴────────────┴────────────────┴────────────────┘
+
+SYSTEM START TTL MERGES test_ttl_group_by;
+SYSTEM START MERGES test_ttl_group_by;
+OPTIMIZE TABLE test_ttl_group_by FINAL;
+
+SELECT
+    toYYYYMMDD(ts) AS d,
+    count(),
+    sum(value),
+    min(min_value),
+    max(max_value)
+FROM test_ttl_group_by
+GROUP BY d
+ORDER BY d ASC
+
+┌────────d─┬─count()─┬─sum(value)─┬─min(min_value)─┬─max(max_value)─┐
+│ 20210613 │       5 │        400 │              4 │              4 │
+│ 20210814 │       5 │        300 │              3 │              3 │
+│ 20210816 │     105 │        300 │              1 │              2 │
+└──────────┴─────────┴────────────┴────────────────┴────────────────┘
 ```
 
