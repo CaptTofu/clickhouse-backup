@@ -54,6 +54,7 @@
     * [TTL Recompress example](altinity-kb-queries-and-syntax/ttl/ttl-recompress-example.md)
 * [Functions](altinity-kb-functions/README.md)
   * [assumeNotNull and friends](altinity-kb-functions/assumenotnull-and-friends.md)
+  * [Encrypt](altinity-kb-functions/encrypt.md)
   * [sequenceMatch](altinity-kb-functions/altinity-kb-sequencematch.md)
 * [Integrations](altinity-kb-integrations/README.md)
   * [CatBoost / MindsDB /  Fast.ai](altinity-kb-integrations/catboost-mindsdb-fast.ai.md)
