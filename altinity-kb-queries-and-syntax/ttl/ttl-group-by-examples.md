@@ -214,6 +214,6 @@ GROUP BY key, toStartOfWeek(ts)
     SET value = sum(value), 
     min_value = min(min_value), 
     max_value = max(max_value), 
-    ts = min(toStartOfDay(ts));
+    ts = min(toStartOfWeek(ts));
 ```
 
