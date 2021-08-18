@@ -14,6 +14,7 @@
     * [How to Convert Atomic to Ordinary](engines/altinity-kb-atomic-database-engine/altinity-kb-how-to-convert-atomic-to-ordinary.md)
   * [EmbeddedRocksDB & dictionary](engines/altinity-kb-embeddedrocksdb-and-dictionary.md)
 * [Queries & Syntax](altinity-kb-queries-and-syntax/README.md)
+  * [Roaring bitmaps for calculating retention](altinity-kb-queries-and-syntax/roaring-bitmaps-for-calculating-retention.md)
   * [Mutations](altinity-kb-queries-and-syntax/mutations.md)
   * [Time zones](altinity-kb-queries-and-syntax/time-zones.md)
   * [EXPLAIN query](altinity-kb-queries-and-syntax/explain-query.md)
