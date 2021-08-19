@@ -55,6 +55,7 @@
     * [TTL Recompress example](altinity-kb-queries-and-syntax/ttl/ttl-recompress-example.md)
 * [Functions](altinity-kb-functions/README.md)
   * [assumeNotNull and friends](altinity-kb-functions/assumenotnull-and-friends.md)
+  * [-Resample vs -If vs -Map vs Subquery](altinity-kb-functions/resample-vs-if-vs-map-vs-subquery.md)
   * [Encrypt](altinity-kb-functions/encrypt.md)
   * [sequenceMatch](altinity-kb-functions/altinity-kb-sequencematch.md)
 * [Integrations](altinity-kb-integrations/README.md)
