@@ -123,6 +123,7 @@
   * [clickhouse-backup](altinity-kb-setup-and-maintenance/clickhouse-backup.md)
 * [Useful queries](altinity-kb-useful-queries/README.md)
   * [Can detached parts be dropped?](altinity-kb-useful-queries/detached-parts.md)
+  * [Parts consistency](altinity-kb-useful-queries/parts-consistency.md)
   * [Database Size - Table - Column size](altinity-kb-useful-queries/altinity-kb-database-size-table-column-size.md)
   * [Datasets](altinity-kb-useful-queries/altinity-kb-datasets.md)
   * [Number of active parts in a partition](altinity-kb-useful-queries/altinity-kb-number-of-active-parts-in-a-partition.md)
