@@ -27,7 +27,7 @@ select count() from bftest where x = 42;
 1 rows in set. Elapsed: 0.056 sec. Processed 3.68 million rows
 ```
 
-## mimax
+## minmax
 
 ```sql
 create table bftest (k Int64, x Int64) Engine=MergeTree order by k;
