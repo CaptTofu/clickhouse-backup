@@ -47,6 +47,7 @@
   * [SAMPLE by](altinity-kb-queries-and-syntax/altinity-kb-sample-by.md)
   * [Sampling Example](altinity-kb-queries-and-syntax/sampling-example.md)
   * [Skip indexes](altinity-kb-queries-and-syntax/skip-indexes/README.md)
+    * [Skip indexes examples](altinity-kb-queries-and-syntax/skip-indexes/skip-indexes-examples.md)
     * [Example: minmax](altinity-kb-queries-and-syntax/skip-indexes/minmax.md)
     * [skip index bloom\_filter for array column](altinity-kb-queries-and-syntax/skip-indexes/skip-index-bloom_filter-for-array-column.md)
   * [Projections examples](altinity-kb-queries-and-syntax/projections-examples.md)
