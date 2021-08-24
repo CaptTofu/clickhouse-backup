@@ -45,7 +45,7 @@ LIMIT 10;
 ```
 
 ```bash
-for i in `seq 1 600`; do clickhouse-client --empty_result_for_aggregation_by_empty_set=0 -q "select (select 'Merges: \
+for i in `seq 1 600`; do clickhouse-client -q "select (select 'Merges: \
 '||formatReadableSize(sum(memory_usage)) from system.merges), (select \
 'Processes: '||formatReadableSize(sum(memory_usage)) from system.processes)";\
 sleep 3;  done 
