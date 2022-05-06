@@ -92,6 +92,10 @@ Pros and cons:
 ALTER TABLE table_name FETCH PARTITION partition_expr FROM 'path-in-zookeeper'
 ```
 
+You can check detailed process detailed process in:
+{% page-ref page="fetch_alter_table.md" %}
+
+
 ## Replication protocol <a id="DataMigration-Replicationprotocol"></a>
 
 Just make one more replica in another place.
