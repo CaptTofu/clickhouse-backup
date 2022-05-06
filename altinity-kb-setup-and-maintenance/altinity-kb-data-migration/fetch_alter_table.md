@@ -34,11 +34,11 @@ The ```FROM``` path is from the zookeeper node and you have to specify the shard
 ALTER TABLE <tablename> ATTACH PARTITION <partition_id>
 ```
 
-will attach the partitions to a table. To check the fetched partitions were move correctly execute again the first query.
+will attach the partitions to a table. Again and because the process is manual, it is recommended to check that the fetched partitions are attached correctly and that there are no detached parts left. Check both ```system.parts``` and ```system.detached_parts``` tables.
 
 ### Detach tables and delete replicas:
 
-If needed after moveing the data and check that everything is sound you can detach the tables and delete the replicas.
+If needed, after moving the data and checking that everything is sound, you can detach the tables and delete the replicas.
 
 ```sql
 -- Required for DROP REPLICA
@@ -62,4 +62,4 @@ FROM system.parts INNER JOIN system.replicas USING (database, table)
 WHERE database IN ('db1','db2' ... 'dbn') AND active
 ```
 
-You could add an ORDER BY to manually make the list in the order you need, or use ORDER BY rand() to randomize it. You will then need to split the commands between the shards (there are going to be several thousands of ALTER statements).
+You could add an ORDER BY to manually make the list in the order you need, or use ORDER BY rand() to randomize it. You will then need to split the commands between the shards.
